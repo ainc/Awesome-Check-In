@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+     	{{ this.currentProgram.name }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div>
+		<img src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
+     	<p>{{ this.currentProgram.description }}</p>
+	</div>
+
+	<h1>Please select the team members that are expecting you</h1>
+
+	<form [formGroup]="currentMemberFormGroup" (ngSubmit)="outputValidator(currentMemberFormGroup.value)">
+		<ion-item-group formGroupName="teamMembers">
+			<ion-item *ngFor="let member of TEAMMEMBERS">
+				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
+				<ion-checkbox color="red" formControlName="{{ member.id }}"></ion-checkbox>
+				<ion-thumbnail item-end>
+					<img src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+				</ion-thumbnail>
+			</ion-item>
+		</ion-item-group>
+
+		<!-- <p>1: {{ currentMemberFormGroup.get('teamMembers').get('1').value | json }}</p>
+		<p>2: {{ currentMemberFormGroup.get('teamMembers').get('2').value | json }}</p>
+		<p>3: {{ currentMemberFormGroup.get('teamMembers').get('3').value | json }}</p>
+		<p>4: {{ currentMemberFormGroup.get('teamMembers').get('4').value | json }}</p>
+		<p>5: {{ currentMemberFormGroup.get('teamMembers').get('5').value | json }}</p>
+		<p>6: {{ currentMemberFormGroup.get('teamMembers').get('6').value | json }}</p> -->
+
+		<button ion-button block [disabled]="!currentMemberFormGroup.valid" (click)="submitTeamMembers(currentMemberFormGroup)">Submit</button>
+	</form>
+
+</ion-content>

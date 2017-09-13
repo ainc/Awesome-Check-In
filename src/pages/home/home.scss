@@ -1,3 +1,21 @@
 page-home {
+	img {
+		width:40%;
+		height:auto;
+	}
 
+	#headerImage {
+		width:35%;
+		height:auto;
+		float:left;
+	}
+
+	h4 {
+		text-decoration-color:#b81124;
+		color:#b81124;
+	}
+
+	ion-card-header {
+		text-decoration-color: red;
+	}
 }

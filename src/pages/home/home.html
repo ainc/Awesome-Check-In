@@ -1,14 +1,52 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      <img id="headerImage" src="assets/img/AInc_logo.png" alt="Awesome Inc">
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+	<h1>What brought you in today?</h1>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col col-12 col-sm>
+				<ion-card (click)="clickedEnt()">
+					<ion-card-header>
+						Entrepreneurship
+					</ion-card-header>
+					<ion-card-content>
+						<img src="assets/img/Icon_For-Entrepreneurs_Red.png" alt="Entrepreneurs">
+						<p>Find out what you can get involved in around Awesome Inc and our entrepreneurial community</p>
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
+
+			<ion-col col-12 col-sm>
+				<ion-card (click)="clickedCode()">
+					<ion-card-header>
+						Learning To Code
+					</ion-card-header>
+					<ion-card-content>
+						<img src="assets/img/Icon_LTC_Red.png" alt="Learn to Code">
+						<p>Everybody can and should learn to code, start today</p>
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
+
+			<ion-col col-12 col-sm>
+				<ion-card (click)="clickedSpace()">
+					<ion-card-header>
+						The Workspace
+					</ion-card-header>
+					<ion-card-content>
+						<img src="assets/img/Icon_Coworking_Red.png" alt="Coworking Space">
+						<p>Rent a desk or space for events, meetings, and more</p>
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
 </ion-content>

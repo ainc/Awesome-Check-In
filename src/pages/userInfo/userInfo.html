@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+     	{{ this.currentProgram.name }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div>
+		<img src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
+     	<p>{{ this.currentProgram.description }}</p>
+	</div>
+
+	<h1 text-center>We Just Need a Little More Info!</h1>
+
+	<form [formGroup]="currentUserInfoFormGroup" novalidate (ngSubmit)="submitUserInfo()">
+		<ion-list>
+			<ion-item>
+				<ion-label fixed>Name:</ion-label>
+				<ion-input type="text" formControlName="name"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label fixed>Email:</ion-label>
+				<ion-input type="text" value="" formControlName="email"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label fixed>Reason:</ion-label>
+				<ion-textarea maxLength="300" formControlName="reason"></ion-textarea>
+			</ion-item>
+
+			<!-- <p>Name: {{ currentUserInfoFormGroup.get('name').value | json }}</p>
+
+			<p>Email: {{ currentUserInfoFormGroup.get('email').value | json }}</p>
+
+			<p>Reason: {{ currentUserInfoFormGroup.get('reason').value | json }}</p> -->
+
+			<button ion-button block type="submit">Submit</button>
+		</ion-list>
+	</form>
+
+</ion-content>

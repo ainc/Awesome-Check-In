@@ -2,5 +2,7 @@
   "name": "Awesome_Check-In",
   "app_id": "badce243",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

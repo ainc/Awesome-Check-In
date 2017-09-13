@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+     	Welcome Entrepreneur!
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<h1>Which program are you interested in?</h1>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col col-12 col-sm *ngFor="let program of PROGRAMS" (click)="goToProgram(program)">
+				<ion-card >
+					<ion-card-header>
+						{{ program.name }}
+					</ion-card-header>
+					<ion-card-content>
+						<img src="{{ program.imageURL }}" alt="{{ program.imageAlt }}">
+						{{ program.description }}
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>
