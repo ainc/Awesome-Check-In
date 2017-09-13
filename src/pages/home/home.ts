@@ -34,7 +34,7 @@ export class HomePage {
 			id: 8,
 			name:'The Workspace',
 			description: 'Rent a desk or space for events, meetings, and more',
-			imageURL: 'assets/img/Icon_Coworking_Red.png',
+			imageURL: 'assets/img/Icon_Coworking.png',
 			imageAlt: 'Coworking Logo'
 		};
 
