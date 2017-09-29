@@ -1,4 +1,14 @@
-<ion-header>
+<!--
+	ConfirmPage In Check In App
+	Created By: Brendan Thompson
+	Updated: 09/10/17 by Brendan Thompson
+
+	Description:
+		Asks the User to confirm their user info and selected team members
+		Sends the corresponding notifications
+ -->
+
+ <ion-header>
   <ion-navbar>
     <ion-title>
      	{{ this.currentProgram.name }}
@@ -30,138 +40,23 @@
 		</ion-item>
 	</ion-item-group>
 
-	<!-- Dynamic item version -->
-	<!-- <ion-item-group *ngFor="let member of TEAMMEMBERS">
-		<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get('1').value" >
-			<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
-			<ion-thumbnail item-end>
-				<img src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
-			</ion-thumbnail>
-		</ion-item>
-	</ion-item-group > -->
 
-
-	<!-- Manual, static item version -->
 	<br>
 
+	<!-- Automatic, Dynamic Version -->
 	<ion-item-group>
 		<ion-item><b>Selected Team Members:</b></ion-item>
-		<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get('1').value" >
-			<ion-label><b>Emily Wehrle</b> : Director of Operations</ion-label>
-			<ion-thumbnail item-end>
-				<img src="assets/img/TeamMembers/emilywehrle_wall.gif" alt="Emily Wehrle">
-			</ion-thumbnail>
-		</ion-item>
 
-		<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get('2').value" >
-			<ion-label><b>Brian Raney</b> : Co-Founder</ion-label>
-			<ion-thumbnail item-end>
-				<img src="assets/img/TeamMembers/brianraney_wall.gif" alt="Brian Raney">
-			</ion-thumbnail>
-		</ion-item>
+		<ng-container *ngFor="let member of TEAMMEMBERS">
+			<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get(member.tag).value">
+				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
+				<ion-thumbnail item-end>
+					<img src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+				</ion-thumbnail>
+			</ion-item>
+		</ng-container>
+	</ion-item-group>
 
-		<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get('3').value" >
-			<ion-label><b>Amanda Murray</b> : Director of Marketing</ion-label>
-			<ion-thumbnail item-end>
-				<img src="assets/img/TeamMembers/teamMember.png" alt="Amanda Murray">
-			</ion-thumbnail>
-		</ion-item>
-
-		<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get('4').value" >
-			<ion-label><b>Keith McMunn</b> : Director of Fellowship</ion-label>
-			<ion-thumbnail item-end>
-				<img src="assets/img/TeamMembers/teamMember.png" alt="Keith McMunn">
-			</ion-thumbnail>
-		</ion-item>
-
-		<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get('5').value" >
-			<ion-label><b>Nick Such</b> : Co-Founder</ion-label>
-			<ion-thumbnail item-end>
-				<img src="assets/img/TeamMembers/nicksuch_wall.gif" alt="Nick Such">
-			</ion-thumbnail>
-		</ion-item>
-
-		<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get('6').value" >
-			<ion-label><b>Kyle Raney</b> : Development Team</ion-label>
-			<ion-thumbnail item-end>
-				<img src="assets/img/TeamMembers/kyleraney_wall.gif" alt="Kyle Raney">
-			</ion-thumbnail>
-		</ion-item>
-
-		<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get('7').value" >
-			<ion-label><b>Not Expected</b> : Setting Up meeting</ion-label>
-			<ion-thumbnail item-end>
-				<img src="assets/img/TeamMembers/teamMember.png" alt="Not Expected">
-			</ion-thumbnail>
-		</ion-item>
-	</ion-item-group >
-
-	<!-- Manual, static Grid / Row / Column version -->
-	<!-- <ion-grid>
-		<ion-row>
-			<ion-col *ngIf="currentMemberFormGroup.get('teamMembers').get('1').value">
-				<ion-card>
-					<ion-card-header>
-						Emily Wehrle
-					</ion-card-header>
-					<ion-card-content>
-						<img src="assets/img/TeamMembers/emilywehrle_wall.gif" alt="Emily Wehrle">
-					</ion-card-content>
-				</ion-card>
-			</ion-col>
-			<ion-col *ngIf="currentMemberFormGroup.get('teamMembers').get('2').value">
-				<ion-card>
-					<ion-card-header>
-						Brian Raney
-					</ion-card-header>
-					<ion-card-content>
-						<img src="assets/img/TeamMembers/brianraney_wall.gif" alt="Brian Raney">
-					</ion-card-content>
-				</ion-card>
-			</ion-col>
-			<ion-col *ngIf="currentMemberFormGroup.get('teamMembers').get('3').value">
-				<ion-card>
-					<ion-card-header>
-						Amanda Murray
-					</ion-card-header>
-					<ion-card-content>
-						<img src="assets/img/TeamMembers/teamMember.png" alt="Amanda Murray">
-					</ion-card-content>
-				</ion-card>
-			</ion-col>
-			<ion-col *ngIf="currentMemberFormGroup.get('teamMembers').get('4').value">
-				<ion-card>
-					<ion-card-header>
-						Keith McMunn
-					</ion-card-header>
-					<ion-card-content>
-						<img src="assets/img/TeamMembers/teamMember.png" alt="Keith McMunn">
-					</ion-card-content>
-				</ion-card>
-			</ion-col>
-			<ion-col *ngIf="currentMemberFormGroup.get('teamMembers').get('5').value">
-				<ion-card>
-					<ion-card-header>
-						Nick Such
-					</ion-card-header>
-					<ion-card-content>
-						<img src="assets/img/TeamMembers/nicksuch_wall.gif" alt="Nick Such">
-					</ion-card-content>
-				</ion-card>
-			</ion-col>
-			<ion-col *ngIf="currentMemberFormGroup.get('teamMembers').get('6').value">
-				<ion-card>
-					<ion-card-header>
-						Kyle Raney
-					</ion-card-header>
-					<ion-card-content>
-						<img src="assets/img/TeamMembers/kyleraney_wall.gif" alt="Kyle Raney">
-					</ion-card-content>
-				</ion-card>
-			</ion-col>
-		</ion-row>
-	</ion-grid> -->
-
-	<button ion-button block type="submit" (click)="sendSlackMessage()">Submit</button>
+	<button ion-button block type="submit" (click)="submitCheckIn()">Send Notifications</button>
 
 </ion-content>

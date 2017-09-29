@@ -1,4 +1,14 @@
-<ion-header>
+<!--
+	TeamMembersPage In Check In App
+	Created By: Brendan Thompson
+	Updated: 09/29/17 by Brendan Thompson
+
+	Description:
+		Asks the user to fill out a FormGroup regarding which TEAMMEMBERS they are expecting to meet with
+		Passes the completed form as a NavParam to userInfoPage which passes it to the confirm page
+ -->
+
+ <ion-header>
   <ion-navbar>
     <ion-title>
      	{{ this.currentProgram.name }}
@@ -14,23 +24,16 @@
 
 	<h1>Please select the team members that are expecting you</h1>
 
-	<form [formGroup]="currentMemberFormGroup" (ngSubmit)="outputValidator(currentMemberFormGroup.value)">
+	<form [formGroup]="currentMemberFormGroup">
 		<ion-item-group formGroupName="teamMembers">
 			<ion-item *ngFor="let member of TEAMMEMBERS">
 				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
-				<ion-checkbox color="red" formControlName="{{ member.id }}"></ion-checkbox>
+				<ion-checkbox color="red" formControlName="{{ member.tag }}"></ion-checkbox>
 				<ion-thumbnail item-end>
 					<img src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
 				</ion-thumbnail>
 			</ion-item>
 		</ion-item-group>
-
-		<!-- <p>1: {{ currentMemberFormGroup.get('teamMembers').get('1').value | json }}</p>
-		<p>2: {{ currentMemberFormGroup.get('teamMembers').get('2').value | json }}</p>
-		<p>3: {{ currentMemberFormGroup.get('teamMembers').get('3').value | json }}</p>
-		<p>4: {{ currentMemberFormGroup.get('teamMembers').get('4').value | json }}</p>
-		<p>5: {{ currentMemberFormGroup.get('teamMembers').get('5').value | json }}</p>
-		<p>6: {{ currentMemberFormGroup.get('teamMembers').get('6').value | json }}</p> -->
 
 		<button ion-button block [disabled]="!currentMemberFormGroup.valid" (click)="submitTeamMembers(currentMemberFormGroup)">Submit</button>
 	</form>

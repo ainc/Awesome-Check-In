@@ -1,5 +1,14 @@
+<!--
+	Final Page In Check In App
+	Created By: Brendan Thompson
+	Updated: 09/10/17 by Brendan Thompson
+
+	Description:
+		Thanks the user for checking in, Instructs them to have a seat, and provides a button to return home
+ -->
+
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton *navBar>
     <ion-title>
      	Notification Sent!
     </ion-title>
@@ -7,15 +16,12 @@
 </ion-header>
 
 <ion-content padding>
-	<div>
-		<img src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
-     	<p>{{ this.currentProgram.description }}</p>
-	</div>
-
 	<h1>Check-In Processed Successfully</h1>
 
 	<p>Thank you very much for checking in here at Awesome Inc! The appropriate team members have been notified of your arrival.</p>
 
 	<p>Please have a seat on one of the sofas and someone will be with you shortly.</p>
+
+	<button ion-button block type="submit" (click)="returnHome()">Return Home</button>
 
 </ion-content>

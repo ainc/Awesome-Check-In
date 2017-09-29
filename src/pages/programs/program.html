@@ -1,4 +1,14 @@
-<ion-header>
+<!--
+	ProgramPage In Check In App
+	Created By: Brendan Thompson
+	Updated: 09/06/17 by Brendan Thompson
+
+	Description:
+ 		Asks the user to specify which program brought them in
+		Sends the selected program as a NavParam to teamMembersPage
+ -->
+
+ <ion-header>
   <ion-navbar>
     <ion-title>
      	Welcome Entrepreneur!
@@ -7,21 +17,23 @@
 </ion-header>
 
 <ion-content padding>
-	<h1>Which program are you interested in?</h1>
+	<h1>Which program brought you in?</h1>
 
 	<ion-grid>
 		<ion-row>
-			<ion-col col-6 *ngFor="let program of PROGRAMS" (click)="goToProgram(program)">
-				<ion-card >
-					<ion-card-header>
-						{{ program.name }}
-					</ion-card-header>
-					<ion-card-content>
-						<img src="{{ program.imageURL }}" alt="{{ program.imageAlt }}">
-						{{ program.description }}
-					</ion-card-content>
-				</ion-card>
-			</ion-col>
+			<ng-container *ngFor="let program of PROGRAMS">
+				<ion-col col-12 col-sm *ngIf="program.include" (click)="goToProgram(program)">
+					<ion-card >
+						<ion-card-header>
+							{{ program.name }}
+						</ion-card-header>
+						<ion-card-content>
+							<img src="{{ program.imageURL }}" alt="{{ program.imageAlt }}">
+							{{ program.description }}
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+			</ng-container>
 		</ion-row>
 	</ion-grid>
 

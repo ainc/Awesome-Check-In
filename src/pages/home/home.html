@@ -1,5 +1,16 @@
-<ion-header>
-  <ion-navbar>
+<!--
+	HomePage In Check In App
+	Created By: Brendan Thompson
+	Updated: 09/06/17 by Brendan Thompson
+
+	Description:
+		Asks the User to select what brought them in: Entrepreneurship, Learning To Code, or The Workspace
+		If Entrepreneurship, directs to ProgramPage
+		Else directs them to the TeamMembersPage
+ -->
+
+ <ion-header>
+  <ion-navbar hideBackButton *navBar>
     <ion-title>
       <img id="headerImage" src="assets/img/AInc_logo.png" alt="Awesome Inc">
     </ion-title>
@@ -11,6 +22,7 @@
 
 	<ion-grid>
 		<ion-row>
+
 			<ion-col col-12 col-sm>
 				<ion-card (click)="clickedEnt()">
 					<ion-card-header>
@@ -46,6 +58,7 @@
 					</ion-card-content>
 				</ion-card>
 			</ion-col>
+
 		</ion-row>
 	</ion-grid>
 

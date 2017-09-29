@@ -1,7 +1,19 @@
+// TypeScript for UserInfoPage
+// Created By: Brendan Thompson
+// Updated: 09/10/17 by Brendan Thompson
+
+// Description:
+// 		Asks the User for name, email, and reason
+// 		Passes the user info, along with older FormGroup data, to ConfirmPage via NavParams
+
+// ==============================================================================
+// 		Import Navigation and Form tools, and ConfirmPage
+// ==============================================================================
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { ConfirmPage } from '../confirm/confirm';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { ConfirmPage } from '../confirm/confirm';
 
 
 @Component({
@@ -79,6 +91,10 @@ export class UserInfoPage {
 		});
 	}
 
+
+	// ==============================================================================
+	// 		Passes All of the information so far provided by the user to the ConfirmPage
+	// ==============================================================================
 	submitUserInfo() {
 		this.navCtrl.push(ConfirmPage, { currentProgram: this.currentProgram,
 										memberFormGroup: this.currentMemberFormGroup,
