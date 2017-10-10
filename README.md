@@ -1,33 +1,40 @@
 # Awesome Inc Check-In Mobile Application
+# Created by: Brendan Thompson
 
-This is a mobile application developed for Awesome Inc during my internship in the fall of 2017 to be used by guests to check-in upon entrance to the facility.
+This is a mobile application developed for Awesome Inc during my internship in the fall of 2017 to be used by guests to check-in upon entrance to the facility. It was created using the Ionic 3 hybrid mobile add framework described below.
 
-### Functionality
+### App Functionality:
 
-	1) [IMPLEMENTED] The app will ask the user which program they are here for (AwesomeInc, University, Team Alpha, Fellowship)
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+		- "Nobody" sends message to #space
+	5) Instructs the user to have a seat on one of the couches
 
-	2) [IMPLEMENTED] The app will ask the user if they are expected or not
+### Ideas:
 
-	3) [IN PROGRESS] If expected, they will be asked to select the team members that are expecting them
+	A) take the user to some information about the company or the program they are interested in as some light reading material while they wait
+	B) implement some sort of idle timer that returns to the home screen after nothing happening for a certain period of time
+		- brings up a timed notification that asks the user if they are still there and returns home if no response
+	C) Link with productivity statistic software they use
 
-	4) The app will ask for information such as name and reason for meeting
+### Need to Implement:
 
-	5) The app will send a notification to the corresponding Awesome Inc team member regarding the arrival of the guest
+	*** "I Have an Idea" takes them to the google form to fill out
+	- Should implement TEAMMEMBERS array as a json object instead of manually in both confirm.ts & teamMembers.ts
+		- created assets/data/teamMembersArray but failed to import into an array
+	- Should implement Programs as a separate json file also
+	- Integrate with ZOHO
+	- Only displays important people based off selected program
+		- Waiting till separate json
+	*** Take Pictures also
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
 
-	6) The app will instruct the user to have a seat on one of the couches
-
-	7) [ITS BASIC] The app will look noice (scss, better logos, etc.)
-
-	Ideas:
-		- taking the user to some information about the company or the program they are interested in as some light reading material while they wait
-		- implement some sort of idle timer that returns to the home screen after nothing happening for a certain period of time
-			- brings up a timed notification that asks the user if they are still there and returns home if no response
-			- This would definitely take some research but would be huge if implemented
-
-
-### Ionic:
-
-	- Annoyed with the difficulty I am having trying to learn as a result of the amount of abstraction and amount of different yet powerful tools all working together
+### What is Ionic?
 
 	Frameworks:
 		- Ionic 3
@@ -111,10 +118,3 @@ This is a mobile application developed for Awesome Inc during my internship in t
 			- use responsive layouts and UI components that look similar to those found in native mobile applications
 		- Reactive Programming
 			- an asynchronous programming paradigm concerned with data streams and dynamically responding to change
-
-#### Status 09/01/17
-
-- Completed Part 1
-	- asks the user what they are here for and takes them to the specified program page based off a template and using NavParams for the specific program
-	- See Ionic_App_Development/Devlog
-- It has been a process but it is starting to come along nicely and the code is looking clean
