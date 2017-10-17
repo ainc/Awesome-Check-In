@@ -1,10 +1,10 @@
 <!--
 	HomePage In Check In App
 	Created By: Brendan Thompson
-	Updated: 09/06/17 by Brendan Thompson
+// Updated: 10/17/17 by Brendan Thompson
 
 	Description:
-		Asks the User to select what brought them in: Entrepreneurship, Learning To Code, or The Workspace
+		Asks the User to select what brought them in: Entrepreneurship, Technology, or Workspace
 		If Entrepreneurship, directs to ProgramPage
 		Else directs them to the TeamMembersPage
  -->
@@ -30,7 +30,7 @@
 					</ion-card-header>
 					<ion-card-content>
 						<img src="assets/img/Icon_For-Entrepreneurs.png" alt="Entrepreneurs">
-						<p>Find out what you can get involved in around Awesome Inc and our entrepreneurial community</p>
+						<p>Start Something Awesome</p>
 					</ion-card-content>
 				</ion-card>
 			</ion-col>
@@ -38,11 +38,11 @@
 			<ion-col col-12 col-sm>
 				<ion-card (click)="clickedCode()">
 					<ion-card-header>
-						Learning To Code
+						Technology
 					</ion-card-header>
 					<ion-card-content>
 						<img src="assets/img/Icon_LTC.png" alt="Learn to Code">
-						<p>Everybody can and should learn to code, start today</p>
+						<p>Learn To Code</p>
 					</ion-card-content>
 				</ion-card>
 			</ion-col>
@@ -50,14 +50,26 @@
 			<ion-col col-12 col-sm>
 				<ion-card (click)="clickedSpace()">
 					<ion-card-header>
-						The Workspace
+						Workspace
 					</ion-card-header>
 					<ion-card-content>
 						<img src="assets/img/Icon_Coworking.png" alt="Coworking Space">
-						<p>Rent a desk or space for events, meetings, and more</p>
+						<p>Rent a Desk or Workspace</p>
 					</ion-card-content>
 				</ion-card>
 			</ion-col>
+
+			<!-- <ion-col col-12 col-sm-6>
+				<ion-card (click)="clickedSpace()">
+					<ion-card-header>
+						Meeting
+					</ion-card-header>
+					<ion-card-content>
+						<img src="assets/img/Icon_Coworking.png" alt="Coworking Space">
+						<p>I Have a Meeting</p>
+					</ion-card-content>
+				</ion-card>
+			</ion-col> -->
 
 		</ion-row>
 	</ion-grid>

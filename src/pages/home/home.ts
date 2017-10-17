@@ -1,6 +1,6 @@
 // TypeScript for HomePage
 // Created By: Brendan Thompson
-// Updated: 09/10/17 by Brendan Thompson
+// Updated: 10/17/17 by Brendan Thompson
 
 // Description:
 //		Asks the User to select what brought them in: Entrepreneurship, Learning To Code, or The Workspace
@@ -41,10 +41,10 @@ export class HomePage {
 	clickedCode() {
 		var program = {
 			id: 7,
-			name:'Awesome Inc University',
+			name:'Awesome Inc U',
 			description: 'The Bootcamps and Classes for both youth and adults',
-			imageURL: 'assets/img/Awesome Inc U - Logo_header.png',
-			imageAlt: 'Awesome Inc U Logo'
+			imageURL: 'assets/img/AIncU_logo.png',
+			imageAlt: 'AInc-U Logo'
 		};
 
 		this.navCtrl.push(TeamMembersPage, { currentProgram: program });
