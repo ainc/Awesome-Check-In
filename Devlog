@@ -1,0 +1,1236 @@
+Devlog
+
+Description:
+	Now Basically a log of Awesome Check In App Development DevLog
+	Was a log of activities as I learned to develop mobile applications using Ionic
+
+==================================================================================
+==================================================================================
+
+10/17/17 - Brendan Thompson
+
+I) Summary of Work:
+	- Began working on the Idle Timer
+		- Created (providers/components/injectables?) for the timer & the confirm prompt
+	- Re-ordered Team Members to have "Nobody" up top
+	- Changed Titles and Descriptions in Home Page
+	- Moved "I have an Idea" to first program
+	- Booled-out "Startup Weekend" Program
+
+II) Ideas:
+	A) taking the user to some information about the company or the program they are interested in as some light reading material while they wait
+	B) Link with productivity statistic software they use
+
+III) Need to Implement:
+	*** "I Have an Idea" takes them to the google form to fill out
+	- TEAMMEMBERS as separate json file
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Only displays important people based off selected program
+		- Waiting till separate json
+	*** Take Pictures also
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
+
+IV) Status:
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+
+V) Activity & Source Log
+
+- Confirmation Alerts
+	- created in providers/timerConfirmation/
+	- made easy using the Ionic Docs
+
+- Timer from some web developer from Sussex
+	- iTimer bust be an interface just like a .h in C
+	- created in providers/timerConfirmation/
+	- http://www.codingandclimbing.co.uk/blog/ionic-2-simple-countdown-timer
+
+- Re-ordered Team Members to have "Nobody" up top
+- Changed Titles and Descriptions in Home Page
+- Moved "I have an Idea" to first program
+- Booled-out "Startup Weekend" Program
+
+==================================================================================
+==================================================================================
+
+09/29/17 - Brendan Thompson
+
+Summary of Work:
+	- Cleaned up Code & Comments
+
+Thoughts:
+	- Should implement TEAMMEMBERS array as a json object instead of manually in both confirm.ts & teamMembers.ts
+		- created assets/data/teamMembersArray but failed to import into an array
+
+Status:
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+
+Need to Implement:
+	- "Nobody" Selected sends message to Bot_Test
+	- "I Have an Idea" takes them to the google form to fill out
+	- TEAMMEMBERS as separate json file
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Only displays important people based off selected program
+		- Waiting till separate json
+	- Take Pictures also
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
+
+
+==================================================================================
+==================================================================================
+
+09/27/17 - Brendan Thompson
+
+Summary:
+	- Messages Selected Team Members Via Slack
+	- Attempted to implement teamMembersArray as a json object
+		https://www.joshmorony.com/how-to-manipulate-data-in-ionic-2-part-1/
+
+Thoughts:
+	- Should implement TEAMMEMBERS array as a json object instead of manually in both confirm.ts & teamMembers.ts
+		- created assets/data/teamMembersArray but failed to import into an array
+
+Status:
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+
+==================================================================================
+==================================================================================
+
+09/10/17 - Brendan Thompson
+
+Summary:
+	- Continued working on the Awesome Inc Check-In App
+		- It has been a process but it is starting to come along nice and legit-ly
+		- It is in desperate need of graphic design and Sass work
+		1) [IMPLEMENTED] The app will ask the user which program they are here for (AwesomeInc, University, Team Alpha, Fellowship)
+		2) [IMPLEMENTED] The app will ask the user if they are expected or not
+		3) [IN PROGRESS] If expected, they will be asked to select the team members that are expecting them
+		4) [IN PROGRESS] The app will ask for information such as name and reason for meeting
+		5) [IN PROGRESS] The app will send a notification to the corresponding Awesome Inc team member regarding the arrival of the guest
+Thoughts:
+	-
+
+Slack API Text Formatting
+	- *bold*
+	- _italics_
+	- This will create\nA two line comment
+	- `Code Block`
+	- ```If the code is elaborate or contains\nnewline characters
+	- There is a slack app to use message buttons
+
+Creating the custom JSON payload for posts to slack
+	- chose the icon online in the incoming webhooks management area
+	sendSlackMessage() {
+		var currentTime = (new Date).getTime() / 1000;
+		var formName = this.currentUserInfoFormGroup.get('name').value;
+		var formEmail = this.currentUserInfoFormGroup.get('email').value;
+		var formReason = this.currentUserInfoFormGroup.get('reason').value;
+
+		var url = "https://hooks.slack.com/services/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";
+		var messageText = JSON.stringify({
+			"username": "Check-In_Bot",
+			"text": "A guest has arrived for you!",
+			"attachments": [
+				{
+					"title": formName + " just checked in!",
+					"text": "Reason: " + formReason,
+					"author_name": formEmail,
+					"color": "danger",
+					"footer": "Check-In App",
+					"ts": currentTime
+				}
+			]
+		})
+
+		return this.ourHttp.post(url, messageText)
+			.subscribe();
+	}
+
+Added new Home Page
+
+Added Confirm page
+
+Accessed Form Data
+
+==================================================================================
+==================================================================================
+
+09/06/17 - Brendan Thompson
+
+Summary:
+	- Continued working on the Awesome Inc Check-In App
+		- It has been a process but it is starting to come along nice and legit-ly
+		- It is in desperate need of graphic design and Sass work
+		1) [IMPLEMENTED] The app will ask the user which program they are here for (AwesomeInc, University, Team Alpha, Fellowship)
+		2) [IMPLEMENTED] The app will ask the user if they are expected or not
+		3) [IN PROGRESS] If expected, they will be asked to select the team members that are expecting them
+		4) [IN PROGRESS] The app will ask for information such as name and reason for meeting
+		5) [IN PROGRESS] The app will send a notification to the corresponding Awesome Inc team member regarding the arrival of the guest
+Thoughts:
+	- There was a million different versions of http post syntax on the internet and it took way to long to get one to work.
+
+Integrating Slack
+	- Manage -> Custom Integrations -> Create Custom WebHook
+	- Add Configuration
+		- Post to Channel -> #bot-test
+		- Webhook URL = https://hooks.slack.com/services/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
+		- Sending Messages:
+			Option 1 = Send a JSON string as the payload parameter in a POST request
+			Option 2 = Send a JSON string as the body of a POST request
+		- Customized Appearance:
+			- can customize in the Integration Settings section
+			- or send: "username": "new-bot-name", "icon_url": "https://slack.com/img/icons/app-57.png", "icon_emoji": ":ghost"
+		- Channel Override:
+			- "channel": "#other-channel"
+			- "channel": "@username"
+		- Changed Name to Check-In_Bot
+		- Changed Icon to red exclamation point
+	- I've tried 100 and a half tutorials and they all say very different things
+
+New Project: Integrating Slack
+	ionic start integratingSlack blank
+		- gave me the option to create a new app on their website
+	ionic cordova add android
+	ionc serve --lab
+		- its beautiful
+	<plug in phone>
+	ionic cordova run android
+		- giving that error I couldn't fix
+		- ANDROID_HOME=/home/bren/Android/Sdk
+			JAVA_HOME=/usr/lib/jvm/java-8-oracle
+			No target specified and no devices found, deploying to emulator
+
+			Error: Cannot read property 'replace' of undefined
+
+			[ERROR] An error occurred while running cordova run android (exit code 1).
+	<unplugged phone>
+	ionic cordova run android
+		- its beautiful
+	<plug in phone>
+	ionic cordova run android
+		- its beautiful
+
+Implementing the integration of slack
+	https://brenthompson2.github.io/Integrating-Slack
+
+
+
+
+==================================================================================
+==================================================================================
+
+09/03/17 - Brendan Thompson
+
+Summary:
+	- Continued working on the Awesome Inc Check-In App
+		- It has been a process but it is starting to come along nice and legit-ly
+		- It is in desperate need of graphic design and Sass work
+		1) [IMPLEMENTED] The app will ask the user which program they are here for (AwesomeInc, University, Team Alpha, Fellowship, etc.)
+		2) [IMPLEMENTED] The app will ask the user if they are expected or not
+		3) [IN PROGRESS] If expected, they will be asked to select the team members that are expecting them
+		4) The app will ask for information such as name and reason for meeting
+Thoughts:
+
+Creating The Team Members Form
+	1) src/app/app.module.ts:
+		A) Import Pages & Modules
+			import { TeamMembersPage } from '../pages/teamMembers/teamMembers';
+			import { UserInfoPage } from '../pages/userInfo/userInfo';
+
+			import { HttpModule } from '@angular/http';
+			import { FormsModule } from '@angular/forms';
+			import { BoxCheckedValidator } from '../providers/checkBoxValidators/boxCheckedValidator';
+			- I have not yet used the HttpModule in any page
+		B) @NgModule({
+  				declarations:
+  					[MyApp, HomePage, ProgramPage, TeamMembersPage, UserInfoPage],
+
+  				imports:
+  					[BrowserModule, HttpModule, FormsModule, IonicModule.forRoot(MyApp)],
+
+  				bootstrap:
+  					[IonicApp],
+
+  				entryComponents:
+  					[MyApp, HomePage, ProgramPage, TeamMembersPage, UserInfoPage],
+
+  				providers:
+  					[StatusBar, SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler}, BoxCheckedValidator]
+		})
+	2) src/pages/teamMembers/teamMembers.ts:
+		A) Imports
+			import { NavController, NavParams } from 'ionic-angular';
+			import { FormBuilder, FormGroup } from '@angular/forms';
+			import { BoxCheckedValidator } from '../../providers/checkBoxValidators/boxCheckedValidator';
+			import { UserInfoPage } from '../userInfo/userInfo';
+		B) Member Variables
+			public currentProgram;
+			public currentMemberFormGroup : FormGroup;
+			public TEAMMEMBERS = [
+				{id: 1, name:'Emily Wehrle',
+					description: 'Director of Operations',
+					team: 'main',
+					imageURL: 'assets/img/TeamMembers/emilywehrle_wall.gif',
+					imageAlt: 'Emily Wehrle'
+				},
+				{id: 2, name:'Brian Raney',
+					description: 'Co-Founder',
+					team: 'main',
+					imageURL: 'assets/img/TeamMembers/brianraney_wall.gif',
+					imageAlt: 'Brian Raney'
+				},
+				{id: 3, name:'Amanda Murray',
+					description: 'Director of Marketing',
+					team: 'Marketing',
+					imageURL: 'assets/img/TeamMembers/teamMember.png',
+					imageAlt: 'Amanda Murray'
+				},
+				{id: 4, name:'Keith McMunn',
+					description: 'Director of Fellowship',
+					team: 'Fellowship',
+					imageURL: 'assets/img/TeamMembers/teamMember.png',
+					imageAlt: 'Keith McMunn'
+				},
+				{id: 5, name:'Nick Such',
+					description: 'Co-Founder',
+					team: 'main',
+					imageURL: 'assets/img/TeamMembers/nicksuch_wall.gif',
+					imageAlt: 'Nick Such'
+				},
+				{id: 6, name:'Kyle Raney',
+					description: 'Development Team',
+					team: 'Team Alpha',
+					imageURL: 'assets/img/TeamMembers/kyleraney_wall.gif',
+					imageAlt: 'Kyle Raney'
+				}
+			];
+		C)  constructor(private navCtrl : NavController,
+						private navParameters : NavParams,
+						private memberFormBuilder : FormBuilder,
+						private memberValidator : BoxCheckedValidator) {
+
+				this.currentProgram = this.navParameters.get('currentProgram');
+
+				this.currentMemberFormGroup = this.memberFormBuilder.group ({
+					teamMembers: this.memberFormBuilder.group({
+						1	: [false],
+						2	: [false],
+						3	: [false],
+						4	: [false],
+						5	: [false],
+						6	: [false]
+					}, { validator: this.memberValidator.validateABoxChecked })
+				});
+			}
+		D)  submitTeamMembers() {
+				this.navCtrl.push(UserInfoPage, { currentProgram: this.currentProgram,
+												memberFormGroup: this.currentMemberFormGroup });
+			}
+	3) Create the form interface
+		<form [formGroup]="currentMemberFormGroup" (ngSubmit)="outputValidator(currentMemberFormGroup.value)">
+			<ion-item-group formGroupName="teamMembers">
+				<ion-card *ngFor="let member of TEAMMEMBERS">
+					<ion-card-header>
+						<ion-item>
+							<ion-label>{{ member.name }}</ion-label>
+							<ion-checkbox color="red" formControlName="{{ member.id }}"></ion-checkbox>
+						</ion-item>
+					</ion-card-header>
+					<ion-card-content>
+						{{ member.description }}
+						<img src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+					</ion-card-content>
+				</ion-card>
+			</ion-item-group>
+
+			<button ion-button block [disabled]="!currentMemberFormGroup.valid" (click)="submitTeamMembers()">Submit</button>
+		</form>
+	4) Create the BoxCheckedValidator to ensure that one of the members was selected
+		A) Imports
+			import { Injectable } from '@angular/core';
+			import { FormControl } from '@angular/forms';
+		B)
+			validateABoxChecked(boxes: FormControl){
+				var isValid 	: boolean = false,
+					index		: any;
+
+				for (index in boxes.value){
+					var val = boxes.value[index];
+
+					if (val) {
+						isValid = true;
+						break;
+					}
+				}
+
+				if (isValid) {
+					return null;
+				}
+
+				return {
+					checkboxRequired: true
+				};
+			}
+
+
+Read from The Team Members Form
+	?
+
+Send Email w/ Ionic Email Composer
+	- Opens in native mail client and you have to click send
+	- https://www.coursera.org/learn/ionic-cordova/lecture/VM86w/excercise-video-sending-email
+	1) Download open source email composer plugin
+		ionic cordova plugin add cordova-plugin-email
+		npm install --save @ionic-native/email-composer
+	2) Add to app.module.ts
+		import { EmailComposer } from '@ionic-native/email-composer'
+		providers: ..., EmailComposer],
+	3) Setup userInfo.ts
+		import { EmailComposer } from @ionic-native/email-composer';
+		...
+		constructor (..., private emailComposer: EmailComposer)
+		...
+		}
+		...
+		sendEmail() {
+			let email = {
+				to: 'brenthompson2@gmail.com',
+				subject: '{{ this.currentUserInfoFormGroup.name }} is here to see you!',
+				body: '{{ this.currentUserInfoFormGroup.name }} is here to see you. They gave the reason {{ this.currentUserInfoFormGroup.reason }} is here to see you',
+				isHtml: true
+			}
+
+			this.emailComposer.open(email);
+		}
+	4) <button ion-button block (click)="sendEmail()">Send Email</button> in DOM (userInfo.html)
+
+Using Rackspace's Mailgun
+	https://www.mailgun.com
+		- GitHub, lyft, shopify, **slack**, stripe
+	https://www.thepolyglotdeveloper.com/2016/05/send-emails-ionic-2-mobile-app-via-rackspace-mailgun-api/
+	1) Create an account
+		- free = 10,000 emails per month
+	2) in userInfo.ts:
+		A) import { Http, Request, RequestMethod } from '@angular/http'
+		B) Members:
+			http: Http;
+			mailgunUrl: string;
+			mailgunApiKey: string;
+		C) constructor(http: Http){
+			this.http = http;
+			this.mailgunUrl = "MAILGUN_URL";
+			this.mailgunApiKey = window.btoa("api:key-MAILGUN_API_KEY")
+		}
+			- btoa creates a base64 encoded string
+		D) Send Function:
+			send(recipient: string, subject: string, message: string) {
+				var requestHeaders = new Headers();
+				requestHeaders.append("Authorization", "Basic " + this.mailgunApiKey);
+				requestHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+				this.http.request(new Request({
+					method: RequestMethod.Post,
+					url: "https://api.mailgun.net/v3/" + this.mailgunURL + "/messages",
+					body: "from=brenthompson2@awesomeinc.org&to=" + recipient + "&subject=" + subject + "&text=" + message,
+					headers: requestHeaders
+				}))
+				.subscribe(success => {
+					console.log("SUCCESS -> " + JSON.stringify(success));
+				}, error => {
+					console.log("ERROR -> " + JSON.stringify(error));
+				});
+			}
+		E) UI
+			<button (click)="send(recipient, subject, message)">
+
+
+
+
+
+
+==================================================================================
+==================================================================================
+
+09/03/17 - Brendan Thompson
+
+Summary:
+	- Continued working on the Awesome Inc Check-In App
+		- It has been a process but it is starting to come along nice and legit-ly
+		- It is in desperate need of graphic design and Sass work
+		1) [IMPLEMENTED] The app will ask the user which program they are here for (AwesomeInc, University, Team Alpha, Fellowship)
+		2) [IMPLEMENTED] The app will ask the user if they are expected or not
+		3) [IN PROGRESS] If expected, they will be asked to select the team members that are expecting them
+	- Got debugging to work on my LGv20 phone
+		- Settings > General > About Phone > Software info > *click on "Build Number" 7 times*
+		- Plugged it in and ran in the computer terminal "ionic cordova run android"
+			- Automatically installed the app onto my phone
+	- Fixed images: img src path is relative to /src/index.html, so assets/img/photo.jpg
+	- Added more Programs, logos, and better descriptions
+	- Researched changing app logo & name but both require internet access
+	- ionic serve --lab -lc
+		- lc adds console output log
+	- Not sure that the FormGroup and FormBuilder are working properly
+Thoughts:
+	- Excited that I can emulate iOS and Android using "ionic serve --lab"
+		- Still gonna need to find out how to port it to an actual iOS device
+	- It is really annoying that I can't use "ionic serve --lab" at my internet-less job because I need "an external network interface"
+		- will be fixed for 3.10.0 - https://github.com/ionic-team/ionic-cli/issues/2690
+
+
+Adding Team Member select to the Awesome Inc Check-In App
+	I) In program.html prompt the user to choose whether or not they are expected
+		<ion-card (click)="isExpected(this.currentProgram)">
+			<ion-card-header>
+				Somebody is expecting me!
+			</ion-card-header>
+		</ion-card>
+		<ion-card (click)="notExpected(this.currentProgram)">
+			<ion-card-header>
+				I am interested in meeting with somebody!
+			</ion-card-header>
+		</ion-card>
+	II) in program.ts create functions to take the user to the appropriate page
+		isExpected(program) { this.navCtrl.push(teamMembers, { currentProgram: program }); }
+		notExpected(program) { this.navCtrl.push(ProgramPage, { currentProgram: program }); }
+	III) Create teamMembers.html as a checkbox of team members
+		<h1 text-center>Please select the team members that are expecting you</h1>
+
+		<ion-card *ngFor="let member of TEAMMEMBERS">
+			<ion-card-header>
+				<ion-item>
+					<ion-label>{{ member.name }}</ion-label>
+					<ion-checkbox color="red" checked="false"></ion-scheckbox>
+				</ion-item>
+			</ion-card-header>
+			<ion-card-content>
+				{{ member.description }}
+				<img src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+			</ion-card-content>
+		</ion-card>
+
+		<button ion-button block (click)="submitTeamMembers(this.currentProgram)">Submit</button>
+	IV) Create teamMembers.ts to manage submitting the checkBox
+
+	V) Create a form of checkboxes (see below section following the article by masteringionic.com)
+
+	) import TeamMembersPage in program.ts
+		import { TeamMembersPage } from '../teamMembers/teamMembers';
+	) Add the new pages & providers to src/app/app.module.ts
+		import { TeamMembersPage } from '../pages/teamMembers/teamMembers';
+		import { TeamMembersValidator } from '../providers/teamMemberValidator/teamMemberValidator';
+		@NgModule({
+			declarations: [
+			    MyApp,
+			    HomePage,
+			    ProgramPage,
+			    TeamMembersPage
+			],
+			...
+			bootstrap: [IonicApp],
+			entryComponents: [
+			    MyApp,
+			    HomePage,
+			    ProgramPage,
+			    TeamMembersPage
+			],
+
+Adding a new app icon
+	- add image as icon.png to src/resources/
+	- run: ionic cordova resources
+		- need to log into an Ionic account?
+
+Changing app name
+	- change <name>MyApp</name> to <name>Awesome Check-In</name> in config.xml
+	- remove and re-add android platform so as to overwrite the AndroidManifest.xml
+		ionic cordova platform rm android
+		ionic cordova platform add android
+	- didn't do because no internet
+
+Creating a form of checkboxes:
+	- masteringionic.com/blog/2017-01-28-validating-multiple-checkboxes-with-ionic
+	1) Create a a teamMemberValidator provider src/providers/teamMemberValidator/teamMemberValidator.ts
+		"
+		import { Injectable } from '@angular/core';
+		import { FormControl } from '@angular/forms';
+		import { HttpModule } from '@angular/http';
+		import 'rxjs/add/operator/map';
+
+		/*
+		  Provider for validating the checkboxes in the teamMembersPage
+		*/
+
+		@Injectable()
+		export class TeamMemberValidator {
+
+			constructor(private http: HttpModule) {
+			}
+
+			validateCheckboxes(boxes: FormControl){
+				var valid 	: boolean = false,
+					k		: any;
+
+				for (k in boxes.value){
+					var val = boxes.value[k];
+
+					if (val) {
+						valid = true;
+						break;
+					}
+				}
+
+				if (valid) {
+					return null;
+				}
+
+				return {
+					checkboxRequired: true
+				};
+			}
+		}
+		"
+		- validateCheckboxes method
+		- FormControl is injected as a dependency allowing the method to receive an abstract representation of the form input field that the FormControl is mapped to.
+		- loops through all of the FormControls and returns null to signal if the validation successfully passed
+		- validation fails if function returns checkboxRequired w/ a value of true
+		- I don't think it uses the HttpModule import
+	2) Update teamMembers.ts
+		A) new imports
+			import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+			import { TeamMemberValidator } from '../../providers/teamMemberValidator/teamMemberValidator';
+		B) more member variables
+			public form : FormGroup;
+		C) more constructor parameters
+			private cbForm: FormBuilder,
+			private cbvalidator: TeamMemberValidator
+		D) create a FormBuilder object in the constructor
+			this.form = cbForm.group({
+				'teamMembers': cbForm.group({
+					1	: [false],
+					2	: [false],
+					3	: [false],
+					4	: [false],
+					5	: [false],
+					6	: [false]
+				}, { validator: cbvalidator.validateCheckboxes })
+			});
+			- FormGroup assigned an index titled service of FormControl objects
+			- initial default values of false for each FormControl
+			- supply the validateCheckboxes method from our cbValidator service
+		E) Create the validation outputter
+			outputValidator(val){
+				console.log('Validating Form');
+				console.dir(val);
+			}
+	3) Create the UI
+		<form [formGroup]="form" (ngSubmit)="outputValidator(form.value)">
+			-
+		<ion-item-group formGroupName="teamMembers">
+			- collect and organize checkboxes
+		<ion-checkbox color="danger" formControlName="{{ member.id }}"></ion-checkbox>
+			- checkboxes have formConrolName attributes
+		<button [disabled]="!form.valid"></button>
+	4) Add providers to app.module.ts:
+		import { HttpModule } from '@angular/http';
+		import { TeamMemberValidator } from '../providers/teamMemberValidator/teamMemberValidator';
+		...
+		imports: [
+			...
+    		HttpModule,
+    		...
+    	...
+    	providers: [
+    		TeamMemberValidator
+    	...
+    	- I don't think I am even using the HttpModule stuff
+
+
+
+
+
+
+
+
+
+==================================================================================
+==================================================================================
+
+09/01/17 - Brendan Thompson
+
+Summary:
+	- Updated GitHub application to display the README upon clicking a repository
+	- Started working on the Awesome Inc Check-In App
+		- It has been a process but it is starting to come along nice and legit-ly
+		- It is in desperate need of graphic design and Sass work
+		1) [COMPLETE] The app will ask the user which program they are here for (AwesomeInc, University, Team Alpha, Fellowship)
+		2) The app will ask the user for some basic information: name, if they are expected, who they are here to see, reason, etc.
+		3) The app will send a notification to the corresponding Awesome Inc team member regarding the arrival of the guest and instruct the user to have a seat on one of the couches
+		4) Bonus: Just got the idea of then taking the user to some information about the company or the program they are interested in as some light reading material while they wait
+Thoughts:
+	- Excited that I can emulate iOS and Android using "ionic serve --lab"
+		- Still gonna need to find out how to port it to an actual iOS device
+	- It is really annoying that I can't use "ionic serve --lab" at my internet-less job because I need "an external network interface"
+		- will be fixed for 3.10.0
+		- https://github.com/ionic-team/ionic-cli/issues/2690
+
+Continuing https://gonehybrid.com/build-your-first-mobile-app-with-ionic-2-angular-2
+	- Part 6 - Navigating between Pages (this post)
+		1) Prepare home.html & home.ts
+			A) Adding click handler to home.html
+				<ion-card *ngFor="let repo of foundRepos" (click)="goToDetails(repo)">
+			B) import NavController & DetailsPage (even though we haven't made it yet) to home.ts
+				import { NavController } from 'ionic-angular';
+				import {DetailsPage} from '../details/details';
+			C) Inject the NavController into the constructor
+				constructor(private github: GitHubProvider, private nav: NavController) {}
+			D) Create a goToDetails(repo) function
+				goToDetails(repo) {	this.nav.push(DetailsPage, { repo: repo }); }
+			- Overview:
+				- NavController already has home page loaded
+				- upon click of a card, it pushes DetailsPage onto the navigation stack and the framework loads the page / handles the native transition
+				- Won't need to explicitly pop if DetailsPage has an <ion-navbar> because it will automatically add a back button
+		2) Add new GitHubProvider
+			import {Http, Headers} from '@angular/http';
+			getDetails(repo) {
+				let headers = new Headers();
+				headers.append('accept', 'application/vnd.github.VERSION.html');
+				return this.http.get(`${repo.url}/readme`, { headers: headers });
+			}
+			- Overview:
+				- import Headers
+				- gets contents of the repo README
+				- 'accept' specifies that we want it in HTML format
+		3) Create the DetailsPage
+			A) new folder src/pages/details/
+			B) Write details.html:
+				"
+				<ion-header>
+				  <ion-navbar>
+				    <ion-title>
+				     	{{ repo.name }}
+				    </ion-title>
+				  </ion-navbar>
+				</ion-header>
+
+				<ion-content>
+					<div padding [innerHTML]="readme"></div>
+				</ion-content>
+				"
+				- <div padding>{{ readme }}</div> wouldn't work because it would encode the HTML and would display the actual code
+			C) Write details.ts
+				import { NavController, NavParams } from 'ionic-angular';
+				- members:
+					public readme = '';
+					public repo;
+				"
+				constructor(private github: GitHubProvider,
+							private nav: NavController,
+							private navParams: NavParams) {
+
+					this.repo = navParams.get('repo');
+
+					this.github.getDetails(this.repo).subscribe(
+						data => this.readme = data.text(),
+						err => {
+							if (err.status == 404) {
+								this.readme = 'This repo does not have a README';
+							} else {
+								console.error(err);
+							}
+						},
+						() => console.log('getDetails completed')
+					)
+				}"
+				- Overview:
+					- import NavParams
+						- used to get repo sent by HomePage
+					- inject navParams to the constructor:
+		4) Add DetailsPage to app.module.ts
+			"
+			import { DetailsPage } from '../pages/details/details'
+			...
+			declarations: [
+			    MyApp,
+			    HomePage,
+			    DetailsPage
+			],
+			...
+			bootstrap: [IonicApp],
+			entryComponents: [
+			    MyApp,
+			    HomePage,
+			    DetailsPage
+			]
+			"
+	- That is the end of the tutorial except for some more emulation/testing information
+
+- Beginning the AwesomeInc Check-In App
+	- As part of my AwesomeInc Internship they have asked me to develop a mobile app to keep running on an iPad by the entrance for guests to use to check in.
+		1) The app will ask the user which program they are here for (AwesomeInc, University, Team Alpha, Fellowship)
+		2) The app will ask the user for some basic information: name, if they are expected, who they are here to see, reason, etc.
+		3) The app will send a notification to the corresponding Awesome Inc team member regarding the arrival of the guest and instruct the user to have a seat on one of the couches
+		4) Bonus: Just got the idea of then taking the user to some information about the company or the program they are interested in as some light reading material while they wait
+	ionic start AInc_CheckIn_App blank
+		- create new project called AInc_Ch...
+	ionic cordova platform add android
+	ionic cordova platform add ios
+	ionic serve --lab
+		- run both platforms in a browser
+	ionic cordova run android
+		- run on the android emulator
+	I) Create the Homepage:
+		A) create the HomePage template src/pages/home/home.html:
+			"
+			<ion-header>
+		  	  <ion-navbar>
+			    <ion-title>
+			      Welcome to Awesome Inc!
+			    </ion-title>
+			  </ion-navbar>
+			</ion-header>
+
+			<ion-content padding>
+				<h1 text-center>Which program are you here for?</h1>
+
+				<ion-card *ngFor="let program of PROGRAMS" (click)="goToProgram(program)">
+					<ion-card-header>
+						{{ program.name }}
+					</ion-card-header>
+					<ion-card-content>
+						{{ program.description }}
+						<img src="{{ program.imageURL }}" alt="{{ program.imageAlt }}">
+					</ion-card-content>
+				</ion-card>
+			</ion-content>
+			"
+			- Using Angular *ngFor & JSON {{templates}} to cycle through the list of PROGRAMS
+				- PROGRAMS currently defined in html.ts
+			- Images still not working
+		B) create the HomePage TypeScript Component src/pages/home/home.ts
+			1) include NavController & ProgramPage
+				import { NavController } from 'ionic-angular';
+				import { ProgramPage } from '../programs/program';
+			2) Define PROGRAMS
+				PROGRAMS = [
+					{id: 1, name:'Awesome Inc',
+						description: 'The Main Entrepenuarial Epicenter',
+						imageURL: '../../assets/img/logo.png',
+						imageAlt: 'Awesome Inc Logo'
+					},
+					{id: 2, name:'Awesome Inc University',
+						description: 'The Bootcamps and Classes for both youth and adults',
+						imageURL: '../../assets/img/Awesome Inc U - Logo_header.png',
+						imageAlt: 'Awesome Inc U Logo'
+					},
+					{id: 3, name:'Awesome Inc Fellowship',
+						description: 'The incubator programs for start-ups',
+						imageURL: '../../assets/img/fellowship_logo.png',
+						imageAlt: 'Fellowship Logo'
+					},
+					{id: 4, name:'Awesome Inc Team Alpha',
+						description: 'The Interns that make Awesome Inc possible',
+						imageURL: '../../assets/img/teamalpha.png',
+						imageAlt: 'Team Alpha Logo'
+					}
+				];
+			3) Include the NavController in the constructor:
+				constructor(public navCtrl: NavController) {}
+			4) create the goToProgram() fn
+				goToProgram(program) {
+					this.navCtrl.push(ProgramPage, { currentProgram: program });
+				}
+	II) Create the program page
+		A) New folder src/pages/programs
+		B) Create the program template src/pages/programs/program.html
+		 	"
+		 	<ion-header>
+			  <ion-navbar>
+			    <ion-title>
+			     	{{ this.currentProgram.name }}
+			    </ion-title>
+			  </ion-navbar>
+			</ion-header>
+
+			<ion-content>
+				<div padding>
+					<img src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
+			     	<p>{{ this.currentProgram.description }}</p>
+				</div>
+			</ion-content>
+			"
+		C) Create the program TypeScript Component src/pages/programs/program.ts
+			"
+				import { Component } from '@angular/core';
+				import { NavController, NavParams } from 'ionic-angular';
+
+				@Component({
+					selector: 'page-program',
+					templateUrl: 'program.html',
+				})
+
+				export class ProgramPage {
+					public currentProgram;
+
+					constructor(private navCtrl: NavController,
+								private navParameters: NavParams) {
+
+						this.currentProgram = this.navParameters.get('currentProgram');
+					}
+
+				}
+
+			"
+			- import NavParams along with NavController
+			- create currentProgram public member
+			- in the constructor set currentProgram to the program passed using NavParams
+	III) Update the Application Information
+		A) Add program page to src/app/app.module.ts
+			1) import the ProgramPage component
+				import { ProgramPage } from '../pages/programs/program';
+			2) add ProgramPage to declarations & entryComponents
+				"
+				declarations: [
+				    MyApp,
+				    HomePage,
+				    ProgramPage
+				],
+				...
+				bootstrap: [IonicApp],
+				entryComponents: [
+				    MyApp,
+				    HomePage,
+				    ProgramPage
+				],
+				"
+	IV) Upload pictures to src/assets/img/
+
+==================================================================================
+==================================================================================
+
+08/31/17 - Brendan Thompson
+
+Summary:
+	- Created a GitHub Search app
+Thoughts:
+	- Annoyed with the difficulty I am having trying to learn as a result of the amount of abstraction and amount of different yet powerful tools all working together
+	- I feel like I am using so many things that are popular but I don't even realize it.
+		- Ionic, Angular 2, TypeScript, JavaScript (ES7, ES6, ES5), JSON, HTML, CSS, SCSS, Node.js, PHP?, ???)
+
+- Following a Tutorial:
+	- https://scoth.io/tutorials/create-your-first-mobile-app-with-angularjs-and-ionic
+		I) What Really is Ionic?
+			- front-end SDK for building cross-platform movile apps. Built on top of Angular, ionic also provides a platform for integrating services like push notifications and analytics.
+			- UI library to make a better Cordova project
+			- Like Bootstrap or Foundation but for mobile instead of web
+			- "I will also explain how to build mobile apps with Phonegap app so we won't have to bother with Platform SDKs"
+		II) Creating a Project
+			ionic start {appname} {template}
+				- can also be a github URL to a custom template
+			ionic cordova platform add ios
+			ionic cordova platform add android
+			ionic serve --lab -> emulates it on the web and lab to preview better as mobile app (not recommended)
+	- https://gonehybrid.com/build-your-first-mobile-app-with-ionic-2-angular-2
+		- Part 2:
+			- Ionic Package or PhoneGap Build will compile and sign your apps in the cloud
+			- Genymotion: 3000+ Android configurations to emulate & test
+				- Uses Virtual Box
+		- Part 3 - TypeScript & ES6:
+			- ECMAScript 5 is the currently supported JavaScript version in all browsers
+				- Possibly using at least ES6 (ES2015) now
+					- adds classes, arrow functions, and module loaders
+			** TypeScript is a superset of ES6 and adds the ability to declare variables as a specific type
+				- typed:
+					var index: number;
+					index = 'a string'
+						- error
+				- classes:
+					THE TYPESCRIPT:
+						class User {
+							name: string;
+
+							constructor(name: string){
+								this.name = name
+							}
+
+							sayHello(){
+								console.log('Hello, I am', this.name);
+							}
+						}
+						var user = new User('Ashteya');
+						user.sayHello();
+					TYPESCRIPT COMPILED INTO ES5
+						var User = (function () {
+							function User(name) {
+								this.name = name;
+							}
+							User.prototype.sayHello = function () {
+								console.log('Hello, I am', this.name);
+							};
+							return User;
+						})();
+						var user = new User('Ashteya');
+						user.sayHello();
+				- Arrow Functions:
+					- new, shorter syntax for writing anonymous functions
+					ES5 Code:
+						function updateTime() {
+							var _this = this;
+							var time = new Date();
+							setInterval(function (){ return _this.time = new Date(); }, 1000)
+						}
+					ARROW FUNCTION:
+						function updateTime() {
+							var time = new Date();
+							setInterval(() => this.time = new Date(), 1000)
+						}
+				- javascript looks disgusting
+		- Part 4 - Angular 2
+			- open-source framework for building (web) applications
+			- takes care of navigation, data binding, dependency injection, and much more
+			- http://angular.io -> 5 minute QuickStart & Tutorial
+			- Components:
+				- implements a view or part of a view (displaying and managing)
+				import (Component) from 'angular2/core';
+
+				@Component({
+					selector: 'current-time';
+					template: <h1>Time: {{time}}</h1>
+				})
+				export class CurentTime {
+					time: Date;
+
+					constructor() {
+						this.time = new Date();
+						setInterval(() => this.time = new Date(), 1000);
+					}
+				}
+			- Decorators:
+				-new concept in TypeScript (and ES7/ES2016) for adding functionality to a class
+				- @Component decorator is implemented within the Angular 2 framework.
+					- takes care of coupling the class to a view template, data binding, dependency injection, etc.
+				- selector is set to current-time, so:
+					<body>
+						<current-time>Loading...</current-time>
+					</body>
+			- Data Binding:
+				{{time}} = time property from the CurrentTime object
+					- every time time changed, the <h1> gets updated
+					- from property -> view
+				- can do view -> property for input
+			- Modules:
+				import {component} from 'angular2/core';
+				- TypeScript compiler should loof for the angular2/core script in the project and import the Component module from it
+					- automatically loaded
+				- Modules are supported by TypeScript and ES6 and can be used with CommonJS, AMD, and other existing module systems
+				- tsconfig.json = where can configure module options for the TypeScript compiler
+				export class CurentTime { ...
+					- export means can be imported as a module in other script files
+		- Part 5 - Create an Ionic 2 App
+			ionic start ionic2-tutorial-github blank --v2
+				--v2 = ionic 2 project
+				- jk, the v1 & v2 flags have been removed
+				- now the default is ionic-angular and the other option is ionic1
+			- Files & Folders:
+				1) src = code (pages and services)
+				2) hooks = scripts that can be executed as part of the Cordova build process
+				3) node_modules = all modules, ionic uses npm to import modules
+					- blank file has 21,890 items for 164.4 MB
+				4) resources = icon & splash images for mobile platforms
+				5) plugins = Cordova plugins
+				6) www = code generated by the build scripts out of the app code
+				7) config.xml = configuration for Cordova when creating app packages
+				8) ionic.config.json = configuration for ionic CLI
+				9) package.json = list of all used npm packages
+				10) tsconfig.json = configuration for the TypeScript compiler
+				11) tslint.json = TSLint checks TypeScript code for errors
+				12) src/pages/home
+					- home.html = template for the home page
+					- home .scss = styles for the home page
+					- home.ts = TypeScript for the home page
+			*** BUILDING THE APP ***
+			1) create a service to get the data from the GitHub API and inject it into the HomePage component
+				- create a services folder in src and add github.ts with the following code;
+					- the ionic CLI can now generate services (providers) with ionic generate
+						ionic generate provider github.ts
+					"
+					import { Injectable } from '@angular/core';
+					import { Http } from '@angular/http';
+					import 'rxjs/add/operator/map';
+
+					@Injectable()
+					export class GitHubProvider {
+					  constructor(private http: Http) {
+					  }
+
+					  getRepos(username) {
+					    let repos = this.http.get('https://api.github.com/users/${username}/repos');
+					    return repos;
+					  }
+					}
+					"
+					- @Injectable decorator lets Angular know the service can be injected into another module and we need Http to call the GitHub API
+					- Http uses RxJS to return Observables
+				- Your app.module.ts should look like this in Ionic 3.X
+					"...
+					import { HttpModule } from '@angular/http';
+					...
+					imports: [
+					  BrowserModule,
+					  HttpModule,
+					  IonicModule.forRoot(MyApp)
+					],
+					"
+				- import the github injectable in src/pages/home/home.ts
+					1) import GitHubProvider:
+						import {GitHubProvider} from '../../providers/github-ts/github-ts';
+					2) create array of injectable providers to the component (only one for now):
+						providers: [GitHubProvider]
+					3) add two public properties to HomePage
+						public foundRepos;
+						public username;
+					4) add github to the constructor:
+						constructor (public github: GitHubProvider){}
+					5) Create getRepos fn
+						"
+						getRepos() {
+						  	this.github.getRepos(this.username).subscribe(
+						  		data => {
+						  			this.foundRepos = data.json();
+						  		},
+						  		err => console.log(err),
+	  							() => console.log('getRepos completed')
+						  	);
+						}"
+						- on an observable use the subscribe method with 3 functions/methods
+							a) handle data
+							b) error
+							c) completed w/o error
+				- Define the HTML template:
+					- a bunch of <ion- UI elements
+					- data binding for bind input to username & invoke getRepos()
+					- *ngFor binding to loop through foundRepos
+
+==================================================================================
+==================================================================================
+
+08/30/17 - Brendan Thompson
+
+Summary:
+	- Researched & Installed Ionic
+Thoughts:
+	- Hopefully we don't have to upgrade the Slack account for more third party, external, incoming webhook, integrations
+	- Not being able to build iOS apps on Ubuntu makes me hate all the sheep for droning into that proprietary, designed for age 3+ bullshit
+	- Installing everything needed to run my first ionic app on an Android Studio emulated phone was ridiculous and beyond difficult
+	- Those last two thoughts somewhat contradict each other
+	- I had to install wayyyyy to many dependencies and stuff. Hot damn I hope the future of software development doesn't have to be like this
+		- To create a blank template you need internet and it takes up 213MB with 23,986 items...
+		- Installing programs to manage packages
+		- Rerouting paths to things in bashrc
+		- Not being able to make iOS apps becuase I don't have a mac
+		- I miss C/make/gcc :'(
+
+
+1) Integrating Slack
+	- Introduction: https://api.slack.com/docs/messages
+	- Incoming Webhooks: https://api.slack.com/incoming-webhooks
+	- Reached Integration Limit: https://ainc.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks
+	- Pricing: https://ainc.slack.com/pricing
+		- Says the free version should give 10 third-party or custom integrations
+2) Ionic
+	- http://ionicframework.com/docs/v1/guide/installation.html
+		- "you must have OS X in order to develop and deploy iPhone apps, so OS X is recommended if possible."
+
+
+Installing Ionic
+	1) Install Oracle JDK 8
+		sudo add-apt-repository ppa:webupd8team/java
+		sudo apt-get update
+		sudo apt-get install oracle-java8-installer
+		sudo apt-get install oracle-java8-set-default
+	2) Install node.js: https://www.godaddy.com/help/install-nodejs-ubuntu-17395
+		sudo apt-get update
+		sudo apt-get install nodejs
+		sudo apt-get install npm
+		**** Doesn't appear to install correct version. See section 6
+	3) Install Android Studio and the Android SDK (I doubt I need this for iOS Apps. Actually, IDT I can even make iOS apps with Ubuntu.)
+		- download the exe
+		- run studio.sh from android-studio/bin
+			- https://developer.android.com/studio/install.html
+			- installs Android SDK
+		- Install dependencies: sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+	4) Install Ionic CLI & Related Tools:
+		sudo apt-get install git ruby
+		sudo gem install compass
+		sudo npm install -g cordova ionic grunt-cli bower gulp
+	5) Add the Android SDK to your PATH and set the ANDROID_HOME environment variable correctly. Using ~/.bash_profile for this is the usual approach.
+		nano ~/.bashrc
+		- at the top of the file add the lines:
+			#AndroidSDK Path
+			export ANDROID_HOME=$HOME/Android/Sdk
+			export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+	6) Start using Ionic
+		ionic start todo example
+			- /usr/bin/env: ‘node’: No such file or directory
+				- https://forum.ionicframework.com/t/problems-with-getting-started/11348/2
+				- something about node and nodejs being two different things
+				sudo ln -s "$(which nodejs)" /usr/local/bin/node
+			- ERR: Your Node.js version is v4.2.6. Please update to the latest Node 6 LTS version (or latest Node).
+				- https://stackoverflow.com/questions/10075990/upgrading-node-js-to-latest-version
+				sudo npm install n -g
+				sudo n stable
+			- unable to find starter template for example
+				- scatch this example todo
+		ionic start HelloWorld blank
+		cd example
+		ionic cordova platform add android
+		ionic cordova run android
+			- could not find installed version of gradle
+				sudo add-apt-repository ppa:cwchien/gradle
+				sudo apt-get update
+				sudo apt-get install gradle
+			- You have not accepted the license agreements of the following SDK components:
+				[Android SDK Platform 25].
+				Before building your project, you need to accept the license agreements and complete the installation of the missing components using the Android Studio SDK Manager.
+					- Open Android Studio
+					- configure -> SDK Manager
+					- Check the boc for Android 7.1.1 25 Nougat
+			- NDROID_HOME=/home/bren/Android/Sdk
+				JAVA_HOME=/usr/lib/jvm/java-8-oracle
+				No target specified and no devices found, deploying to emulator
+				Error: No emulator images (avds) found.
+				1. Download desired System Image by running: /home/bren/Android/Sdk/tools/android sdk
+				2. Create an AVD by running: /home/bren/Android/Sdk/tools/android avd
+				HINT: For a faster emulator, use an Intel System Image and install the HAXM device driver
+					- Open Android Studio
+					- Create new project
+					- Select an Adroid Virtual Device
+					- Once project opens...
+					- Tools -> Android -> AVD Manager
+					- Add New Virtual Device
+					Nexus 5X
+					- click download link on Android 8.0 (26)
+			- No target specified and no devices found, deploying to emulator
+				Error: Cannot read property 'replace' of undefined
+				- https://issues.apache.org/jira/browse/CB-12981?jql=text%20~%20%22cannot%20read%20property%20%27%22
+					- created new Virtual Device
+					- Downloaded Android 7.0 (24)
+			- LAUNCH THE AVD FIRST
