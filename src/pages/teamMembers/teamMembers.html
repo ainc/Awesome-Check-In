@@ -1,7 +1,7 @@
 <!--
 	TeamMembersPage In Check In App
-	Created By: Brendan Thompson
-	Updated: 09/29/17 by Brendan Thompson
+	Created: 09/01/17 by Brendan Thompson
+	Updated: 10/18/17 by Brendan Thompson
 
 	Description:
 		Asks the user to fill out a FormGroup regarding which TEAMMEMBERS they are expecting to meet with
@@ -30,7 +30,7 @@
 				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
 				<ion-checkbox color="red" formControlName="{{ member.tag }}"></ion-checkbox>
 				<ion-thumbnail item-end>
-					<img src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+					<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
 				</ion-thumbnail>
 			</ion-item>
 		</ion-item-group>

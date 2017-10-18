@@ -1,5 +1,5 @@
 // TypeScript for HomePage
-// Created By: Brendan Thompson
+// Created: 09/01/17 by Brendan Thompson
 // Updated: 10/17/17 by Brendan Thompson
 
 // Description:

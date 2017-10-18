@@ -1,5 +1,5 @@
 // TypeScript for FinalPage
-// Created By: Brendan Thompson
+// Created: 09/01/17 by Brendan Thompson
 // Updated: 09/10/17 by Brendan Thompson
 
 // Description:

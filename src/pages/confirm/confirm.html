@@ -1,6 +1,6 @@
 <!--
 	ConfirmPage In Check In App
-	Created By: Brendan Thompson
+	Created: 09/01/17 by Brendan Thompson
 	Updated: 10/17/17 by Brendan Thompson
 
 	Description:
@@ -51,7 +51,7 @@
 			<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get(member.tag).value">
 				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
 				<ion-thumbnail item-end>
-					<img src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+					<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
 				</ion-thumbnail>
 			</ion-item>
 		</ng-container>

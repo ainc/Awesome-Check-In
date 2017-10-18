@@ -1,6 +1,6 @@
 // TypeScript for ConfirmPage
-// Created By: Brendan Thompson
-// Updated: 10/17/17 by Brendan Thompson
+// Created: 09/01/17 by Brendan Thompson
+// Updated: 10/18/17 by Brendan Thompson
 
 // Description:
 // 		Asks the User to confirm their user info and selected team members
@@ -43,7 +43,7 @@ export class ConfirmPage {
 			description: 'Director of Operations',
 			team: 'main',
 			slackUsername: '@emilywehrle',
-			imageURL: 'assets/img/TeamMembers/emilywehrle_wall.gif',
+			imageURL: 'assets/img/TeamMembers/emilywehrle_wall.png',
 			imageAlt: 'Emily Wehrle'
 		},
 		{id: 3, name:'Brian Raney',
@@ -51,7 +51,7 @@ export class ConfirmPage {
 			description: 'Co-Founder',
 			team: 'main',
 			slackUsername: '@nicksuch',
-			imageURL: 'assets/img/TeamMembers/brianraney_wall.gif',
+			imageURL: 'assets/img/TeamMembers/brianraney_wall.png',
 			imageAlt: 'Brian Raney'
 		},
 		{id: 4, name:'Amanda Murray',
@@ -59,7 +59,7 @@ export class ConfirmPage {
 			description: 'Director of Marketing',
 			team: 'Marketing',
 			slackUsername: '@amandasmurray',
-			imageURL: 'assets/img/TeamMembers/teamMember.png',
+			imageURL: 'assets/img/TeamMembers/amandamurray_wall.png',
 			imageAlt: 'Amanda Murray'
 		},
 		{id: 5, name:'Keith McMunn',
@@ -67,7 +67,7 @@ export class ConfirmPage {
 			description: 'Director of Fellowship',
 			team: 'Fellowship',
 			slackUsername: '@keithmcmunn',
-			imageURL: 'assets/img/TeamMembers/teamMember.png',
+			imageURL: 'assets/img/TeamMembers/keithmcmunn_wall.png',
 			imageAlt: 'Keith McMunn'
 		},
 		{id: 6, name:'Nick Such',
@@ -75,7 +75,7 @@ export class ConfirmPage {
 			description: 'Co-Founder',
 			team: 'main',
 			slackUsername: '@nicksuch',
-			imageURL: 'assets/img/TeamMembers/nicksuch_wall.gif',
+			imageURL: 'assets/img/TeamMembers/nicksuch_wall.png',
 			imageAlt: 'Nick Such'
 		},
 		{id: 7, name:'Kyle Raney',
@@ -83,7 +83,7 @@ export class ConfirmPage {
 			description: 'Development Team',
 			team: 'Team Alpha',
 			slackUsername: '@raney24',
-			imageURL: 'assets/img/TeamMembers/kyleraney_wall.gif',
+			imageURL: 'assets/img/TeamMembers/kyleraney_wall.png',
 			imageAlt: 'Kyle Raney'
 		}
 	];
@@ -142,7 +142,7 @@ export class ConfirmPage {
 			"attachments": [
 				{
 					"title": this.userName + " just checked in!",
-					"text": "Reason: " + this.userReason,
+					"text": "Program: " + this.currentProgram.name + "\nReason: " + this.userReason,
 					"author_name": this.userEmail,
 					"color": "danger",
 					"footer": "Check-In App",

@@ -20,6 +20,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 // =======================================================================
 
 import { MyApp } from './app.component';
+import { ScreenSaver } from '../pages/screensaver/screensaver';
 import { HomePage } from '../pages/home/home';
 import { ProgramPage } from '../pages/programs/program';
 import { TeamMembersPage } from '../pages/teamMembers/teamMembers';
@@ -40,6 +41,7 @@ import { BoxCheckedValidator } from '../providers/checkBoxValidators/boxCheckedV
   // Declare Pages Used
   declarations: [
     MyApp,
+    ScreenSaver,
     HomePage,
     ProgramPage,
     TeamMembersPage,
@@ -64,6 +66,7 @@ import { BoxCheckedValidator } from '../providers/checkBoxValidators/boxCheckedV
   // Entry Components (same as declarations?)
   entryComponents: [
     MyApp,
+    ScreenSaver,
     HomePage,
     ProgramPage,
     TeamMembersPage,
