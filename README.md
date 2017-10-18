@@ -11,6 +11,7 @@ This is a mobile application developed for Awesome Inc during my internship in t
 		- This will probably fail, but hopefully it'll update the Xcode project first
 		- May be able to use (ionic cordova prepare ios)
 	4) Open the Project in Xcode (Documents/Awesome-Check-In/platforms/ios/Awesome Check In.xcodeproj)
+		- probably will need to authorize some pop-ups about signature key usage with the Computer's password
 	5) Ensure Code Signing through "Awesome Ventures LLC"
 		- Click on the top item "Awesome Check In" in the Project Navigator window on the left hand side
 		- In "Signing" ensure "Team" is "Awesome Ventures LLC"
