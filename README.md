@@ -1,7 +1,25 @@
 # Awesome Inc Check-In Mobile Application
 # Created by: Brendan Thompson
 
-This is a mobile application developed for Awesome Inc during my internship in the fall of 2017 to be used by guests to check-in upon entrance to the facility. It was created using the Ionic 3 hybrid mobile add framework described below.
+This is a mobile application developed for Awesome Inc during my internship in the fall of 2017 that is now used by guests to check-in upon entrance to the facility. It was created using the Ionic 3 hybrid mobile add framework described below.
+
+### How to Build & Run on the Mac:
+
+	1) Navigate to the directory (cd Documents/Awesome-Check-In)
+	2) Download the latest version (git pull)
+	3) Update the Xcode project by building the project using cordova (ionic cordova run ios)
+		- This will probably fail, but hopefully it'll update the Xcode project first
+		- May be able to use (ionic cordova prepare ios)
+	4) Open the Project in Xcode (Documents/Awesome-Check-In/platforms/ios/Awesome Check In.xcodeproj)
+	5) Ensure Code Signing through "Awesome Ventures LLC"
+		- Click on the top item "Awesome Check In" in the Project Navigator window on the left hand side
+		- In "Signing" ensure "Team" is "Awesome Ventures LLC"
+	6) Plug in the iPad
+		- must be the iPad registered with the account
+	7) Ensure the project is going to build to the iPad
+		- In the top bar, just to the right of the build and stop buttons, set the active scheme to the iPad
+		- Usually defaults to an iPhone 8 Plus emulator
+	8) Click the Play button to build, and hope for the best!
 
 ### App Functionality:
 
