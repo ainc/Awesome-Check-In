@@ -64,4 +64,19 @@ export class HomePage {
 
 		this.navCtrl.push(TeamMembersPage, { currentProgram: program });
 	}
+
+	// ==============================================================================
+	// 		Meeting
+	// ==============================================================================
+	clickedMeeting() {
+		var program = {
+			id: 9,
+			name:'Planned Meeting',
+			description: 'Someone at Awesome Inc is expecting to meet with you',
+			imageURL: 'assets/img/Icon_Meeting.png',
+			imageAlt: 'Meeting'
+		};
+
+		this.navCtrl.push(TeamMembersPage, { currentProgram: program });
+	}
 }
