@@ -19,7 +19,11 @@ page-home {
 		color: #b81124;
 	}
 
-	ion-card-header {
-		text-decoration-color: red;
+	.cardHeader {
+		font-size: 300%;
+	}
+
+	.cardContentText {
+		font-size: 200%;
 	}
 }
