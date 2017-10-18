@@ -3,13 +3,15 @@
 
 This is a mobile application developed for Awesome Inc during my internship in the fall of 2017 that is now used by guests to check-in upon entrance to the facility. It was created using the Ionic 3 hybrid mobile add framework described below.
 
-### How to Build & Run on the Mac:
+### How to Build & Run onto an iPad:
 
 	1) Navigate to the directory (cd Documents/Awesome-Check-In)
 	2) Download the latest version (git pull)
 	3) Update the Xcode project by building the project using cordova (ionic cordova run ios)
 		- This will probably fail, but hopefully it'll update the Xcode project first
-		- May be able to use (ionic cordova prepare ios)
+		- May be able to use (ionic cordova build ios)
+		- probably will need to authorize some pop-ups about signature key usage with the Computer's password
+		**** This just worked to build and run it all of the way onto the iPad!!
 	4) Open the Project in Xcode (Documents/Awesome-Check-In/platforms/ios/Awesome Check In.xcodeproj)
 		- probably will need to authorize some pop-ups about signature key usage with the Computer's password
 	5) Ensure Code Signing through "Awesome Ventures LLC"
