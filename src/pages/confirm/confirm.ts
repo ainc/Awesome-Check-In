@@ -16,6 +16,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 
 import { FinalPage } from '../final/final';
+import { ScreenSaver } from '../screensaver/screensaver';
 
 @Component({
 	selector: 'page-confirm',
@@ -137,7 +138,7 @@ export class ConfirmPage {
 		var messageText = JSON.stringify(
 		{
 			"username": "CheckIn_Bot",
-			"channel": slackUsername,
+			"channel": "@brenthompson2",
 			"text": "A guest has arrived for you!",
 			"attachments": [
 				{
@@ -153,5 +154,12 @@ export class ConfirmPage {
 
 		this.ourHttp.post(url, messageText)
 			.subscribe();
+	}
+
+	// ==============================================================================
+	// 		ScreenSaver
+	// ==============================================================================
+	goToScreenSaver() {
+		this.navCtrl.push(ScreenSaver);
 	}
 }

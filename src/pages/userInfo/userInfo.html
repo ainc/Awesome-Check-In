@@ -8,12 +8,18 @@
  		Passes the user info, along with older FormGroup data, to ConfirmPage via NavParams
  -->
 
- <ion-header>
-  <ion-navbar>
-    <ion-title>
-     	{{ this.currentProgram.name }}
-    </ion-title>
-  </ion-navbar>
+<ion-header>
+	<ion-navbar>
+    	<ion-title>
+     		{{ this.currentProgram.name }}
+    	</ion-title>
+  		<ion-buttons right>
+  			<button ion-button class="button-clear" (click)="goToScreenSaver()">
+    			<ion-icon name="home">
+    			</ion-icon>
+    		</button>
+  		</ion-buttons>
+  	</ion-navbar>
 </ion-header>
 
 <ion-content padding>

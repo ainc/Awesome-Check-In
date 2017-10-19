@@ -17,6 +17,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { BoxCheckedValidator } from '../../providers/checkBoxValidators/boxCheckedValidator';
 
 import { UserInfoPage } from '../userInfo/userInfo';
+import { ScreenSaver } from '../screensaver/screensaver';
 
 @Component({
 	selector: 'page-teamMembers',
@@ -150,5 +151,12 @@ export class TeamMembersPage {
 	submitTeamMembers(currentFormGroup) {
 		this.navCtrl.push(UserInfoPage, { currentProgram: this.currentProgram,
 										memberFormGroup: currentFormGroup });
+	}
+
+	// ==============================================================================
+	// 		ScreenSaver
+	// ==============================================================================
+	goToScreenSaver() {
+		this.navCtrl.push(ScreenSaver);
 	}
 }

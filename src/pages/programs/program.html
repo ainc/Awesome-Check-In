@@ -8,12 +8,18 @@
 		Sends the selected program as a NavParam to teamMembersPage
  -->
 
- <ion-header>
-  <ion-navbar>
-    <ion-title>
-     	Welcome Entrepreneur!
-    </ion-title>
-  </ion-navbar>
+<ion-header>
+	<ion-navbar>
+    	<ion-title>
+     		Welcome Entrepreneur!
+    	</ion-title>
+  		<ion-buttons right>
+  			<button ion-button class="button-clear" (click)="goToScreenSaver()">
+    			<ion-icon name="home">
+    			</ion-icon>
+    		</button>
+  		</ion-buttons>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding>

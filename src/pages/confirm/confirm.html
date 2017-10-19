@@ -1,19 +1,25 @@
 <!--
 	ConfirmPage In Check In App
 	Created: 09/01/17 by Brendan Thompson
-	Updated: 10/17/17 by Brendan Thompson
+	Updated: 10/18/17 by Brendan Thompson
 
 	Description:
 		Asks the User to confirm their user info and selected team members
 		Sends the corresponding notifications
  -->
 
- <ion-header>
-  <ion-navbar>
-    <ion-title>
-     	{{ this.currentProgram.name }}
-    </ion-title>
-  </ion-navbar>
+<ion-header>
+	<ion-navbar>
+    	<ion-title>
+     		{{ this.currentProgram.name }}
+    	</ion-title>
+  		<ion-buttons right>
+  			<button ion-button class="button-clear" (click)="goToScreenSaver()">
+    			<ion-icon name="home">
+    			</ion-icon>
+    		</button>
+  		</ion-buttons>
+  	</ion-navbar>
 </ion-header>
 
 <ion-content padding>

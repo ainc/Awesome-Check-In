@@ -1,8 +1,78 @@
 Devlog
 
 Description:
-	Now Basically a log of Awesome Check In App Development DevLog
+	Now just a log of Awesome Check In App Development
 	Was a log of activities as I learned to develop mobile applications using Ionic
+
+==================================================================================
+==================================================================================
+
+10/18/17 - Brendan Thompson
+
+I) Summary of Work:
+	- Built the app on another ipad
+	- Wrote out a detailed description of building & running the app onto an iPad
+	- Implemented ScreenSaver
+	- Updated Team Member's Photos
+	- Lots of Sass Design work
+	- Added Core Value Section to Final Page
+	- Added Home Button to all pages
+	- Added I Have A Meeting to the home page
+	- Rang Success Bell
+
+II) Need to Implement:
+	*** "I Have an Idea" takes them to the google form to fill out
+	- TEAMMEMBERS as separate json file
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Only displays important people based off selected program
+		- Waiting till separate json
+	- Ask to take picture and also send in the notification attachment
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
+
+III) Ideas:
+	A) Embed Video or more info at Final Page
+
+IV) Status:
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+
+V) Activity & Source Log
+
+- Built the app on another ipad
+	- Suprisingly not that difficult
+	- Plugged in, clicked a button in the Xcode project navigator settings
+	- Then authorized it online & it worked
+
+- Wrote out a detailed description of building & running the app onto an iPad
+	- in README.md
+	- figured out can use ionic cordova run ios
+		- need to put in the computer's password a bunch of times
+
+- Implemented ScreenSaver
+
+- Updated Team Member's Photos
+
+- Lots of Sass Design work
+
+- Added Core Value Section to Final Page
+	- Copied Styles from Awesome Inc Website About Page
+	- Had to redo reactive boilerplate using ion tools
+		- ion-grid, ion-row, ion-col, ion-card, ion-card-header, ion-card-content
+
+- Added Home Button to all pages
+	- Icon looks a little small on the computer, but we'll see what happens on the iPad
+
+- Added I Have A Meeting to the home page
+	- clip art: http://cliparting.com/wp-content/uploads/2017/01/Meeting-clip-art-clipart-2-clipartix.png
+
+- Rang the Success Bell!
 
 ==================================================================================
 ==================================================================================
@@ -16,6 +86,7 @@ I) Summary of Work:
 	- Changed Titles and Descriptions in Home Page
 	- Moved "I have an Idea" to first program
 	- Booled-out "Startup Weekend" Program
+	- Created ScreenSaver
 
 II) Ideas:
 	A) taking the user to some information about the company or the program they are interested in as some light reading material while they wait
@@ -33,6 +104,7 @@ III) Need to Implement:
 		- Ionic should be able to handle this pretty smoothly
 
 IV) Status:
+	0) ScreenSaver page attracts the user's attention to check-in
 	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
 		- if entrepreneurship, asks which program they are interested in
 	2) Asks the user to select the team members who are expecting them
@@ -40,6 +112,7 @@ IV) Status:
 	3) Asks the user for basic info (Name, Email, Reason)
 	4) Sends a notification via Slack to the corresponding Awesome Inc team member
 	5) Instructs the user to have a seat on one of the couches
+		- Shows info about the Core Values
 
 V) Activity & Source Log
 
@@ -56,6 +129,10 @@ V) Activity & Source Log
 - Changed Titles and Descriptions in Home Page
 - Moved "I have an Idea" to first program
 - Booled-out "Startup Weekend" Program
+
+- Created ScreenSaver Page
+	- Attracts the user's attention to the act of checking in
+	- Currently a static image, should be designed using scss & html
 
 ==================================================================================
 ==================================================================================

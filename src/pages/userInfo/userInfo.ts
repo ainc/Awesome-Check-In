@@ -14,6 +14,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ConfirmPage } from '../confirm/confirm';
+import { ScreenSaver } from '../screensaver/screensaver';
 
 
 @Component({
@@ -102,5 +103,12 @@ export class UserInfoPage {
 										name: this.currentUserInfoFormGroup.get('name').value,
 										email: this.currentUserInfoFormGroup.get('email').value,
 										reason: this.currentUserInfoFormGroup.get('reason').value });
+	}
+
+	// ==============================================================================
+	// 		ScreenSaver
+	// ==============================================================================
+	goToScreenSaver() {
+		this.navCtrl.push(ScreenSaver);
 	}
 }

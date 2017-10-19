@@ -17,6 +17,7 @@ import { NavController } from 'ionic-angular';
 
 import { ProgramPage } from '../programs/program';
 import { TeamMembersPage } from '../teamMembers/teamMembers';
+import { ScreenSaver } from '../screensaver/screensaver';
 
 @Component({
   selector: 'page-home',
@@ -78,5 +79,12 @@ export class HomePage {
 		};
 
 		this.navCtrl.push(TeamMembersPage, { currentProgram: program });
+	}
+
+	// ==============================================================================
+	// 		ScreenSaver
+	// ==============================================================================
+	goToScreenSaver() {
+		this.navCtrl.push(ScreenSaver);
 	}
 }
