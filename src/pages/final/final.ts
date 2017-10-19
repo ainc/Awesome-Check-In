@@ -8,13 +8,13 @@
 
 
 // ==============================================================================
-// 		Import Navigation tools and HomePage
+// 		Import Navigation tools and ScreenSaver
 // ==============================================================================
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { ScreenSaver } from '../screensaver/screensaver';
 import { HomePage } from '../home/home';
-
 
 @Component({
   selector: 'page-final',
@@ -38,6 +38,6 @@ export class FinalPage {
 	// 		Return to Home Page
 	// ==============================================================================
 	returnHome() {
-		this.navCtrl.push(HomePage);
+		this.navCtrl.push(ScreenSaver);
 	}
 }
