@@ -1,6 +1,6 @@
 // TypeScript for ConfirmPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 10/18/17 by Brendan Thompson
+// Updated: 10/24/17 by Brendan Thompson
 
 // Description:
 // 		Asks the User to confirm their user info and selected team members
@@ -35,7 +35,7 @@ export class ConfirmPage {
 			tag: 'Nobody',
 			description: 'Set up a meeting',
 			team: 'Team Alpha',
-			slackUsername: '#space',
+			slackUsername: '#checkin-app',
 			imageURL: 'assets/img/TeamMembers/teamMember.png',
 			imageAlt: 'Team Member',
 		},

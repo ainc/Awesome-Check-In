@@ -1,6 +1,6 @@
 // TypeScript for TeamMemberPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 10/18/17 by Brendan Thompson
+// Updated: 10/24/17 by Brendan Thompson
 
 // Description:
 // 		Asks the user to fill out a FormGroup regarding which TEAMMEMBERS they are expecting to meet with
@@ -32,7 +32,7 @@ export class TeamMembersPage {
 			tag: 'Nobody',
 			description: 'Set up a meeting',
 			team: 'Team Alpha',
-			slackUsername: '#space',
+			slackUsername: '#checkin-app',
 			imageURL: 'assets/img/TeamMembers/teamMember.png',
 			imageAlt: 'Team Member',
 			entrepreurship: true,
