@@ -138,7 +138,7 @@ export class ConfirmPage {
 		var messageText = JSON.stringify(
 		{
 			"username": "CheckIn_Bot",
-			"channel": "@brenthompson2",
+			"channel": slackUsername,
 			"text": "A guest has arrived for you!",
 			"attachments": [
 				{
