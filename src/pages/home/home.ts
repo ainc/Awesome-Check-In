@@ -1,12 +1,15 @@
+// ================================================================================================
+
 // TypeScript for HomePage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 10/17/17 by Brendan Thompson
+// Updated: 11/07/17 by Brendan Thompson
 
 // Description:
 //		Asks the User to select what brought them in: Entrepreneurship, Learning To Code, or The Workspace
 //		If Entrepreneurship, directs to ProgramPage
 //		Else directs them to the TeamMembersPage
 
+// ================================================================================================
 
 // ==============================================================================
 // 		Import Navigation tools and ProgramPage & TeamMembersPage
@@ -18,15 +21,20 @@ import { NavController } from 'ionic-angular';
 import { ProgramPage } from '../programs/program';
 import { TeamMembersPage } from '../teamMembers/teamMembers';
 import { ScreenSaver } from '../screensaver/screensaver';
+import { TimerComponent } from '../../providers/timerConfirmation/timer';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [TimerComponent]
 })
 export class HomePage {
+	// private idleTimer: TimerComponent;
 
-	constructor(public navCtrl: NavController) {
-
+	constructor(public navCtrl: NavController,
+				private idleTimer: TimerComponent) {
+		this.idleTimer.initTimer();
+		this.idleTimer.startTimer();
 	}
 
 	// ==============================================================================

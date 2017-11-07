@@ -7,6 +7,37 @@ Description:
 ==================================================================================
 ==================================================================================
 
+11/07/17 - Brendan Thompson
+
+I) Summary of Work:
+
+II) Need to Implement:
+	*** "I Have an Idea" takes them to the google form to fill out
+	- TEAMMEMBERS as separate json file
+		- Only displays important people based off selected program
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Ask to take picture and also send in the notification attachment
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
+
+III) Ideas:
+	A) Embed Video or more info at Final Page
+
+IV) Status:
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+
+V) Activity & Source Log
+
+==================================================================================
+==================================================================================
+
 10/18/17 - Brendan Thompson
 
 I) Summary of Work:
@@ -23,10 +54,9 @@ I) Summary of Work:
 II) Need to Implement:
 	*** "I Have an Idea" takes them to the google form to fill out
 	- TEAMMEMBERS as separate json file
+		- Only displays important people based off selected program
 	- Programs as separate json file
 	- Integrate with ZOHO
-	- Only displays important people based off selected program
-		- Waiting till separate json
 	- Ask to take picture and also send in the notification attachment
 		- would be fun
 		- Ionic should be able to handle this pretty smoothly

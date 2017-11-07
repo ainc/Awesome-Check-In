@@ -2,7 +2,7 @@
 
 //     Awesome Inc CheckIn App main app module
 //     Created by: Brendan Thompson
-//     Updated: 09/16/17
+//     Updated: 11/07/17
 //     Description:
 //         A declaration of the different pieces that come together to make the Awesome Inc Check In App
 
@@ -35,6 +35,7 @@ import { FinalPage } from '../pages/final/final';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { BoxCheckedValidator } from '../providers/checkBoxValidators/boxCheckedValidator';
+import { TimerComponent } from '../providers/timerConfirmation/timer';
 
 @NgModule({
 
@@ -81,6 +82,7 @@ import { BoxCheckedValidator } from '../providers/checkBoxValidators/boxCheckedV
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BoxCheckedValidator,
+    TimerComponent
   ]
 })
 export class AppModule {}
