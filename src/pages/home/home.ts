@@ -12,7 +12,7 @@
 // ================================================================================================
 
 // ==============================================================================
-// 		Import Navigation tools and ProgramPage & TeamMembersPage
+// 		Imports
 // ==============================================================================
 
 import { Component } from '@angular/core';
@@ -21,32 +21,57 @@ import { NavController } from 'ionic-angular';
 import { ProgramPage } from '../programs/program';
 import { TeamMembersPage } from '../teamMembers/teamMembers';
 import { ScreenSaver } from '../screensaver/screensaver';
+
 import { TimerComponent } from '../../providers/timerConfirmation/timer';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
   providers: [TimerComponent]
 })
+
 export class HomePage {
-	// private idleTimer: TimerComponent;
+    private alertMessage = this.alertCtrl.create({
+        title: 'Idle Timer Expired',
+        message: 'Are You Still There?',
+        buttons: [
+            {
+                text: 'Home',
+                handler: () => {
+                	this.goToScreenSaver();
+                }
+            },
+            {
+                text: 'Continue',
+                handler: () => {
+                	this.idleTimer.restartTimer();
+                }
+            }
+        ]
+    });
 
 	constructor(public navCtrl: NavController,
-				private idleTimer: TimerComponent) {
-		this.idleTimer.initTimer();
-		this.idleTimer.startTimer();
+				private idleTimer: TimerComponent,
+				private secondaryTimer: TimerComponent,
+				public alertCtrl: AlertController) {
+
+		this.startIdleTimer();
 	}
 
 	// ==============================================================================
 	// 		Entrepreneurship
 	// ==============================================================================
+
 	clickedEnt() {
+		this.stopTimers();
 		this.navCtrl.push(ProgramPage);
 	}
 
 	// ==============================================================================
 	// 		Learning to Code
 	// ==============================================================================
+
 	clickedCode() {
 		var program = {
 			id: 7,
@@ -56,12 +81,14 @@ export class HomePage {
 			imageAlt: 'AInc-U Logo'
 		};
 
+		this.stopTimers();
 		this.navCtrl.push(TeamMembersPage, { currentProgram: program });
 	}
 
 	// ==============================================================================
 	// 		The Workspace
 	// ==============================================================================
+
 	clickedSpace() {
 		var program = {
 			id: 8,
@@ -71,12 +98,14 @@ export class HomePage {
 			imageAlt: 'Coworking Logo'
 		};
 
+		this.stopTimers();
 		this.navCtrl.push(TeamMembersPage, { currentProgram: program });
 	}
 
 	// ==============================================================================
 	// 		Meeting
 	// ==============================================================================
+
 	clickedMeeting() {
 		var program = {
 			id: 9,
@@ -86,13 +115,57 @@ export class HomePage {
 			imageAlt: 'Meeting'
 		};
 
+		this.stopTimers();
 		this.navCtrl.push(TeamMembersPage, { currentProgram: program });
 	}
 
 	// ==============================================================================
-	// 		ScreenSaver
+	// 		ScreenSaver & Idle Timer
 	// ==============================================================================
+
 	goToScreenSaver() {
+		this.stopTimers();
 		this.navCtrl.push(ScreenSaver);
+	}
+
+	startIdleTimer(){
+		this.idleTimer.initTimer();
+		this.idleTimer.startTimer();
+		this.checkIfTimerFinished();
+	}
+
+	startSecondaryTimer(){
+		this.secondaryTimer.initTimer();
+		this.secondaryTimer.startSecondaryTimer();
+		this.checkIfSecondaryTimerFinished();
+    }
+
+    stopTimers(){
+    	this.idleTimer.pauseTimer();
+    	this.secondaryTimer.pauseTimer();
+    }
+
+	checkIfTimerFinished(){
+        setTimeout(() => {
+            if (this.idleTimer.isFinished()) {
+            	this.alertMessage.present();
+            	this.startSecondaryTimer();
+         	}
+            else {
+                this.checkIfTimerFinished();
+            }
+        }, 1000);
+	}
+
+	checkIfSecondaryTimerFinished(){
+        setTimeout(() => {
+            if (this.secondaryTimer.isFinished()) {
+            	this.alertMessage.dismiss();
+            	this.goToScreenSaver();
+         	}
+            else {
+                this.checkIfSecondaryTimerFinished();
+            }
+        }, 1000);
 	}
 }

@@ -1,6 +1,6 @@
 // TypeScript for ProgramPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 09/10/17 by Brendan Thompson
+// Updated: 11/07/17 by Brendan Thompson
 
 // Description:
 // 		Asks the user to specify which program brought them in
@@ -17,12 +17,34 @@ import { NavController, NavParams } from 'ionic-angular';
 import { TeamMembersPage } from '../teamMembers/teamMembers';
 import { ScreenSaver } from '../screensaver/screensaver';
 
+import { TimerComponent } from '../../providers/timerConfirmation/timer';
+import { AlertController } from 'ionic-angular';
+
 @Component({
 	selector: 'page-program',
 	templateUrl: 'program.html',
 })
 
 export class ProgramPage {
+    private alertMessage = this.alertCtrl.create({
+        title: 'Idle Timer Expired',
+        message: 'Are You Still There?',
+        buttons: [
+            {
+                text: 'Home',
+                handler: () => {
+                	this.goToScreenSaver();
+                }
+            },
+            {
+                text: 'Continue',
+                handler: () => {
+                	this.idleTimer.restartTimer();
+                }
+            }
+        ]
+    });
+
 	PROGRAMS = [
 		{id: 1, name:'I have an idea!',
 			description: 'Have an idea? Tell us about it! Promoting Entrepreneurship is the main goal of Awesome Inc!',
@@ -62,7 +84,11 @@ export class ProgramPage {
 		}
 	];
 
-	constructor(public navCtrl: NavController) {
+	constructor(public navCtrl: NavController,
+				private idleTimer: TimerComponent,
+				private secondaryTimer: TimerComponent,
+				public alertCtrl: AlertController) {
+		this.startIdleTimer();
 
 	}
 
@@ -70,14 +96,57 @@ export class ProgramPage {
 	// 		Pass the selected program as a NavParam to TeamMembersPage
 	// ==============================================================================
 	goToProgram(program) {
+		this.stopTimers();
 		this.navCtrl.push(TeamMembersPage, { currentProgram: program });
 	}
 
 	// ==============================================================================
-	// 		ScreenSaver
+	// 		ScreenSaver & Idle Timer
 	// ==============================================================================
+
 	goToScreenSaver() {
+		this.stopTimers();
 		this.navCtrl.push(ScreenSaver);
 	}
 
+	startIdleTimer(){
+		this.idleTimer.initTimer();
+		this.idleTimer.startTimer();
+		this.checkIfTimerFinished();
+	}
+
+	startSecondaryTimer(){
+		this.secondaryTimer.initTimer();
+		this.secondaryTimer.startSecondaryTimer();
+		this.checkIfSecondaryTimerFinished();
+    }
+
+    stopTimers(){
+    	this.idleTimer.pauseTimer();
+    	this.secondaryTimer.pauseTimer();
+    }
+
+	checkIfTimerFinished(){
+        setTimeout(() => {
+            if (this.idleTimer.isFinished()) {
+            	this.alertMessage.present();
+            	this.startSecondaryTimer();
+         	}
+            else {
+                this.checkIfTimerFinished();
+            }
+        }, 1000);
+	}
+
+	checkIfSecondaryTimerFinished(){
+        setTimeout(() => {
+            if (this.secondaryTimer.isFinished()) {
+            	this.alertMessage.dismiss();
+            	this.goToScreenSaver();
+         	}
+            else {
+                this.checkIfSecondaryTimerFinished();
+            }
+        }, 1000);
+	}
 }

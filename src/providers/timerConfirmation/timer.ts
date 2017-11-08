@@ -14,13 +14,13 @@
 // ==============================================================================
 
 import { Injectable } from '@angular/core';
-
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 
 export class TimerComponent {
 
-    private durationOfTimer: 60;
+    private durationOfTimer: number;
 
     // Timer Members
     private seconds: number;
@@ -42,6 +42,7 @@ export class TimerComponent {
 
     // Initializes all of the timer's internal variables
     initTimer() {
+        this.durationOfTimer = 60;
         this.seconds = this.durationOfTimer;
         this.runTimer = false;
         this.hasStarted = false;
@@ -57,11 +58,18 @@ export class TimerComponent {
         this.hasStarted = true;
         this.runTimer = true;
         this.timerTick();
-        console.log('Timer Started');
     }
 
     restartTimer() {
     	this.secondsRemaining = this.durationOfTimer;
+        this.hasStarted = true;
+        this.hasFinished = false;
+        this.runTimer = true;
+        this.timerTick();
+    }
+
+    startSecondaryTimer() {
+        this.secondsRemaining = 10;
         this.hasStarted = true;
         this.hasFinished = false;
         this.runTimer = true;
@@ -85,12 +93,12 @@ export class TimerComponent {
         setTimeout(() => {
             if (!this.runTimer) { return; }
             this.secondsRemaining--;
+            console.log('Time Remaining: ' + this.secondsRemaining);
             if (this.secondsRemaining > 0) {
                 this.timerTick();
             }
             else {
                 this.hasFinished = true;
-                console.log('Timer Finished');
             }
         }, 1000);
     }

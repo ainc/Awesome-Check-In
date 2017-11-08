@@ -10,6 +10,9 @@ Description:
 11/07/17 - Brendan Thompson
 
 I) Summary of Work:
+	- Successfully Implementing Timer
+	- Implemented Alert for when Timer Finishes
+	- Implemented Secondary Timer for if Alert never answered
 
 II) Need to Implement:
 	*** "I Have an Idea" takes them to the google form to fill out
@@ -25,6 +28,7 @@ III) Ideas:
 	A) Embed Video or more info at Final Page
 
 IV) Status:
+	0) ScreenSaver draws attention to the device
 	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
 		- if entrepreneurship, asks which program they are interested in
 	2) Asks the user to select the team members who are expecting them
@@ -32,8 +36,103 @@ IV) Status:
 	3) Asks the user for basic info (Name, Email, Reason)
 	4) Sends a notification via Slack to the corresponding Awesome Inc team member
 	5) Instructs the user to have a seat on one of the couches
+	6) Prompts User about being Idle after 60s and gives 10s to continue before going to ScreenSaver
 
 V) Activity & Source Log
+
+- Successfully Implementing Timer
+	- Used code from last time I tried on 10/17/17
+	- Removed External Interface and made the data private members
+	- Commited clean version that starts the timer from when reach home page
+		- It is definitely not counting down properly
+		- Fixed: secondsRemaining was not being initialized properly
+	- Created checkIfTimerFinished() on pages
+		- Every second checks isFinished() from TimerComponent
+
+- Implemented Alert for when Timer Finishes
+	- https://ionicframework.com/docs/components/#alert-confirm
+	- Must pause secondary timer if home clicked
+
+- Implemented Secondary Timer for if Alert never answered
+	- Created Another Instance of timer
+	- Got message to dismiss after returning home
+
+- Copied Timer to every page
+	A) Import timer & AlertController
+		import { TimerComponent } from '../../providers/timerConfirmation/timer';
+		import { AlertController } from 'ionic-angular';
+	B) Create AlertMessage
+	    private alertMessage = this.alertCtrl.create({
+	        title: 'Idle Timer Expired',
+	        message: 'Are You Still There?',
+	        buttons: [
+	            {
+	                text: 'Home',
+	                handler: () => {
+	                	this.goToScreenSaver();
+	                }
+	            },
+	            {
+	                text: 'Continue',
+	                handler: () => {
+	                	this.idleTimer.restartTimer();
+	                }
+	            }
+	        ]
+	    });
+	C) Add Constructor Params
+		private idleTimer: TimerComponent,
+		private secondaryTimer: TimerComponent,
+		public alertCtrl: AlertController
+	D) Copy 6 functions from ScreenSaver & Idle Timer section
+		goToScreenSaver() {
+			this.stopTimers();
+			this.navCtrl.push(ScreenSaver);
+		}
+		startIdleTimer(){
+			this.idleTimer.initTimer();
+			this.idleTimer.startTimer();
+			this.checkIfTimerFinished();
+		}
+		startSecondaryTimer(){
+			this.secondaryTimer.initTimer();
+			this.secondaryTimer.startSecondaryTimer();
+			this.checkIfSecondaryTimerFinished();
+	    }
+	    stopTimers(){
+	    	this.idleTimer.pauseTimer();
+	    	this.secondaryTimer.pauseTimer();
+	    }
+		checkIfTimerFinished(){
+	        setTimeout(() => {
+	            if (this.idleTimer.isFinished()) {
+	            	this.alertMessage.present();
+	            	this.startSecondaryTimer();
+	         	}
+	            else {
+	                this.checkIfTimerFinished();
+	            }
+	        }, 1000);
+		}
+		checkIfSecondaryTimerFinished(){
+	        setTimeout(() => {
+	            if (this.secondaryTimer.isFinished()) {
+	            	this.alertMessage.dismiss();
+	            	this.goToScreenSaver();
+	         	}
+	            else {
+	                this.checkIfSecondaryTimerFinished();
+	            }
+	        }, 1000);
+		}
+	E) Start Timer in Constructor
+		this.startIdleTimer();
+	F) Stop Timers before each NavCtrl change
+		this.stopTimers();
+
+- Noticed Bug
+	- Every new page makes the timer go one second faster
+	- If on last page and time out, get like 6 AlertMessages
 
 ==================================================================================
 ==================================================================================

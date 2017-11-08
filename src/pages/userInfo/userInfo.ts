@@ -16,6 +16,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmPage } from '../confirm/confirm';
 import { ScreenSaver } from '../screensaver/screensaver';
 
+import { TimerComponent } from '../../providers/timerConfirmation/timer';
+import { AlertController } from 'ionic-angular';
+
 
 @Component({
 	selector: 'page-userInfo',
@@ -23,6 +26,26 @@ import { ScreenSaver } from '../screensaver/screensaver';
 })
 
 export class UserInfoPage {
+
+    private alertMessage = this.alertCtrl.create({
+        title: 'Idle Timer Expired',
+        message: 'Are You Still There?',
+        buttons: [
+            {
+                text: 'Home',
+                handler: () => {
+                	this.goToScreenSaver();
+                }
+            },
+            {
+                text: 'Continue',
+                handler: () => {
+                	this.idleTimer.restartTimer();
+                }
+            }
+        ]
+    });
+
 	public currentProgram;
 	public currentMemberFormGroup: FormGroup;
 	public currentUserInfoFormGroup : FormGroup;
@@ -80,7 +103,12 @@ export class UserInfoPage {
 
 	constructor(private navCtrl : NavController,
 				private navParameters : NavParams,
-				private userInfoFormBuilder : FormBuilder) {
+				private userInfoFormBuilder : FormBuilder,
+				private idleTimer: TimerComponent,
+				private secondaryTimer: TimerComponent,
+				public alertCtrl: AlertController) {
+
+		this.startIdleTimer();
 
 		this.currentProgram = this.navParameters.get('currentProgram');
 		this.currentMemberFormGroup = this.navParameters.get('memberFormGroup');
@@ -97,6 +125,7 @@ export class UserInfoPage {
 	// 		Passes All of the information so far provided by the user to the ConfirmPage
 	// ==============================================================================
 	submitUserInfo() {
+		this.stopTimers();
 		this.navCtrl.push(ConfirmPage, { currentProgram: this.currentProgram,
 										memberFormGroup: this.currentMemberFormGroup,
 										userInfoFormGroup: this.currentUserInfoFormGroup,
@@ -106,9 +135,52 @@ export class UserInfoPage {
 	}
 
 	// ==============================================================================
-	// 		ScreenSaver
+	// 		ScreenSaver & Idle Timer
 	// ==============================================================================
+
 	goToScreenSaver() {
+		this.stopTimers();
 		this.navCtrl.push(ScreenSaver);
+	}
+
+	startIdleTimer(){
+		this.idleTimer.initTimer();
+		this.idleTimer.startTimer();
+		this.checkIfTimerFinished();
+	}
+
+	startSecondaryTimer(){
+		this.secondaryTimer.initTimer();
+		this.secondaryTimer.startSecondaryTimer();
+		this.checkIfSecondaryTimerFinished();
+    }
+
+    stopTimers(){
+    	this.idleTimer.pauseTimer();
+    	this.secondaryTimer.pauseTimer();
+    }
+
+	checkIfTimerFinished(){
+        setTimeout(() => {
+            if (this.idleTimer.isFinished()) {
+            	this.alertMessage.present();
+            	this.startSecondaryTimer();
+         	}
+            else {
+                this.checkIfTimerFinished();
+            }
+        }, 1000);
+	}
+
+	checkIfSecondaryTimerFinished(){
+        setTimeout(() => {
+            if (this.secondaryTimer.isFinished()) {
+            	this.alertMessage.dismiss();
+            	this.goToScreenSaver();
+         	}
+            else {
+                this.checkIfSecondaryTimerFinished();
+            }
+        }, 1000);
 	}
 }

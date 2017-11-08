@@ -1,11 +1,14 @@
+// ========================================================================================================
+
 // TypeScript for TeamMemberPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 10/24/17 by Brendan Thompson
+// Updated: 11/07/17 by Brendan Thompson
 
 // Description:
 // 		Asks the user to fill out a FormGroup regarding which TEAMMEMBERS they are expecting to meet with
 // 		passes the completed form as a NavParam to userInfoPage which passes it to the confirm page
 
+// ========================================================================================================
 
 // ==============================================================================
 // 		Import Navigation and Form tools, Providers, and UserInfoPage
@@ -19,6 +22,9 @@ import { BoxCheckedValidator } from '../../providers/checkBoxValidators/boxCheck
 import { UserInfoPage } from '../userInfo/userInfo';
 import { ScreenSaver } from '../screensaver/screensaver';
 
+import { TimerComponent } from '../../providers/timerConfirmation/timer';
+import { AlertController } from 'ionic-angular';
+
 @Component({
 	selector: 'page-teamMembers',
 	templateUrl: 'teamMembers.html',
@@ -27,6 +33,26 @@ import { ScreenSaver } from '../screensaver/screensaver';
 export class TeamMembersPage {
 	public currentProgram;
 	public currentMemberFormGroup : FormGroup;
+
+    private alertMessage = this.alertCtrl.create({
+        title: 'Idle Timer Expired',
+        message: 'Are You Still There?',
+        buttons: [
+            {
+                text: 'Home',
+                handler: () => {
+                	this.goToScreenSaver();
+                }
+            },
+            {
+                text: 'Continue',
+                handler: () => {
+                	this.idleTimer.restartTimer();
+                }
+            }
+        ]
+    });
+
 	public TEAMMEMBERS = [
 		{id: 1, name:'Nobody Yet',
 			tag: 'Nobody',
@@ -127,7 +153,12 @@ export class TeamMembersPage {
 	constructor(private navCtrl : NavController,
 				private navParameters : NavParams,
 				private memberFormBuilder : FormBuilder,
-				private memberValidator : BoxCheckedValidator) {
+				private memberValidator : BoxCheckedValidator,
+				private idleTimer: TimerComponent,
+				private secondaryTimer: TimerComponent,
+				public alertCtrl: AlertController) {
+
+		this.startIdleTimer();
 
 		this.currentProgram = this.navParameters.get('currentProgram');
 
@@ -149,14 +180,58 @@ export class TeamMembersPage {
 	// 		Passes the currentProgram and currentFormGroup to the UserInfoPage
 	// ==============================================================================
 	submitTeamMembers(currentFormGroup) {
+		this.stopTimers();
 		this.navCtrl.push(UserInfoPage, { currentProgram: this.currentProgram,
 										memberFormGroup: currentFormGroup });
 	}
 
 	// ==============================================================================
-	// 		ScreenSaver
+	// 		ScreenSaver & Idle Timer
 	// ==============================================================================
+
 	goToScreenSaver() {
+		this.stopTimers();
 		this.navCtrl.push(ScreenSaver);
+	}
+
+	startIdleTimer(){
+		this.idleTimer.initTimer();
+		this.idleTimer.startTimer();
+		this.checkIfTimerFinished();
+	}
+
+	startSecondaryTimer(){
+		this.secondaryTimer.initTimer();
+		this.secondaryTimer.startSecondaryTimer();
+		this.checkIfSecondaryTimerFinished();
+    }
+
+    stopTimers(){
+    	this.idleTimer.pauseTimer();
+    	this.secondaryTimer.pauseTimer();
+    }
+
+	checkIfTimerFinished(){
+        setTimeout(() => {
+            if (this.idleTimer.isFinished()) {
+            	this.alertMessage.present();
+            	this.startSecondaryTimer();
+         	}
+            else {
+                this.checkIfTimerFinished();
+            }
+        }, 1000);
+	}
+
+	checkIfSecondaryTimerFinished(){
+        setTimeout(() => {
+            if (this.secondaryTimer.isFinished()) {
+            	this.alertMessage.dismiss();
+            	this.goToScreenSaver();
+         	}
+            else {
+                this.checkIfSecondaryTimerFinished();
+            }
+        }, 1000);
 	}
 }
