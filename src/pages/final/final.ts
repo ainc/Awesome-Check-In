@@ -1,6 +1,6 @@
 // TypeScript for FinalPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 11/07/17 by Brendan Thompson
+// Updated: 11/14/17 by Brendan Thompson
 
 // Description:
 // 		Thanks the user for checking in, Instructs them to have a seat, and provides a button to return home
@@ -20,8 +20,9 @@ import { TimerComponent } from '../../providers/timerConfirmation/timer';
 import { AlertController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-final',
-  templateUrl: 'final.html'
+    selector: 'page-final',
+    templateUrl: 'final.html',
+    providers: [TimerComponent]
 })
 export class FinalPage {
 	public currentProgram;
@@ -64,6 +65,7 @@ export class FinalPage {
 	// ==============================================================================
 
 	returnHome() {
+        this.stopTimers();
 		this.goToScreenSaver();
 	}
 

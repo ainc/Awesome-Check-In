@@ -2,10 +2,11 @@
 
 // TypeScript for Timer Object
 // Created: 10/17/17 by Brendan Thompson
-// Updated: 11/07/17 by Brendan Thompson
+// Updated: 11/14/17 by Brendan Thompson
 
 // Description:
-    // - Timer Object that counts down from 60
+    // Timer Object that counts down from 60
+    // Secondary Timer overwrites the first & counts down from 10
 
 // ==============================================================================
 
@@ -14,7 +15,6 @@
 // ==============================================================================
 
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 
@@ -30,6 +30,7 @@ export class TimerComponent {
     private hasFinished: boolean;
 
     constructor() {
+        // console.log('Constructed Timer');
     }
 
 //  ==============================================================================
@@ -93,7 +94,7 @@ export class TimerComponent {
         setTimeout(() => {
             if (!this.runTimer) { return; }
             this.secondsRemaining--;
-            console.log('Time Remaining: ' + this.secondsRemaining);
+            // console.log('Time Remaining: ' + this.secondsRemaining);
             if (this.secondsRemaining > 0) {
                 this.timerTick();
             }

@@ -1,6 +1,6 @@
 // TypeScript for ConfirmPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 11/07/17 by Brendan Thompson
+// Updated: 11/14/17 by Brendan Thompson
 
 // Description:
 // 		Asks the User to confirm their user info and selected team members
@@ -24,6 +24,7 @@ import { AlertController } from 'ionic-angular';
 @Component({
 	selector: 'page-confirm',
 	templateUrl: 'confirm.html',
+	providers: [TimerComponent]
 })
 
 export class ConfirmPage {

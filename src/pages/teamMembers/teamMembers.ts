@@ -28,6 +28,7 @@ import { AlertController } from 'ionic-angular';
 @Component({
 	selector: 'page-teamMembers',
 	templateUrl: 'teamMembers.html',
+	providers: [TimerComponent]
 })
 
 export class TeamMembersPage {

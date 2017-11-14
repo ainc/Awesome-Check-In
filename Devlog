@@ -7,6 +7,46 @@ Description:
 ==================================================================================
 ==================================================================================
 
+11/14/17 - Brendan Thompson
+
+I) Summary of Work:
+	- Fixed bug with Timer
+
+II) Need to Implement:
+	*** "I Have an Idea" takes them to the google form to fill out
+	- TEAMMEMBERS as separate json file
+		- Only displays important people based off selected program
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Ask to take picture and also send in the notification attachment
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
+
+III) Ideas:
+	A) Embed Video or more info at Final Page
+
+IV) Status:
+	0) ScreenSaver draws attention to the device
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+	6) Prompts User about being Idle after 60s and gives 10s to continue before going to ScreenSaver
+		- Timer doesn't stop when back button hit...
+
+V) Activity & Source Log
+
+- Minimized Bug with Timer
+	- Added TimerComponent to list of Providers for each page
+		- see A.5 of "Copied Timer to every page" from 11/07/17 Source Log
+	- Still doesn't stop timer when back button is hit
+
+==================================================================================
+==================================================================================
+
 11/07/17 - Brendan Thompson
 
 I) Summary of Work:
@@ -61,6 +101,8 @@ V) Activity & Source Log
 	A) Import timer & AlertController
 		import { TimerComponent } from '../../providers/timerConfirmation/timer';
 		import { AlertController } from 'ionic-angular';
+	A.5) Add TimerComponent to Providers list in Component declaration
+		providers: [TimerComponent]
 	B) Create AlertMessage
 	    private alertMessage = this.alertCtrl.create({
 	        title: 'Idle Timer Expired',

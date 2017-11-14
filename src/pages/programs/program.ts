@@ -1,6 +1,6 @@
 // TypeScript for ProgramPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 11/07/17 by Brendan Thompson
+// Updated: 11/14/17 by Brendan Thompson
 
 // Description:
 // 		Asks the user to specify which program brought them in
@@ -23,6 +23,7 @@ import { AlertController } from 'ionic-angular';
 @Component({
 	selector: 'page-program',
 	templateUrl: 'program.html',
+	providers: [TimerComponent]
 })
 
 export class ProgramPage {

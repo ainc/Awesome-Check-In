@@ -1,6 +1,6 @@
 // TypeScript for UserInfoPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 09/10/17 by Brendan Thompson
+// Updated: 11/14/17 by Brendan Thompson
 
 // Description:
 // 		Asks the User for name, email, and reason
@@ -23,6 +23,7 @@ import { AlertController } from 'ionic-angular';
 @Component({
 	selector: 'page-userInfo',
 	templateUrl: 'userInfo.html',
+	providers: [TimerComponent]
 })
 
 export class UserInfoPage {
