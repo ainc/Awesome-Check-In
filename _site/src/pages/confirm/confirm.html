@@ -1,0 +1,68 @@
+<!--
+	ConfirmPage In Check In App
+	Created: 09/01/17 by Brendan Thompson
+	Updated: 10/18/17 by Brendan Thompson
+
+	Description:
+		Asks the User to confirm their user info and selected team members
+		Sends the corresponding notifications
+ -->
+
+<ion-header>
+	<ion-navbar>
+    	<ion-title>
+     		{{ this.currentProgram.name }}
+    	</ion-title>
+  		<ion-buttons right>
+  			<button ion-button class="button-clear" (click)="goToScreenSaver()">
+    			<ion-icon name="home">
+    			</ion-icon>
+    		</button>
+  		</ion-buttons>
+  	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div>
+		<img src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
+     	<p>{{ this.currentProgram.description }}</p>
+	</div>
+
+	<h1>Please verify the following information:</h1>
+
+	<ion-item-group>
+		<ion-item><b>Personal Information:</b></ion-item>
+		<ion-item>
+			<h3>Name:</h3>
+			<p>{{ this.userName }}</p>
+		</ion-item>
+		<ion-item>
+			<h3>Email:</h3>
+			<p>{{ this.userEmail }}</p>
+		</ion-item>
+		<ion-item>
+			<h3>Reason:</h3>
+			<p>{{ this.userReason }}</p>
+		</ion-item>
+	</ion-item-group>
+
+
+	<br>
+
+	<!-- Automatic, Dynamic Version -->
+	<ion-item-group>
+		<ion-item><b>Selected Team Members:</b></ion-item>
+
+		<ng-container *ngFor="let member of TEAMMEMBERS">
+			<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get(member.tag).value">
+				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
+				<ion-thumbnail item-end>
+					<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+				</ion-thumbnail>
+			</ion-item>
+		</ng-container>
+	</ion-item-group>
+
+	<button ion-button block type="submit" (click)="submitCheckIn()">Submit</button>
+
+</ion-content>

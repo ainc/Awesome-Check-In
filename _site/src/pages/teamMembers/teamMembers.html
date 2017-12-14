@@ -1,0 +1,47 @@
+<!--
+	TeamMembersPage In Check In App
+	Created: 09/01/17 by Brendan Thompson
+	Updated: 10/18/17 by Brendan Thompson
+
+	Description:
+		Asks the user to fill out a FormGroup regarding which TEAMMEMBERS they are expecting to meet with
+		Passes the completed form as a NavParam to userInfoPage which passes it to the confirm page
+ -->
+
+<ion-header>
+	<ion-navbar>
+    	<ion-title>
+     		{{ this.currentProgram.name }}
+    	</ion-title>
+  		<ion-buttons right>
+  			<button ion-button class="button-clear" (click)="goToScreenSaver()">
+    			<ion-icon name="home">
+    			</ion-icon>
+    		</button>
+  		</ion-buttons>
+  	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div>
+		<img src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
+     	<p>{{ this.currentProgram.description }}</p>
+	</div>
+
+	<h1>Please select the team members that are expecting you</h1>
+
+	<form [formGroup]="currentMemberFormGroup">
+		<ion-item-group formGroupName="teamMembers">
+			<ion-item *ngFor="let member of TEAMMEMBERS">
+				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
+				<ion-checkbox color="red" formControlName="{{ member.tag }}"></ion-checkbox>
+				<ion-thumbnail item-end>
+					<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+				</ion-thumbnail>
+			</ion-item>
+		</ion-item-group>
+
+		<button ion-button block [disabled]="!currentMemberFormGroup.valid" (click)="submitTeamMembers(currentMemberFormGroup)">Submit</button>
+	</form>
+
+</ion-content>

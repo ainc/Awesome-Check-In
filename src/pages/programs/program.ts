@@ -1,6 +1,6 @@
 // TypeScript for ProgramPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 11/14/17 by Brendan Thompson
+// Updated: 12/13/17 by Brendan Thompson
 
 // Description:
 // 		Asks the user to specify which program brought them in
@@ -49,13 +49,13 @@ export class ProgramPage {
 	PROGRAMS = [
 		{id: 1, name:'I have an idea!',
 			description: 'Have an idea? Tell us about it! Promoting Entrepreneurship is the main goal of Awesome Inc!',
-			imageURL: 'assets/img/idea_logo.png',
+			imageURL: 'assets/img/check-in-icons/Idea-WHITE.png',
 			imageAlt: 'Idea Light-bulb Logo',
 			include: true
 		},
 		{id: 2, name:'Awesome Inc Fellowship',
 			description: 'A mentor-driven program designed to accelerate your high tech startup.',
-			imageURL: 'assets/img/fellowship_logo.png',
+			imageURL: 'assets/img/check-in-icons/Fellowship-WHITE.png',
 			imageAlt: 'Fellowship Logo',
 			include: true
 		},
@@ -149,5 +149,10 @@ export class ProgramPage {
                 this.checkIfSecondaryTimerFinished();
             }
         }, 1000);
+	}
+
+	backButtonAction(){
+		console.log('Back Button Pressed: Stopping Timer...');
+		this.stopTimers();
 	}
 }

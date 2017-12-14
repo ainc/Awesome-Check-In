@@ -1,29 +1,14 @@
 page-home {
+
+	// Body
 	img {
-		width:180px;
-		height:auto;
-	}
-
-	#headerImage {
-		width: 200px;
-		height:auto;
-		float:left;
-	}
-
-	h1 {
-		font-size: 250%;
+		height:120px;
+		width:auto;
+		padding-bottom: 20px;
 	}
 
 	h4 {
 		text-decoration-color: #b81124;
 		color: #b81124;
-	}
-
-	.cardHeader {
-		font-size: 150%;
-	}
-
-	.cardContentText {
-		font-size: 150%;
 	}
 }

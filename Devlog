@@ -7,10 +7,80 @@ Description:
 ==================================================================================
 ==================================================================================
 
+12/13/17 - Brendan Thompson
+
+I) Summary of Work:
+	- Continued Implementing new Design
+
+II) Need to Implement:
+	- New Design by Nathan Falls
+	*** "I Have an Idea" takes them to the google form to fill out
+	- TEAMMEMBERS as separate json file
+		- Only displays important people based off selected program
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Ask to take picture and also send in the notification attachment
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
+
+III) Ideas:
+	A) Embed Video or more info at Final Page
+
+IV) Status:
+
+- Continued Implementing New Design
+	- Exo google font
+		- https://fonts.google.com/specimen/Exo?selection.family=Exo:500,600,900
+		- Go to the website from the link: https://fonts.googleapis.com/css?family=Exo
+		- Download the woff2 font by visiting the url: https://fonts.gstatic.com/s/exo/v6/kA_pX0U45Eb7PbHijV1x2w.woff2
+		- Link to it in app/app.scss:
+			@font-face{
+				font-family: Exo;
+				src: url('../assets/fonts/exo-font.woff2') format('woff2');
+			}
+	- Formatted Pages in /app/app.scss
+		- Background Color
+		- Header Section
+			- Header Icon & Text
+			- Title
+		- Cards
+			- Header
+			- Content
+			- Color
+
+==================================================================================
+==================================================================================
+
+12/06/17 - Brendan Thompson
+
+I) Summary of Work:
+	- Started Implementing New Design
+	- Attempted to Timer issue with Back Buttons
+
+II) Need to Implement:
+	- New Design by Nathan Falls
+	*** "I Have an Idea" takes them to the google form to fill out
+	- TEAMMEMBERS as separate json file
+		- Only displays important people based off selected program
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Ask to take picture and also send in the notification attachment
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
+
+III) Ideas:
+	A) Embed Video or more info at Final Page
+
+IV) Status:
+
+==================================================================================
+==================================================================================
+
 11/14/17 - Brendan Thompson
 
 I) Summary of Work:
 	- Fixed bug with Timer
+	- Attempted to Timer issue with Back Buttons
 
 II) Need to Implement:
 	*** "I Have an Idea" takes them to the google form to fill out
@@ -39,10 +109,17 @@ IV) Status:
 
 V) Activity & Source Log
 
-- Minimized Bug with Timer
+- Fixed Bug with Timer
 	- Added TimerComponent to list of Providers for each page
 		- see A.5 of "Copied Timer to every page" from 11/07/17 Source Log
-	- Still doesn't stop timer when back button is hit
+
+- Attempted to Timer issue with Back Buttons
+	- https://stackoverflow.com/questions/41373774/how-to-handle-back-button-on-ionic-2
+		- have registerBackButtonAction in app.component.ts call the handler in each page
+		- each page handles the back button
+		- However, never appear to enter registerBackButtonAction()
+			- never see console.log()
+
 
 ==================================================================================
 ==================================================================================

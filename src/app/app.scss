@@ -16,6 +16,15 @@
 // automatically applied to the <body> element in the app.
 
 /*****************************************************
+						Fonts
+*****************************************************/
+
+@font-face{
+	font-family: Exo;
+	src: url('../assets/fonts/exo-font.woff2') format('woff2');
+}
+
+/*****************************************************
 						Colors
 *****************************************************/
 
@@ -24,13 +33,63 @@
 						Styles
 *****************************************************/
 
-ion-card-header {
-	text-align:center;
-	color:#b81124
+// Background
+.background {
+	background-color: #323232;
 }
 
-ion-card-content {
+// NavBar
+.headerImage {
+	width: 200px;
+	height: auto;
+}
+
+// Page Header
+.pageHeader {
+	text-align: center;
+	height: 110px;
+}
+
+.headerIcon {
+	width: auto;
+	height: 90%;
+}
+
+.pageTitle {
+	font-size: 400%;
+	color: #fff;
+	font-family: Exo;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+// Card Header
+.cardHeader {
 	text-align:center;
+	font-size: 150%;
+	color: #323232;
+	font-family: Exo;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+// Card Content
+.cardContent {
+	text-align:center;
+	height: 100%;
+	color: #323232;
+	font-family: Exo;
+	font-weight: 500;
+	text-transform: uppercase;
+	font-size: 100%;
+}
+
+.card-style {
+	border-radius: 20px;
+}
+
+.card-red {
+	background: #ED3742;
 }
 
 img {
@@ -38,12 +97,20 @@ img {
 	margin: 0 auto;
 }
 
-p {
-	text-align:center;
-}
-
 h1 {
 	text-align:center;
+	font-size: 500%;
+	color: #fff;
+	font-family: Exo;
+	font-weight: 600;
+}
+
+p {
+	text-align:center;
+	color: #fff;
+	font-family: Exo;
+	font-weight: 500;
+	font-size: 200%;
 }
 
 

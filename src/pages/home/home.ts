@@ -77,7 +77,7 @@ export class HomePage {
 			id: 7,
 			name:'Awesome Inc U',
 			description: 'The Bootcamps and Classes for both youth and adults',
-			imageURL: 'assets/img/AIncU_logo.png',
+			imageURL: 'assets/img/check-in-icons/Tech-RED.png',
 			imageAlt: 'AInc-U Logo'
 		};
 
@@ -94,8 +94,8 @@ export class HomePage {
 			id: 8,
 			name:'The Workspace',
 			description: 'Rent a desk or space for events, meetings, and more',
-			imageURL: 'assets/img/Icon_Coworking.png',
-			imageAlt: 'Coworking Logo'
+			imageURL: 'assets/img/check-in-icons/Workspace-RED.png',
+			imageAlt: 'Workspace Logo'
 		};
 
 		this.stopTimers();
@@ -111,7 +111,7 @@ export class HomePage {
 			id: 9,
 			name:'Planned Meeting',
 			description: 'Someone at Awesome Inc is expecting to meet with you',
-			imageURL: 'assets/img/Icon_Meeting.png',
+			imageURL: 'assets/img/check-in-icons/Meeting-RED.png',
 			imageAlt: 'Meeting'
 		};
 
@@ -167,5 +167,10 @@ export class HomePage {
                 this.checkIfSecondaryTimerFinished();
             }
         }, 1000);
+	}
+
+	backButtonAction(){
+		console.log('Back Button Pressed: Stopping Timer...');
+		this.stopTimers();
 	}
 }
