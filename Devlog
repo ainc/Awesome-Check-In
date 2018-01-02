@@ -7,6 +7,57 @@ Description:
 ==================================================================================
 ==================================================================================
 
+01/03/18 - Brendan Thompson
+
+I) Summary of Work:
+	- Removed Navbar
+
+II) Need to Implement:
+	- New Design by Nathan Falls
+	*** "I Have an Idea" takes them to the google form to fill out
+		- Need Access to the Form to Embed it
+	- TEAMMEMBERS as separate json file
+		- Only displays important people based off selected program
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Ask to take picture and also send in the notification attachment
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
+	- Home/Cancel/Exit Button
+
+III) Ideas:
+
+IV) Status:
+	- Removed Navbar
+		- Just commented it out for now
+
+==================================================================================
+==================================================================================
+
+12/13/17 - Brendan Thompson
+
+I) Summary of Work:
+	- Continued Implementing new Design
+
+II) Need to Implement:
+	- New Design by Nathan Falls
+	*** "I Have an Idea" takes them to the google form to fill out
+		- Need Access to the Form to Embed it
+	- TEAMMEMBERS as separate json file
+		- Only displays important people based off selected program
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Ask to take picture and also send in the notification attachment
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
+
+III) Ideas:
+
+IV) Status:
+
+==================================================================================
+==================================================================================
+
 12/13/17 - Brendan Thompson
 
 I) Summary of Work:
