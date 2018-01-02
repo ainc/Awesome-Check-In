@@ -27,6 +27,8 @@ import { TeamMembersPage } from '../pages/teamMembers/teamMembers';
 import { UserInfoPage } from '../pages/userInfo/userInfo';
 import { ConfirmPage } from '../pages/confirm/confirm';
 import { FinalPage } from '../pages/final/final';
+import { IdeaForm } from '../pages/ideaForm/ideaForm';
+import { FinalAfterFormPage } from '../pages/finalAfterForm/finalAfterForm';
 
 // =======================================================================
 //     Modules & Providers
@@ -48,7 +50,9 @@ import { TimerComponent } from '../providers/timerConfirmation/timer';
     TeamMembersPage,
     UserInfoPage,
     ConfirmPage,
-    FinalPage
+    FinalPage,
+    IdeaForm,
+    FinalAfterFormPage
   ],
 
   // Import Modules
@@ -73,7 +77,9 @@ import { TimerComponent } from '../providers/timerConfirmation/timer';
     TeamMembersPage,
     UserInfoPage,
     ConfirmPage,
-    FinalPage
+    FinalPage,
+    IdeaForm,
+    FinalAfterFormPage
   ],
 
   // Providers
