@@ -1,0 +1,119 @@
+<!--
+	Final Page In Check In App After Filling Idea Form
+	Created: 01/03/18 by Brendan Thompson
+	Updated: 01/03/18 by Brendan Thompson
+
+	Description:
+		Thanks the user for checking in, Instructs them to have a seat, and provides a button to return home
+ -->
+
+<ion-header>
+  <!-- <ion-navbar hideBackButton>
+    <ion-title>
+
+    </ion-title>
+  </ion-navbar> -->
+</ion-header>
+
+<ion-content padding class="background">
+	<ion-row class="pageHeader">
+		<ion-col col-1 offset-3>
+			<img class="headerIcon" src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
+		</ion-col>
+		<ion-col col-5>
+			<h2 class="pageTitle">Form Submitted!</h2>
+		</ion-col>
+	</ion-row>
+	<h1>Your Idea Will be Reviewed by the Team</h1>
+
+	<p>Thank you very much for checking in here at Awesome Inc! The appropriate team members have been notified of your idea.</p>
+
+	<p>After reviewing your form, an Awesome Inc team member will get in contact with you. Thanks for coming in and have a great rest of the day!</p>
+
+	<ion-grid id="core-values">
+
+	<ion-row id="CV-Header">
+		<ion-col col-3>
+			<h2>Core Values</h2>
+		</ion-col>
+	</ion-row>
+
+	<ion-row>
+		<ion-col col-3>
+			<ion-card>
+				<ion-card-header>
+					<p>Core Value #1:<br>
+					Be Good</p>
+				</ion-card-header>
+				<ion-card-content class="imgWrap">
+					<img src="/assets/img/core-values/cv1_icon.png" alt="core value number 1: be good" >
+					<p class="fade-out description">
+						<label class="CV">
+							Live with honesty and integrity<br><br>
+							Serve Others
+						</label>
+					</p>
+				</ion-card-content>
+			</ion-card>
+		</ion-col>
+
+		<ion-col col-3>
+			<ion-card>
+				<ion-card-header>
+					<p>Core Value #2:<br>
+					Be Excellent</p>
+				</ion-card-header>
+				<ion-card-content class="imgWrap">
+					<img src="/assets/img/core-values/cv2_icon.png" alt="core value number 2: be excellent">
+					<p class="description">
+						<label class="CV">
+							Be a Winner<br><br>
+							Execute
+						</label>
+					</p>
+				</ion-card-content>
+			</ion-card>
+		</ion-col>
+
+		<ion-col col-3>
+			<ion-card>
+				<ion-card-header>
+					<p>Core Value #3:<br>
+					Be a Friend</p>
+				</ion-card-header>
+				<ion-card-content class="imgWrap">
+					<img src="/assets/img/core-values/cv3_icon.png" alt="core value number 3: be a friend">
+					<p class="description">
+						<label class="CV">
+							Bring the Fun<br><br>
+							Nothing is more awesome than people
+						</label>
+					</p>
+				</ion-card-content>
+			</ion-card>
+		</ion-col>
+
+		<ion-col col-3>
+			<ion-card>
+				<ion-card-header>
+					<p>Core Value #4:<br>
+					Be You</p>
+				</ion-card-header>
+				<ion-card-content class="imgWrap">
+					<img src="/assets/img/core-values/cv4_icon.png" alt="core value number 4: be you">
+					<p class="description">
+						<label class="CV">
+							Forget 'em, do your thing<br><br>
+							Game will recognize game
+						</label>
+					</p>
+				</ion-card-content>
+			</ion-card>
+		</ion-col>
+
+	</ion-row>
+	</ion-grid>
+
+	<button ion-button block type="submit" (click)="returnHome()">Return Home</button>
+
+</ion-content>

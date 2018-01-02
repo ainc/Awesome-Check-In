@@ -11,6 +11,7 @@ Description:
 
 I) Summary of Work:
 	- Removed Navbar
+	- Embedded "I Have an Idea" form
 
 II) Need to Implement:
 	- New Design by Nathan Falls
@@ -30,6 +31,10 @@ III) Ideas:
 IV) Status:
 	- Removed Navbar
 		- Just commented it out for now
+	- Embedded "I Have an Idea" form
+		- Is its own page
+		- Goes straight to FinalAfterForm Page
+			- Needed a special Final page saying thanks, a team member will review it and get back to you, and have a nice day
 
 ==================================================================================
 ==================================================================================

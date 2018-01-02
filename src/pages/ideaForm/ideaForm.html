@@ -1,0 +1,32 @@
+<!--
+	Idea Form in Check In App
+	Created: 01/03/18 by Brendan Thompson
+	Updated: 01/03/18 by Brendan Thompson
+
+	Description:
+		Embedded Google Form for "I Have an Idea"
+ -->
+
+<ion-header>
+</ion-header>
+
+<ion-content class="background">
+	<ion-row class="pageHeader">
+		<ion-col col-1 offset-3>
+			<img class="headerIcon" src="assets/img/check-in-icons/Idea-WHITE.png" alt="Idea Light-bulb Logo">
+		</ion-col>
+		<ion-col col-5>
+			<h2 class="pageTitle">I Have an Idea!</h2>
+		</ion-col>
+	</ion-row>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col col-4 offset-4>
+				<iframe src="https://docs.google.com/spreadsheet/embeddedform?formkey=dHdwNnE1SXpRZXFCNDJIejcwLTBfblE6MQ" width="540" height="1704" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+
+				<button ion-button block type="submit" (click)="formSubmitted()">Continue</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
