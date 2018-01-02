@@ -15,6 +15,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { TeamMembersPage } from '../teamMembers/teamMembers';
+import { IdeaForm } from '../ideaForm/ideaForm';
 import { ScreenSaver } from '../screensaver/screensaver';
 
 import { TimerComponent } from '../../providers/timerConfirmation/timer';
@@ -98,7 +99,12 @@ export class ProgramPage {
 	// ==============================================================================
 	goToProgram(program) {
 		this.stopTimers();
-		this.navCtrl.push(TeamMembersPage, { currentProgram: program });
+		if (program.name == 'I have an idea!'){
+			this.navCtrl.push(IdeaForm);
+		}
+		else {
+			this.navCtrl.push(TeamMembersPage, { currentProgram: program });
+		}
 	}
 
 	// ==============================================================================

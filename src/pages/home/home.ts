@@ -32,7 +32,11 @@ import { AlertController } from 'ionic-angular';
 })
 
 export class HomePage {
-    private alertMessage = this.alertCtrl.create({
+
+    // ==============================================================================
+	// 		Form For Idle Timer
+	// ==============================================================================
+	private alertMessage = this.alertCtrl.create({
         title: 'Idle Timer Expired',
         message: 'Are You Still There?',
         buttons: [
