@@ -37,6 +37,40 @@
 
 	<form [formGroup]="currentMemberFormGroup">
 		<ion-item-group formGroupName="teamMembers">
+			<!-- <ion-item *ngFor="let member of TEAMMEMBERS">
+				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
+				<ion-checkbox color="red" formControlName="{{ member.tag }}"></ion-checkbox>
+				<ion-thumbnail item-end>
+					<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+				</ion-thumbnail>
+			</ion-item>
+		</ion-item-group> -->
+
+			<ion-grid>
+				<ion-row>
+					<ion-col col-4 col-sm>
+						<ion-card class="card-style card-grey">
+							<ion-card-content class="cardContent">
+								<img src="assets/img/TeamMembers/emilywehrle_wall.png" alt="Emily Wehrle" class="teamMemberIcon">
+								<h1>Emily Wehrle</h1>
+								<p>Director Of Operations</p>
+							</ion-card-content>
+						</ion-card>
+					</ion-col>
+
+				</ion-row>
+			</ion-grid>
+
+
+		</ion-item-group>
+	</form>
+
+
+
+	<button ion-button block [disabled]="!currentMemberFormGroup.valid" (click)="submitTeamMembers(currentMemberFormGroup)">Submit</button>
+
+	<!-- <form [formGroup]="currentMemberFormGroup">
+		<ion-item-group formGroupName="teamMembers">
 			<ion-item *ngFor="let member of TEAMMEMBERS">
 				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
 				<ion-checkbox color="red" formControlName="{{ member.tag }}"></ion-checkbox>
@@ -47,6 +81,6 @@
 		</ion-item-group>
 
 		<button ion-button block [disabled]="!currentMemberFormGroup.valid" (click)="submitTeamMembers(currentMemberFormGroup)">Submit</button>
-	</form>
+	</form> -->
 
 </ion-content>
