@@ -1,14 +1,20 @@
 page-teamMembers {
 	.teamMemberIcon{
 		border-radius: 50%;
-	}
-
-	img {
+		padding-top: 2%;
 		width:25%;
 		height:auto;
 	}
 
-	ion-item {
-		background-color: rgb(184, 184, 184);
+	.submitButton {
+		border-radius: 20px;
+		height:120px;
+		font-size: 500%;
+		font-family: Exo;
+		font-weight: 600;
+	}
+
+	.nobodyCard{
+		padding-top: 5%;
 	}
 }

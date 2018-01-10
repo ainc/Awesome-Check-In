@@ -2,7 +2,7 @@
 
 // TypeScript for TeamMemberPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 11/07/17 by Brendan Thompson
+// Updated: 01/09/17 by Brendan Thompson
 
 // Description:
 // 		Asks the user to fill out a FormGroup regarding which TEAMMEMBERS they are expecting to meet with
@@ -55,19 +55,19 @@ export class TeamMembersPage {
     });
 
 	public TEAMMEMBERS = [
-		{id: 1, name:'Nobody Yet',
-			tag: 'Nobody',
-			description: 'Set up a meeting',
-			team: 'Team Alpha',
-			slackUsername: '#checkin-app',
-			imageURL: 'assets/img/TeamMembers/teamMember.png',
-			imageAlt: 'Team Member',
-			entrepreurship: true,
-			technology: true,
-			workspace: true,
-			idea: true,
-			meeting: false
-		},
+		// {id: 1, name:'Nobody Yet',
+		// 	tag: 'Nobody',
+		// 	description: 'Set up a meeting',
+		// 	team: 'Team Alpha',
+		// 	slackUsername: '#checkin-app',
+		// 	imageURL: 'assets/img/TeamMembers/teamMember.png',
+		// 	imageAlt: 'Team Member',
+		// 	entrepreurship: true,
+		// 	technology: true,
+		// 	workspace: true,
+		// 	idea: true,
+		// 	meeting: false
+		// },
 		{id: 2, name:'Emily Wehrle',
 			tag: 'Emily',
 			description: 'Director of Operations',
@@ -176,6 +176,20 @@ export class TeamMembersPage {
 		});
 	}
 
+	cardClicked(selectedTeamMember){
+		var currentTeamMember = this.currentMemberFormGroup.get('teamMembers').get(selectedTeamMember);
+		if (currentTeamMember.value){
+			this.currentMemberFormGroup.get('teamMembers').get(selectedTeamMember).setValue(false);
+		}
+		else {
+			this.currentMemberFormGroup.get('teamMembers').get(selectedTeamMember).setValue(true);
+		}
+	}
+
+	getSelectStatus(selectedTeamMember){
+		var currentTeamMember = this.currentMemberFormGroup.get('teamMembers').get(selectedTeamMember);
+		return currentTeamMember.value;
+	}
 
 	// ==============================================================================
 	// 		Passes the currentProgram and currentFormGroup to the UserInfoPage

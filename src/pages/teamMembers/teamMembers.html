@@ -1,7 +1,7 @@
 <!--
 	TeamMembersPage In Check In App
 	Created: 09/01/17 by Brendan Thompson
-	Updated: 01/03/18 by Brendan Thompson
+	Updated: 01/09/18 by Brendan Thompson
 
 	Description:
 		Asks the user to fill out a FormGroup regarding which TEAMMEMBERS they are expecting to meet with
@@ -9,16 +9,15 @@
  -->
 
 <ion-header>
-	<!-- <ion-navbar>
+	<ion-navbar>
     	<ion-title>
     	</ion-title>
   		<ion-buttons right>
   			<button ion-button class="button-clear" (click)="goToScreenSaver()">
-    			<ion-icon name="home">
-    			</ion-icon>
+    			<ion-icon name="home"></ion-icon>
     		</button>
   		</ion-buttons>
-  	</ion-navbar> -->
+  	</ion-navbar>
 </ion-header>
 
 <ion-content padding class="background">
@@ -35,40 +34,7 @@
 
 	<h1>Please select the team members that are expecting you</h1>
 
-	<form [formGroup]="currentMemberFormGroup">
-		<ion-item-group formGroupName="teamMembers">
-			<!-- <ion-item *ngFor="let member of TEAMMEMBERS">
-				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
-				<ion-checkbox color="red" formControlName="{{ member.tag }}"></ion-checkbox>
-				<ion-thumbnail item-end>
-					<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
-				</ion-thumbnail>
-			</ion-item>
-		</ion-item-group> -->
-
-			<ion-grid>
-				<ion-row>
-					<ion-col col-4 col-sm>
-						<ion-card class="card-style card-grey">
-							<ion-card-content class="cardContent">
-								<img src="assets/img/TeamMembers/emilywehrle_wall.png" alt="Emily Wehrle" class="teamMemberIcon">
-								<h1>Emily Wehrle</h1>
-								<p>Director Of Operations</p>
-							</ion-card-content>
-						</ion-card>
-					</ion-col>
-
-				</ion-row>
-			</ion-grid>
-
-
-		</ion-item-group>
-	</form>
-
-
-
-	<button ion-button block [disabled]="!currentMemberFormGroup.valid" (click)="submitTeamMembers(currentMemberFormGroup)">Submit</button>
-
+	<!-- Original Checklist -->
 	<!-- <form [formGroup]="currentMemberFormGroup">
 		<ion-item-group formGroupName="teamMembers">
 			<ion-item *ngFor="let member of TEAMMEMBERS">
@@ -82,5 +48,36 @@
 
 		<button ion-button block [disabled]="!currentMemberFormGroup.valid" (click)="submitTeamMembers(currentMemberFormGroup)">Submit</button>
 	</form> -->
+
+	<!-- New Layout -->
+	<form [formGroup]="currentMemberFormGroup">
+		<ion-item-group formGroupName="teamMembers">
+		<ion-row>
+			<ion-col col-4 *ngFor="let member of TEAMMEMBERS" class="">
+			<ion-card (click)="cardClicked(member.tag)" class="card-style" [ngClass]="getSelectStatus(member.tag) ? 'card-red' : 'card-grey'">
+				<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+				<h1>{{ member.name }}</h1>
+				<p>{{ member.description }}</p>
+			</ion-card>
+			</ion-col>
+		</ion-row>
+		</ion-item-group>
+
+
+		<!-- Nobody & Submit -->
+		<ion-row>
+			<ion-col col-6>
+				<ion-card class="card-style" style="height:115px;" (click)="cardClicked('Nobody')" class="card-style" [ngClass]="getSelectStatus('Nobody') ? 'card-red' : 'card-grey'">
+					<div class="nobodyCard">
+						<h1>NOBODY YET</h1>
+						<p>Set up a meeting</p>
+					</div>
+				</ion-card>
+			</ion-col>
+			<ion-col col-6>
+				<button ion-button block class="submitButton" [disabled]="!currentMemberFormGroup.valid" (click)="submitTeamMembers(currentMemberFormGroup)">Submit</button>
+			</ion-col>
+		</ion-row>
+	</form>
 
 </ion-content>

@@ -7,6 +7,96 @@ Description:
 ==================================================================================
 ==================================================================================
 
+01/10/18 - Brendan Thompson
+
+I) Summary of Work:
+	- Finished TeamMembersPage
+
+II) Need to Implement:
+	- New Design by Nathan Falls
+		1) Team Members Form
+		2) User Info Form
+		3) Confirm Page
+		4) Final Page
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Home/Cancel/Exit Button
+		- Bring back the navbar?
+
+III) Ideas:
+	- Ask to take picture and also send in the notification attachment
+		- Ionic should be able to handle this pretty easily
+
+IV) Status:
+
+- Finished TeamMembersPage
+	- Managed Card Color for selected Team Members
+		- Created Function to get selected status
+			getSelectStatus(selectedTeamMember){
+				var currentTeamMember = this.currentMemberFormGroup.get('teamMembers').get(selectedTeamMember);
+				return currentTeamMember.value;
+			}
+		- Used Ternary operator with ngClass within the <ion-card
+			- http://technotip.com/5213/ngclass-directive-ionic-2/
+			- [ngClass]="getSelectStatus(member.tag) ? 'card-red' : 'card-grey'"
+	- Created NOBODY YET card
+	- Formatted Submit button
+
+
+
+==================================================================================
+==================================================================================
+
+01/09/18 - Brendan Thompson
+
+I) Summary of Work:
+	- Modified old teammembers checkbox Form into Card Design
+	- Got Clicking on Card to trigger the Checkbox
+	- Began setting card color based on value
+
+II) Need to Implement:
+	- New Design by Nathan Falls
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Home/Cancel/Exit Button
+		- Bring back the navbar?
+
+III) Ideas:
+	- Ask to take picture and also send in the notification attachment
+		- would be fun
+		- Ionic should be able to handle this pretty smoothly
+
+IV) Status:
+
+- Modified old teammembers checkbox Form into Card Design
+
+- Got Clicking on Card to trigger the Checkbox
+	- https://stackoverflow.com/questions/44299919/ionic-angular-triggering-checkbox-from-card-click
+	1) Call New fn (click)="cardClicked(member.tag)"
+	2) Create new fn
+		"
+		cardClicked(selectedTeamMember){cardClicked(selectedTeamMember){
+			var currentTeamMember = this.currentMemberFormGroup.get('teamMembers').get(selectedTeamMember);
+			if (currentTeamMember.value){
+				this.currentMemberFormGroup.get('teamMembers').get(selectedTeamMember).setValue(false);
+			}
+			else {
+				this.currentMemberFormGroup.get('teamMembers').get(selectedTeamMember).setValue(true);
+			}
+		}
+		"
+
+- Began setting card color based on value
+	- using ng-class https://docs.angularjs.org/api/ng/directive/ngClass
+	*** Not Yet Working
+	"
+	<ion-card (click)="cardClicked(member.tag)" class="card-style card-grey" ng-class="{card-red : currentMemberFormGroup.get('teamMembers').get(member.tag).value }">
+	"
+
+
+==================================================================================
+==================================================================================
+
 01/03/18 - Brendan Thompson
 
 I) Summary of Work:
@@ -16,10 +106,9 @@ I) Summary of Work:
 
 II) Need to Implement:
 	- New Design by Nathan Falls
-	*** "I Have an Idea" takes them to the google form to fill out
-		- Need Access to the Form to Embed it
 	- TEAMMEMBERS as separate json file
 		- Only displays important people based off selected program
+		- Not going to do this since fancy new teamMembersPage
 	- Programs as separate json file
 	- Integrate with ZOHO
 	- Ask to take picture and also send in the notification attachment
@@ -43,6 +132,7 @@ IV) Status:
 	- Options for managing selections:
 		- https://stackoverflow.com/questions/18797364/select-multiple-list-items-using-angularjs
 			- ng-click
+			- Example: http://jsfiddle.net/djXVt/1/
 
 
 ==================================================================================
