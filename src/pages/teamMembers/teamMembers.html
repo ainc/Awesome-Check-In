@@ -1,7 +1,7 @@
 <!--
 	TeamMembersPage In Check In App
 	Created: 09/01/17 by Brendan Thompson
-	Updated: 01/09/18 by Brendan Thompson
+	Updated: 01/10/18 by Brendan Thompson
 
 	Description:
 		Asks the user to fill out a FormGroup regarding which TEAMMEMBERS they are expecting to meet with
@@ -51,6 +51,8 @@
 
 	<!-- New Layout -->
 	<form [formGroup]="currentMemberFormGroup">
+
+		<!-- Team Members -->
 		<ion-item-group formGroupName="teamMembers">
 		<ion-row>
 			<ion-col col-4 *ngFor="let member of TEAMMEMBERS" class="">

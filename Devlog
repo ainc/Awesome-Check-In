@@ -10,14 +10,15 @@ Description:
 01/10/18 - Brendan Thompson
 
 I) Summary of Work:
-	- Finished TeamMembersPage
+	- Finished New TeamMembersPage
+	- Brought back navbar
 
 II) Need to Implement:
+	*** I Have An Idea form not working on iPad
 	- New Design by Nathan Falls
-		1) Team Members Form
-		2) User Info Form
-		3) Confirm Page
-		4) Final Page
+		- User Info Form
+		- Confirm Page
+		- Final Page
 	- Programs as separate json file
 	- Integrate with ZOHO
 	- Home/Cancel/Exit Button
@@ -42,7 +43,7 @@ IV) Status:
 	- Created NOBODY YET card
 	- Formatted Submit button
 
-
+- Brought back navbar
 
 ==================================================================================
 ==================================================================================
