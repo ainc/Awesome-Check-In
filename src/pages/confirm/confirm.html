@@ -35,39 +35,113 @@
 
 	<h1>Please verify the following information:</h1>
 
-	<ion-item-group>
-		<ion-item><b>Personal Information:</b></ion-item>
-		<ion-item>
-			<h3>Name:</h3>
-			<p>{{ this.userName }}</p>
-		</ion-item>
-		<ion-item>
-			<h3>Email:</h3>
-			<p>{{ this.userEmail }}</p>
-		</ion-item>
-		<ion-item>
-			<h3>Reason:</h3>
-			<p>{{ this.userReason }}</p>
-		</ion-item>
-	</ion-item-group>
-
-
-	<br>
-
-	<!-- Automatic, Dynamic Version -->
-	<ion-item-group>
-		<ion-item><b>Selected Team Members:</b></ion-item>
-
-		<ng-container *ngFor="let member of TEAMMEMBERS">
-			<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get(member.tag).value">
-				<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
-				<ion-thumbnail item-end>
-					<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
-				</ion-thumbnail>
+	<!-- Original Version -->
+		<!-- User Info -->
+		<!-- <ion-item-group>
+			<ion-item><b>Personal Information:</b></ion-item>
+			<ion-item>
+				<h3>Name:</h3>
+				<p>{{ this.userName }}</p>
 			</ion-item>
-		</ng-container>
-	</ion-item-group>
+			<ion-item>
+				<h3>Email:</h3>
+				<p>{{ this.userEmail }}</p>
+			</ion-item>
+			<ion-item>
+				<h3>Reason:</h3>
+				<p>{{ this.userReason }}</p>
+			</ion-item>
+		</ion-item-group> -->
 
-	<button ion-button block type="submit" (click)="submitCheckIn()">Submit</button>
+		<!-- <br> -->
+
+		<!-- Team Members -->
+		<!-- <ion-item-group>
+			<ion-item><b>Selected Team Members:</b></ion-item>
+
+			<ng-container *ngFor="let member of TEAMMEMBERS">
+				<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get(member.tag).value">
+					<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
+					<ion-thumbnail item-end>
+						<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+					</ion-thumbnail>
+				</ion-item>
+			</ng-container>
+		</ion-item-group>
+
+		<button ion-button block type="submit" (click)="submitCheckIn()">Submit</button> -->
+
+
+
+	<!-- New Version -->
+	<ion-grid>
+		<ion-row>
+
+			<!-- User Info -->
+			<ion-col col-8>
+				<h1>Personal Information:</h1>
+				<ion-list>
+					<ion-card class="card-style card-grey">
+					<ion-grid>
+						<ion-row>
+							<ion-col col-2>
+								<p class="userInfoText">NAME:</p>
+							</ion-col>
+							<ion-col col-10>
+								<p class="userInfoText">{{ this.userName }}</p>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+					</ion-card>
+
+					<ion-card class="card-style card-grey">
+					<ion-grid>
+						<ion-row>
+							<ion-col col-2>
+								<p class="userInfoText">EMAIL:</p>
+							</ion-col>
+							<ion-col col-10>
+								<p class="userInfoText">{{ this.userEmail }}</p>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+					</ion-card>
+
+					<ion-card class="card-style card-grey">
+					<ion-grid>
+						<ion-row>
+							<ion-col col-2>
+								<p class="userInfoText">REASON:</p>
+							</ion-col>
+							<ion-col col-10>
+								<p class="userInfoText">{{ this.userReason }}</p>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+					</ion-card>
+				</ion-list>
+			</ion-col>
+
+			<!-- Team Members -->
+			<ion-col col-4>
+				<h1>Selected Team Members:</h1>
+
+				<ion-item-group>
+				<ion-row>
+					<ion-col col-6 *ngFor="let member of TEAMMEMBERS">
+					<ion-card class="card-style card-grey" *ngIf="currentMemberFormGroup.get('teamMembers').get(member.tag).value">
+						<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+						<h1>{{ member.name }}</h1>
+						<p>{{ member.description }}</p>
+					</ion-card>
+					</ion-col>
+				</ion-row>
+				</ion-item-group>
+
+			</ion-col>
+
+			<button ion-button block class="submitButton" type="submit" (click)="submitCheckIn()">Submit</button>
+		</ion-row>
+	</ion-grid>
 
 </ion-content>

@@ -55,7 +55,7 @@
 		<!-- Team Members -->
 		<ion-item-group formGroupName="teamMembers">
 		<ion-row>
-			<ion-col col-4 *ngFor="let member of TEAMMEMBERS" class="">
+			<ion-col col-4 *ngFor="let member of TEAMMEMBERS">
 			<ion-card (click)="cardClicked(member.tag)" class="card-style" [ngClass]="getSelectStatus(member.tag) ? 'card-red' : 'card-grey'">
 				<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
 				<h1>{{ member.name }}</h1>

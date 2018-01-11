@@ -12,7 +12,8 @@ Description:
 I) Summary of Work:
 	- Finished New TeamMembersPage
 	- Brought back navbar
-	- Finished UserInfoPage
+	- Finished New UserInfoPage
+	- Started New Confirm Page
 
 II) Need to Implement:
 	*** I Have An Idea form not working on iPad
@@ -47,7 +48,11 @@ IV) Status:
 
 - Brought back navbar
 
-- Finished UserInfoPage
+- Finished New UserInfoPage
+
+- Started New Confirm Page
+	- User Info layout from UserInfoPage
+	- TeamMembers col size not dynamic
 
 ==================================================================================
 ==================================================================================
