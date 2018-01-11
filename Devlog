@@ -12,6 +12,7 @@ Description:
 I) Summary of Work:
 	- Finished New TeamMembersPage
 	- Brought back navbar
+	- Finished UserInfoPage
 
 II) Need to Implement:
 	*** I Have An Idea form not working on iPad
@@ -23,6 +24,7 @@ II) Need to Implement:
 	- Integrate with ZOHO
 	- Home/Cancel/Exit Button
 		- Bring back the navbar?
+	- Timer Back Button Bug
 
 III) Ideas:
 	- Ask to take picture and also send in the notification attachment
@@ -44,6 +46,8 @@ IV) Status:
 	- Formatted Submit button
 
 - Brought back navbar
+
+- Finished UserInfoPage
 
 ==================================================================================
 ==================================================================================

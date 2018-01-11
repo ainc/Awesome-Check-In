@@ -1,3 +1,18 @@
 page-userInfo {
+	.userInfoText {
+		border-radius: 20px;
+		height:120px;
+		font-size: 400%;
+		font-family: Exo;
+		font-weight: 600;
+		text-align: left;
+	}
 
+	.submitButton {
+		border-radius: 20px;
+		height:120px;
+		font-size: 500%;
+		font-family: Exo;
+		font-weight: 600;
+	}
 }

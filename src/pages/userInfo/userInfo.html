@@ -33,7 +33,8 @@
 
 	<h1 text-center>We Just Need a Little More Info!</h1>
 
-	<form [formGroup]="currentUserInfoFormGroup" novalidate (ngSubmit)="submitUserInfo()">
+	<!-- Original Version -->
+	<!-- <form [formGroup]="currentUserInfoFormGroup" novalidate (ngSubmit)="submitUserInfo()">
 		<ion-list>
 			<ion-item>
 				<ion-label fixed>Name:</ion-label>
@@ -50,13 +51,53 @@
 				<ion-textarea maxLength="300" formControlName="reason"></ion-textarea>
 			</ion-item>
 
-			<!-- <p>Name: {{ currentUserInfoFormGroup.get('name').value | json }}</p>
-
-			<p>Email: {{ currentUserInfoFormGroup.get('email').value | json }}</p>
-
-			<p>Reason: {{ currentUserInfoFormGroup.get('reason').value | json }}</p> -->
-
 			<button ion-button block type="submit">Submit</button>
+		</ion-list>
+	</form> -->
+
+	<!-- New Version -->
+	<form [formGroup]="currentUserInfoFormGroup" novalidate (ngSubmit)="submitUserInfo()">
+		<ion-list>
+			<ion-card class="card-style card-grey">
+				<ion-grid>
+					<ion-row>
+						<ion-col col-2>
+							<p class="userInfoText">NAME:</p>
+						</ion-col>
+						<ion-col col-10>
+							<ion-input class="userInfoText" type="text" formControlName="name"></ion-input>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-card>
+
+			<ion-card class="card-style card-grey">
+				<ion-grid>
+					<ion-row>
+						<ion-col col-2>
+							<p class="userInfoText">EMAIL:</p>
+						</ion-col>
+						<ion-col col-10>
+							<ion-input class="userInfoText" type="text" formControlName="email"></ion-input>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-card>
+
+			<ion-card class="card-style card-grey">
+				<ion-grid>
+					<ion-row>
+						<ion-col col-2>
+							<p class="userInfoText">REASON:</p>
+						</ion-col>
+						<ion-col col-10>
+							<ion-input class="userInfoText" type="text" formControlName="reason"></ion-input>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-card>
+
+			<button ion-button block class="submitButton" type="submit">Submit</button>
 		</ion-list>
 	</form>
 
