@@ -125,17 +125,19 @@
 			<ion-col col-4>
 				<h3 class="pageHeaderDescription">Selected Team Members:</h3>
 
-				<ion-item-group>
+				<ion-grid class="noMarginOrPadding">
 				<ion-row>
-					<ion-col col-6 *ngFor="let member of TEAMMEMBERS">
-					<ion-card class="card-style card-grey" *ngIf="currentMemberFormGroup.get('teamMembers').get(member.tag).value">
-						<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
-						<h1 class="cardHeader">{{ member.name }}</h1>
-						<p class="cardContent">{{ member.description }}</p>
-					</ion-card>
+					<ng-container *ngFor="let member of TEAMMEMBERS">
+					<ion-col col-6 *ngIf="currentMemberFormGroup.get('teamMembers').get(member.tag).value" class="noMarginOrPadding">
+						<ion-card class="card-style card-grey noMarginOrPadding">
+							<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
+							<h1 class="cardHeader teamMemberTitle">{{ member.name }}</h1>
+							<p class="cardContent teamMemberDescription">{{ member.description }}</p>
+						</ion-card>
 					</ion-col>
+					</ng-container>
 				</ion-row>
-				</ion-item-group>
+				</ion-grid>
 
 			</ion-col>
 

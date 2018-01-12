@@ -1,8 +1,8 @@
 Devlog
 
 Description:
-	Now just a log of Awesome Check In App Development
-	Was a log of activities as I learned to develop mobile applications using Ionic
+	- Development log for Awesome Check In App Development
+	- Starts with Learning Ionic with Tutorials
 
 ==================================================================================
 ==================================================================================
@@ -12,24 +12,59 @@ Description:
 I) Summary of Work:
 	- Major Theme Design Rework
 	- Continued Working on New Confirm Page
+	- Formatted Core Values
 
 II) Need to Implement:
-	*** I Have An Idea form not working on iPad
-	- New Design by Nathan Falls
-		- User Info Form
-		- Confirm Page
-		- Final Page
-	- Programs as separate json file
-	- Integrate with ZOHO
-	- Home/Cancel/Exit Button
-		- Bring back the navbar?
-	- Timer Back Button Bug
+
+	I) Functionality
+		- *** I Have An Idea form not working on iPad
+		- Timer Back Button Bug
+
+	II) Design
+		- New Design by Nathan Falls
+			- Confirm Page Reactive Team Member col-width
+		- Program Page passes white icons instead of red
+		- Submit buttons not $amaranth-red
+		- Core Values needs work
 
 III) Ideas:
+	- Integrate with ZOHO
 	- Ask to take picture and also send in the notification attachment
 		- Ionic should be able to handle this pretty easily
 
 IV) Status:
+
+	I) Functionality
+		0) ScreenSaver draws attention to the device
+		1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+			- if entrepreneurship, asks which program they are interested in
+		2) Asks the user to select the team members who are expecting them
+			- option to select "Nobody"
+		3) Asks the user for basic info (Name, Email, Reason)
+		4) Sends a notification via Slack to the corresponding Awesome Inc team member
+		5) Instructs the user to have a seat on one of the couches
+		6) Prompts User about being Idle after 60s and gives 10s to continue before going to ScreenSaver
+			- Timer doesn't stop when back button hit...
+
+	II) Theme
+		- Designed by Nathan Falls
+		- /src/app/app.scss
+		A) Fonts
+		B) Colors
+		C) Page Headers
+			0) pageHeaderContainer
+			1) pageHeaderIcon
+			2) pageHeaderText
+			3) pageHeaderDescription
+		D) Page Title
+			- all subheaders & paragraphs currently using pageHeaderDescription
+		E) Cards
+			- cardHeader
+			- cardContent
+			- card-style = rounded corners
+			- card-red vs card-gray
+
+V) Activity & Source Log
 
 - Major Theme Design Rework
 	- /src/app/app.scss
@@ -48,6 +83,10 @@ IV) Status:
 		- Using pageHeaderDescription for subheadings
 
 - Continued Working on New Confirm Page
+	- <ng-container> to bring *ngFor & *ngIf up an element
+	- Set to col-6
+
+- Formatted Core Values
 
 ==================================================================================
 ==================================================================================
@@ -63,13 +102,9 @@ I) Summary of Work:
 II) Need to Implement:
 	*** I Have An Idea form not working on iPad
 	- New Design by Nathan Falls
-		- User Info Form
 		- Confirm Page
 		- Final Page
-	- Programs as separate json file
 	- Integrate with ZOHO
-	- Home/Cancel/Exit Button
-		- Bring back the navbar?
 	- Timer Back Button Bug
 
 III) Ideas:
@@ -77,6 +112,18 @@ III) Ideas:
 		- Ionic should be able to handle this pretty easily
 
 IV) Status:
+	0) ScreenSaver draws attention to the device
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+	6) Prompts User about being Idle after 60s and gives 10s to continue before going to ScreenSaver
+		- Timer doesn't stop when back button hit...
+
+V) Activity & Source Log
 
 - Finished TeamMembersPage
 	- Managed Card Color for selected Team Members
@@ -122,6 +169,18 @@ III) Ideas:
 		- Ionic should be able to handle this pretty smoothly
 
 IV) Status:
+	0) ScreenSaver draws attention to the device
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+	6) Prompts User about being Idle after 60s and gives 10s to continue before going to ScreenSaver
+		- Timer doesn't stop when back button hit...
+
+V) Activity & Source Log
 
 - Modified old teammembers checkbox Form into Card Design
 
@@ -174,6 +233,18 @@ II) Need to Implement:
 III) Ideas:
 
 IV) Status:
+	0) ScreenSaver draws attention to the device
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+	6) Prompts User about being Idle after 60s and gives 10s to continue before going to ScreenSaver
+		- Timer doesn't stop when back button hit...
+
+V) Activity & Source Log
 
 - Removed Navbar
 	- Just commented it out for now
@@ -213,6 +284,18 @@ II) Need to Implement:
 III) Ideas:
 
 IV) Status:
+	0) ScreenSaver draws attention to the device
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+	6) Prompts User about being Idle after 60s and gives 10s to continue before going to ScreenSaver
+		- Timer doesn't stop when back button hit...
+
+V) Activity & Source Log
 
 - Basic Design Work
 	- /src/app/app.scss
@@ -243,6 +326,18 @@ III) Ideas:
 	A) Embed Video or more info at Final Page
 
 IV) Status:
+	0) ScreenSaver draws attention to the device
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+	6) Prompts User about being Idle after 60s and gives 10s to continue before going to ScreenSaver
+		- Timer doesn't stop when back button hit...
+
+V) Activity & Source Log
 
 - Continued Implementing New Design
 	- Exo google font
@@ -288,6 +383,18 @@ III) Ideas:
 	A) Embed Video or more info at Final Page
 
 IV) Status:
+	0) ScreenSaver draws attention to the device
+	1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+		- if entrepreneurship, asks which program they are interested in
+	2) Asks the user to select the team members who are expecting them
+		- option to select "Nobody"
+	3) Asks the user for basic info (Name, Email, Reason)
+	4) Sends a notification via Slack to the corresponding Awesome Inc team member
+	5) Instructs the user to have a seat on one of the couches
+	6) Prompts User about being Idle after 60s and gives 10s to continue before going to ScreenSaver
+		- Timer doesn't stop when back button hit...
+
+V) Activity & Source Log
 
 ==================================================================================
 ==================================================================================
@@ -1474,7 +1581,7 @@ Summary:
 Thoughts:
 	- Annoyed with the difficulty I am having trying to learn as a result of the amount of abstraction and amount of different yet powerful tools all working together
 	- I feel like I am using so many things that are popular but I don't even realize it.
-		- Ionic, Angular 2, TypeScript, JavaScript (ES7, ES6, ES5), JSON, HTML, CSS, SCSS, Node.js, PHP?, ???)
+		- Ionic, Angular 2, TypeScript, JavaScript (ES7, ES6, ES5), JSON, HTML, CSS, SCSS, Node.js, ???)
 
 - Following a Tutorial:
 	- https://scoth.io/tutorials/create-your-first-mobile-app-with-angularjs-and-ionic
