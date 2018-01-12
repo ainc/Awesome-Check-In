@@ -1,11 +1,13 @@
 <!--
 	ProgramPage In Check In App
 	Created: 09/01/17 by Brendan Thompson
-	Updated: 01/10/18 by Brendan Thompson
+	Updated: 01/11/18 by Brendan Thompson
 
 	Description:
- 		Asks the user to specify which program brought them in
-		Sends the selected program as a NavParam to teamMembersPage
+		- Navigated to when the user chooses "Entrepreneurship"
+ 		- Asks the user to specify which program brought them in
+		- Sends the selected program as a NavParam to teamMembersPage
+		- If "I Have an Idea", goes to the form
  -->
 
 <ion-header>
@@ -22,17 +24,17 @@
 </ion-header>
 
 <ion-content padding class="background">
-	<ion-row class="pageHeader">
-		<ion-col col-1 offset-3>
-			<img class="headerIcon" src="assets/img/check-in-icons/Entrepreneurship-RED.png" alt="Awesome Inc">
-		</ion-col>
-		<ion-col col-5>
-			<h2 class="pageTitle">Welcome, Entrepreneur!</h2>
-		</ion-col>
+
+	<!-- Page Header -->
+	<ion-row class="pageHeaderContainer">
+		<img class="pageHeaderIcon" src="assets/img/check-in-icons/Entrepreneurship-RED.png" alt="Awesome Inc">
+		<p class="pageHeaderText">Welcome, Entrepreneur!</p>
 	</ion-row>
 
-	<h1>Which program are you here for?</h1>
+	<!-- Page Title -->
+	<h1 class="pageTitle">Which program are you here for?</h1>
 
+	<!-- Page Content -->
 	<ion-grid>
 		<ion-row>
 			<ng-container *ngFor="let program of PROGRAMS">
@@ -46,7 +48,7 @@
 
 						</ion-card-content>
 					</ion-card>
-					<p>{{ program.description }}</p>
+					<p class="pageHeaderDescription">{{ program.description }}</p>
 				</ion-col>
 			</ng-container>
 		</ion-row>

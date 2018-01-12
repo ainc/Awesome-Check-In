@@ -1,7 +1,7 @@
 <!--
 	TeamMembersPage In Check In App
 	Created: 09/01/17 by Brendan Thompson
-	Updated: 01/10/18 by Brendan Thompson
+	Updated: 01/11/18 by Brendan Thompson
 
 	Description:
 		Asks the user to fill out a FormGroup regarding which TEAMMEMBERS they are expecting to meet with
@@ -21,18 +21,19 @@
 </ion-header>
 
 <ion-content padding class="background">
-	<ion-row class="pageHeader">
-		<ion-col col-1 offset-3>
-			<img class="headerIcon" src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
-		</ion-col>
-		<ion-col col-5>
-			<h2 class="pageTitle">{{ this.currentProgram.name }}</h2>
-		</ion-col>
+
+	<!-- Page Header -->
+	<ion-row class="pageHeaderContainer">
+		<img class="pageHeaderIcon" src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
+
+		<p class="pageHeaderText">{{ this.currentProgram.name }}</p>
 	</ion-row>
 
- 	<p>{{ this.currentProgram.description }}</p>
+	<!-- Header Description -->
+ 	<p class="pageHeaderDescription">{{ this.currentProgram.description }}</p>
 
-	<h1>Please select the team members that are expecting you</h1>
+	<!-- Page Title -->
+	<h1 class="pageTitle">Please select the team members that are expecting you</h1>
 
 	<!-- Original Checklist -->
 	<!-- <form [formGroup]="currentMemberFormGroup">
@@ -58,8 +59,8 @@
 			<ion-col col-4 *ngFor="let member of TEAMMEMBERS">
 			<ion-card (click)="cardClicked(member.tag)" class="card-style" [ngClass]="getSelectStatus(member.tag) ? 'card-red' : 'card-grey'">
 				<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
-				<h1>{{ member.name }}</h1>
-				<p>{{ member.description }}</p>
+				<h1 class="cardHeader">{{ member.name }}</h1>
+				<p class="cardContent">{{ member.description }}</p>
 			</ion-card>
 			</ion-col>
 		</ion-row>
@@ -71,8 +72,8 @@
 			<ion-col col-6>
 				<ion-card class="card-style" style="height:115px;" (click)="cardClicked('Nobody')" class="card-style" [ngClass]="getSelectStatus('Nobody') ? 'card-red' : 'card-grey'">
 					<div class="nobodyCard">
-						<h1>NOBODY YET</h1>
-						<p>Set up a meeting</p>
+						<h1 class="cardHeader">NOBODY YET</h1>
+						<p class="cardContent">Set up a meeting</p>
 					</div>
 				</ion-card>
 			</ion-col>

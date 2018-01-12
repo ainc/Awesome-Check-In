@@ -28,60 +28,119 @@
 						Colors
 *****************************************************/
 
+// Color Names from "Name That Color" chir.ag/projects/name-that-color
+$thunder-black: #231F20;
+$mine-shaft-gray: #323232;	// Background Color
+$oslo-gray: #939598;	// Light Gray Cards
+$white: #FFFFFF;
+$amaranth-red: #ED3742;
 
 /*****************************************************
 						Styles
 *****************************************************/
+// Index:
+// 	- Basic Page Styles
+// 	- Navbar
+// 	- Page Header
+// 	- Cards
+// =====================================
+// =====================================
+// =====================================
 
-// Background
+
+// =====================================
+// Basic Page Styles
+// =====================================
+
 .background {
-	background-color: #323232;
+	background-color: $mine-shaft-gray;
 }
 
-// NavBar
-.headerImage {
+// Image Containment
+img {
+	display: block;
+	margin: 0 auto;
+}
+
+// =====================================
+// Navbar
+// =====================================
+
+// NavBar Image
+.navbarImage {
 	width: 200px;
 	height: auto;
 }
 
+// =====================================
 // Page Header
-.pageHeader {
-	text-align: center;
-	height: 110px;
+// =====================================
+
+.pageHeaderContainer {
+	justify-content: center;
 }
 
-.headerIcon {
-	width: auto;
-	height: 90%;
+.pageHeaderIcon {
+	width: 100px;
+	height: 100px;
+	margin: 0px;
+	margin-right: 10px;
+}
+
+.pageHeaderText {
+	font-size: 250%;
+	font-weight: 900;
+	color: $white;
+	font-family: Exo;
+	text-align:left;
+	text-transform: uppercase;
+
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+
+.pageHeaderDescription {
+	font-size: 150%;
+	font-weight: 500;
+	color: $white;
+	font-family: Exo;
+	text-align:center;
+
+	margin-bottom: 10px;
 }
 
 .pageTitle {
-	font-size: 400%;
-	color: #fff;
+	font-size: 300%;
+	font-weight: 400;
+	color: $white;
 	font-family: Exo;
-	font-weight: 900;
-	text-transform: uppercase;
+	text-align:center;
+
+	margin-top: 5px;
 }
 
-// Card Header
+// =====================================
+// Cards
+// =====================================
+
 .cardHeader {
-	text-align:center;
 	font-size: 150%;
-	color: #323232;
-	font-family: Exo;
 	font-weight: 600;
+	color: $mine-shaft-gray;
+	font-family: Exo;
+	text-align:center;
 	text-transform: uppercase;
 }
 
-// Card Content
 .cardContent {
-	text-align:center;
-	height: 100%;
-	color: #323232;
-	font-family: Exo;
-	font-weight: 500;
-	text-transform: uppercase;
 	font-size: 100%;
+	font-weight: 500;
+	color: $mine-shaft-gray;
+	font-family: Exo;
+	text-align:center;
+	text-transform: uppercase;
+
+	height: 100%;
 }
 
 .card-style {
@@ -89,32 +148,11 @@
 }
 
 .card-red {
-	background: #ED3742;
+	background: $amaranth-red;
 }
 
 .card-grey {
-	background: #939598;
-}
-
-img {
-	display: block;
-	margin: 0 auto;
-}
-
-h1 {
-	text-align:center;
-	font-size: 500%;
-	color: #fff;
-	font-family: Exo;
-	font-weight: 600;
-}
-
-p {
-	text-align:center;
-	color: #fff;
-	font-family: Exo;
-	font-weight: 500;
-	font-size: 200%;
+	background: $oslo-gray;
 }
 
 

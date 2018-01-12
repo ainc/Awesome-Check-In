@@ -7,6 +7,51 @@ Description:
 ==================================================================================
 ==================================================================================
 
+01/11/18 - Brendan Thompson
+
+I) Summary of Work:
+	- Major Theme Design Rework
+	- Continued Working on New Confirm Page
+
+II) Need to Implement:
+	*** I Have An Idea form not working on iPad
+	- New Design by Nathan Falls
+		- User Info Form
+		- Confirm Page
+		- Final Page
+	- Programs as separate json file
+	- Integrate with ZOHO
+	- Home/Cancel/Exit Button
+		- Bring back the navbar?
+	- Timer Back Button Bug
+
+III) Ideas:
+	- Ask to take picture and also send in the notification attachment
+		- Ionic should be able to handle this pretty easily
+
+IV) Status:
+
+- Major Theme Design Rework
+	- /src/app/app.scss
+		- Organized The File
+		- Shrunk Fonts & Made Universal
+		- Created Color Variables
+			- chir.ag/projects/name-that-color
+
+	- Page Headers
+		- pageHeaderContainer
+		- pageHeaderImage
+		- pageHeaderTitle
+		- pageHeaderDescription
+
+	- PageTitle
+		- Using pageHeaderDescription for subheadings
+
+- Continued Working on New Confirm Page
+
+==================================================================================
+==================================================================================
+
 01/10/18 - Brendan Thompson
 
 I) Summary of Work:
@@ -168,6 +213,12 @@ II) Need to Implement:
 III) Ideas:
 
 IV) Status:
+
+- Basic Design Work
+	- /src/app/app.scss
+	- Cards
+		- card-style
+		- card-red vs card-grey
 
 ==================================================================================
 ==================================================================================

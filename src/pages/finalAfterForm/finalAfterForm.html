@@ -1,7 +1,7 @@
 <!--
 	Final Page In Check In App After Filling Idea Form
 	Created: 01/03/18 by Brendan Thompson
-	Updated: 01/03/18 by Brendan Thompson
+	Updated: 01/11/18 by Brendan Thompson
 
 	Description:
 		Special Final page if filled out "I Have An Idea" form
@@ -17,19 +17,20 @@
 </ion-header>
 
 <ion-content padding class="background">
-	<ion-row class="pageHeader">
-		<ion-col col-1 offset-3>
-			<img class="headerIcon" src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
-		</ion-col>
-		<ion-col col-5>
-			<h2 class="pageTitle">Form Submitted!</h2>
-		</ion-col>
+
+	<!-- Page Header -->
+	<ion-row class="pageHeaderContainer">
+		<img class="pageHeaderIcon" src="{{ this.currentProgram.imageURL }}" alt="{{ this.currentProgram.imageAlt }}">
+
+		<p class="pageHeaderText">Form Submitted!</p>
 	</ion-row>
-	<h1>Your Idea Will be Reviewed by the Team</h1>
 
-	<p>Thank you very much for checking in here at Awesome Inc! The appropriate team members have been notified of your idea.</p>
+	<!-- Page Title -->
+	<h1 class="pageTitle">Your Idea Will be Reviewed by the Team</h1>
 
-	<p>After reviewing your form, an Awesome Inc team member will get in contact with you. Thanks for coming in and have a great rest of the day!</p>
+	<p class="pageHeaderDescription">Thank you very much for checking in here at Awesome Inc! The appropriate team members have been notified of your idea.</p>
+
+	<p class="pageHeaderDescription">After reviewing your form, an Awesome Inc team member will get in contact with you. Thanks for coming in and have a great rest of the day!</p>
 
 	<ion-grid id="core-values">
 
@@ -41,7 +42,7 @@
 
 	<ion-row>
 		<ion-col col-3>
-			<ion-card>
+			<ion-card class="card-style">
 				<ion-card-header>
 					<p>Core Value #1:<br>
 					Be Good</p>

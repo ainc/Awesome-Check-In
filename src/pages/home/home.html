@@ -2,7 +2,7 @@
 
 	HomePage In Check In App
 	Created: 09/01/17 by Brendan Thompson
-	Updated: 01/10/18 by Brendan Thompson
+	Updated: 01/11/18 by Brendan Thompson
 
 	Description:
 		Asks the User to select what brought them in: Entrepreneurship, Technology, or Workspace
@@ -25,14 +25,17 @@
 </ion-header>
 
 <ion-content padding class="background">
-	<ion-row class="pageHeader">
-		<ion-col col-4 offset-4>
-			<img class="headerIcon" src="assets/img/AInc_logo.png" alt="Awesome Inc">
-		</ion-col>
+
+	<!-- Page Header -->
+	<ion-row class="pageHeaderContainer">
+		<img class="pageHeaderIcon" src="assets/img/check-in-icons/AInc_logo-blurry.png" alt="Awesome Inc">
+		<p class="pageHeaderText">Awesome Inc</p>
 	</ion-row>
 
-	<h1>What brought you in today?</h1>
+	<!-- Page Title -->
+	<h1 class="pageTitle">What brought you in today?</h1>
 
+	<!-- Page Content -->
 	<ion-grid>
 		<ion-row>
 			<ion-col col-6 col-sm>
