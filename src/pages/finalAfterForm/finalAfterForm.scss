@@ -1,112 +1,124 @@
-page-final {
+page-finalAfterForm {
 
 	/*==========================================================
 	Core Values Section from About Page of AwesomeInc Website
 	==========================================================*/
-	#core-values {
-		.col-sm-3, col-xs-6 {
-			padding-left: 0;
-		}
-		img {
-			width: 95%;
-			/*box-shadow: 5px 5px 5px #2e2e2e;*/
-			margin-bottom: 35px;
-		}
-		p {
-			font-weight: bold;
-			font-size: 16px;
-			line-height: 20px;
-			text-align: center;
-			&:first-child {
-				margin-bottom: 0;
-			}
-			&:last-child {
-				margin-top: 0;
-			}
-		}
+	// #core-values {
+	// 	.col-sm-3, col-xs-6 {
+	// 		padding-left: 0;
+	// 	}
+	// 	img {
+	// 		width: 95%;
+	// 		/*box-shadow: 5px 5px 5px #2e2e2e;*/
+	// 		margin-bottom: 35px;
+	// 	}
+	// 	p {
+	// 		font-weight: bold;
+	// 		font-size: 16px;
+	// 		line-height: 20px;
+	// 		text-align: center;
+	// 		&:first-child {
+	// 			margin-bottom: 0;
+	// 		}
+	// 		&:last-child {
+	// 			margin-top: 0;
+	// 		}
+	// 	}
+	// }
+
+	.fullHeight {
+		height: 100%
 	}
 
-	#CV-Header {
-		color: #b81124;
-		font-family: open sans;
-		font-size: 30px;
-		font-weight: 300;
-		padding-left: 10px;
+	.cvTitle {
+		font-size: 300%;
+		font-weight: 900;
+		text-transform: uppercase;
 	}
 
-	.description {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-	  background-color: white;
-	  color: #B81124;
-	  visibility: hidden;
-	  opacity: 0;
-		&:after {
-			display: grid;
-			content: '';
-			border-bottom: 3px solid #B81124;
-			transform: scaleX(0);
-			transition: transform 500ms ease-in-out;
-		}
-		&:hover {
-			&:after {
-				transform: scaleX(1);
-			}
-		}
+	.cvHeader {
+		font-size: 150%;
 	}
 
-	.CV {
-		font-size: 15pt;
-		font-weight: bold;
-		text-align: center;
-		font-family: "Open Sans";
-		@media (max-width: 568px){
-			font-size: 6pt;
-			padding-top: 25px;
-		}
-		@media (min-width: 1024px){
-			padding-top: 50px;
-		}
-		height: 100%;
+	.cvImageContainer {
+		width: 100px;
+		height: auto;
+		justify-content: center;
 	}
 
-	.imgWrap {
-  	position: relative;
-		&:hover {
-			.description {
-				visibility: visible;
-  			opacity: 1;
-				animation-name: fadeIn;
-				animation-timing-function: ease-in;
-				animation-duration: .3s;
-				animation-fill-mode: forwards;
-			}
-			.CV {
-				animation-name: fadeIn;
-				animation-timing-function: ease-in;
-				animation-duration: 1s;
-			}
-		}
-	}
+	// .description {
+	// 	position: absolute;
+	// 	top: 0;
+	// 	bottom: 0;
+	// 	left: 0;
+	// 	right: 0;
+	//   background-color: white;
+	//   color: #B81124;
+	//   visibility: hidden;
+	//   opacity: 0;
+	// 	&:after {
+	// 		display: grid;
+	// 		content: '';
+	// 		border-bottom: 3px solid #B81124;
+	// 		transform: scaleX(0);
+	// 		transition: transform 500ms ease-in-out;
+	// 	}
+	// 	&:hover {
+	// 		&:after {
+	// 			transform: scaleX(1);
+	// 		}
+	// 	}
+	// }
+
+	// .CV {
+	// 	font-size: 15pt;
+	// 	font-weight: bold;
+	// 	text-align: center;
+	// 	font-family: "Open Sans";
+	// 	@media (max-width: 568px){
+	// 		font-size: 6pt;
+	// 		padding-top: 25px;
+	// 	}
+	// 	@media (min-width: 1024px){
+	// 		padding-top: 50px;
+	// 	}
+	// 	height: 100%;
+	// }
+
+	// .imgWrap {
+ //  	position: relative;
+	// 	&:hover {
+	// 		.description {
+	// 			visibility: visible;
+ //  			opacity: 1;
+	// 			animation-name: fadeIn;
+	// 			animation-timing-function: ease-in;
+	// 			animation-duration: .3s;
+	// 			animation-fill-mode: forwards;
+	// 		}
+	// 		.CV {
+	// 			animation-name: fadeIn;
+	// 			animation-timing-function: ease-in;
+	// 			animation-duration: 1s;
+	// 		}
+	// 	}
+	// }
 
 
-	@keyframes fadeIn {
-		0% {
-			opacity: 0;
-		}
-		100%{
-			opacity: 1;
-		}
-	}
-	@keyframes fadeOut {
-		0% {
-			opacity: 1;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
+	// @keyframes fadeIn {
+	// 	0% {
+	// 		opacity: 0;
+	// 	}
+	// 	100%{
+	// 		opacity: 1;
+	// 	}
+	// }
+	// @keyframes fadeOut {
+	// 	0% {
+	// 		opacity: 1;
+	// 	}
+	// 	100% {
+	// 		opacity: 0;
+	// 	}
+	// }
 }
