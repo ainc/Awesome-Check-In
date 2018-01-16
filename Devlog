@@ -7,6 +7,70 @@ Description:
 ==================================================================================
 ==================================================================================
 
+01/16/18 - Brendan Thompson
+
+I) Summary of Work:
+	- Set Theme Defaults (button colors)
+
+II) Need to Implement:
+
+	I) Functionality
+		- *** I Have An Idea form not working on iPad
+		- Timer Back Button Bug
+
+	II) Design
+		- New Design by Nathan Falls
+			- Confirm Page Reactive Team Member col-width
+		- Program Page passes white icons instead of red
+		- Core Values needs work
+
+III) Ideas:
+	- Integrate with ZOHO
+	- Ask to take picture and also send in the notification attachment
+		- Ionic should be able to handle this pretty easily
+
+IV) Status:
+
+	I) Functionality
+		0) ScreenSaver draws attention to the device
+		1) Asks the user what brought them in (Entrepreneurship, Learning to Code, or The Workspace)
+			- if entrepreneurship, asks which program they are interested in
+		2) Asks the user to select the team members who are expecting them
+			- option to select "Nobody"
+		3) Asks the user for basic info (Name, Email, Reason)
+		4) Sends a notification via Slack to the corresponding Awesome Inc team member
+		5) Instructs the user to have a seat on one of the couches
+		6) Prompts User about being Idle after 60s and gives 10s to continue before going to ScreenSaver
+			- Timer doesn't stop when back button hit...
+
+	II) Theme
+		- Designed by Nathan Falls
+		- /src/app/app.scss
+		A) Fonts
+		B) Colors
+		C) Page Headers
+			0) pageHeaderContainer
+			1) pageHeaderIcon
+			2) pageHeaderText
+			3) pageHeaderDescription
+		D) Page Title
+			- all subheaders & paragraphs currently using pageHeaderDescription
+		E) Cards
+			- cardHeader
+			- cardContent
+			- card-style = rounded corners
+			- card-red vs card-gray
+
+V) Activity & Source Log
+
+- Set Theme Defaults
+	- src/theme/variables.scss
+	- set primary to $amaranth-red
+		- Submit buttons
+
+==================================================================================
+==================================================================================
+
 01/11/18 - Brendan Thompson
 
 I) Summary of Work:

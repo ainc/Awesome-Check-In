@@ -33,6 +33,12 @@ $app-direction: ltr;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+$thunder-black: #231F20; // Text
+$mine-shaft-gray: #323232;  // Background Color
+$oslo-gray: #939598;  // Light Gray Cards
+$white: #FFFFFF;
+$amaranth-red: #ED3742;
+
 /*$colors: (*/
   /*primary:    #488aff,*/
   /*secondary:  #32db64,*/
@@ -40,12 +46,20 @@ $app-direction: ltr;
   /*light:      #f4f4f4,*/
   /*dark:       #222*/
 /*);*/
-$colors: (
+/*$colors: (
   primary:    #b81124,
   secondary:  #b8b8b8,
   danger:     #960017,
   light:      #f4f4f4,
   dark:       #222
+);*/
+$colors: (
+  primary: $amaranth-red,
+  secondary:  $mine-shaft-gray,
+  danger:     #960017,
+  light:      #f4f4f4,
+  dark:       #222
+
 );
 
 
