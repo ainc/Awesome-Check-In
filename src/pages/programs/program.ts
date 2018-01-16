@@ -95,15 +95,24 @@ export class ProgramPage {
 	}
 
 	// ==============================================================================
-	// 		Pass the selected program as a NavParam to TeamMembersPage
+	// 		Manage the Programs
 	// ==============================================================================
+
+	// Go to The Next Page and pass the selected program
 	goToProgram(program) {
+
+		// Change the imageURL from ...-WHITE.png, ...-RED.png
+		var programToPass = Object.assign({}, program);
+		programToPass.imageURL = programToPass.imageURL.slice(0, -9) + 'RED.png';
+
 		this.stopTimers();
-		if (program.name == 'I have an idea!'){
+
+		// Pass the program
+		if (programToPass.name == 'I have an idea!'){
 			this.navCtrl.push(IdeaForm);
 		}
 		else {
-			this.navCtrl.push(TeamMembersPage, { currentProgram: program });
+			this.navCtrl.push(TeamMembersPage, { currentProgram: programToPass });
 		}
 	}
 

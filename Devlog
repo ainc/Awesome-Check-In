@@ -11,6 +11,8 @@ Description:
 
 I) Summary of Work:
 	- Set Theme Defaults (button colors)
+	- Starting passing red logos from Program page
+	- Removed Timer console.log()
 
 II) Need to Implement:
 
@@ -67,6 +69,15 @@ V) Activity & Source Log
 	- src/theme/variables.scss
 	- set primary to $amaranth-red
 		- Submit buttons
+
+- Starting passing red logos from Program page
+	- Idea page is hardcoded
+	- changed imageURL when passing the program
+		- Made a Deep Copy of the program and change that
+			var programToPass = Object.assign({}, program);
+			programToPass.imageURL = programToPass.imageURL.slice(0, -9) + 'RED.png';
+
+- Removed Timer console.log()
 
 ==================================================================================
 ==================================================================================

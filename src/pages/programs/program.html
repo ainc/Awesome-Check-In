@@ -36,9 +36,11 @@
 
 	<!-- Page Content -->
 	<ion-grid>
+
+		<!-- OLD DYNAMIC VERSION -->
 		<ion-row>
 			<ng-container *ngFor="let program of PROGRAMS">
-				<ion-col col-12 col-sm *ngIf="program.include" (click)="goToProgram(program)">
+				<ion-col col-6 *ngIf="program.include" (click)="goToProgram(program)">
 					<ion-card class="card-style card-red">
 						<ion-card-header class="cardHeader">
 							{{ program.name }}
@@ -52,6 +54,25 @@
 				</ion-col>
 			</ng-container>
 		</ion-row>
+
+		<!-- NEW HARDCODED VERSION -->
+		<!-- <ion-row>
+			<ng-container ng-init="program = getProgram('I have an idea!')";>
+			<ion-col col-6 (click)="goToProgram(program)">
+				<ion-card class="card-style card-red">
+					<ion-card-header class="cardHeader">
+						{{ program.name }}
+					</ion-card-header>
+					<ion-card-content class="cardContent">
+						<img src="{{ program.imageURL }}" alt="{{ program.imageAlt }}">
+
+					</ion-card-content>
+				</ion-card>
+				<p class="pageHeaderDescription">{{ program.description }}</p>
+			</ion-col>
+			</ng-container>
+		</ion-row> -->
+
 	</ion-grid>
 
 </ion-content>
