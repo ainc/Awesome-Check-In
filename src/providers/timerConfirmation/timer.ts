@@ -30,7 +30,7 @@ export class TimerComponent {
     private hasFinished: boolean;
 
     constructor() {
-        console.log('Constructed Timer');
+        // console.log('Constructed Timer');
     }
 
 //  ==============================================================================
@@ -94,7 +94,7 @@ export class TimerComponent {
         setTimeout(() => {
             if (!this.runTimer) { return; }
             this.secondsRemaining--;
-            console.log('Time Remaining: ' + this.secondsRemaining);
+            // console.log('Time Remaining: ' + this.secondsRemaining);
             if (this.secondsRemaining > 0) {
                 this.timerTick();
             }
