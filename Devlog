@@ -11,6 +11,7 @@ Description:
 
 I) Summary of Work:
 	- Fixed HeaderIcons
+	- Changed Navbar color
 
 II) Need to Implement:
 
@@ -22,8 +23,6 @@ II) Need to Implement:
 		- New Design by Nathan Falls:
 			- Confirm Page Reactive Team Member col-width
 			- Need Core Values design
-		- Header Icon Dimensions
-		- Navbar Design
 
 III) Ideas:
 	- Integrate with ZOHO
@@ -63,16 +62,21 @@ IV) Status:
 
 V) Activity & Source Log
 
-	- Fixed HeaderIcons
-		- app.scss
-			- height: 75px;
-			- width: auto;
-		- Awesome Inc Logo
-			- Trimmed /assets/img/teamalpha_logo.png
-			- Called it .../check-in-icons/AInc_Logo.png
-		- Fixed Idea Form Heading
-			- added "padding" to main <ion-content>
-				- <ion-content padding class="background">
+- Fixed HeaderIcons
+	- app.scss
+		- height: 75px;
+		- width: auto;
+	- Awesome Inc Logo
+		- Trimmed /assets/img/teamalpha_logo.png
+		- Called it .../check-in-icons/AInc_Logo.png
+	- Fixed Idea Form Heading
+		- added "padding" to main <ion-content>
+			- <ion-content padding class="background">
+
+- Set Navbar color in src/app/app.scss
+	.toolbar-background {
+	    background-color: $mine-shaft-gray;
+	}
 
 ==================================================================================
 ==================================================================================
