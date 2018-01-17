@@ -22,6 +22,8 @@
 @font-face{
 	font-family: Exo;
 	src: url('../assets/fonts/exo-font.woff2') format('woff2');
+	font-style: black, normal;
+	weight: 400, 500, 900;
 }
 
 /*****************************************************
@@ -96,6 +98,7 @@ img {
 	font-size: 250%;
 	font-weight: 900;
 	color: $white;
+	font-style: black;
 	font-family: Exo;
 	text-align:left;
 	text-transform: uppercase;
@@ -128,22 +131,23 @@ img {
 // Cards
 // =====================================
 
-.cardHeader {
-	font-size: 150%;
-	font-weight: 600;
+.cardFont {
 	color: $mine-shaft-gray;
 	font-family: Exo;
 	text-align:center;
 	text-transform: uppercase;
 }
 
+.cardHeader {
+	@extend .cardFont;
+	font-size: 150%;
+	font-weight: 600;
+}
+
 .cardContent {
+	@extend .cardFont;
 	font-size: 100%;
 	font-weight: 500;
-	color: $mine-shaft-gray;
-	font-family: Exo;
-	text-align:center;
-	text-transform: uppercase;
 
 	height: 100%;
 }

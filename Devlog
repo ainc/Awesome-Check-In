@@ -12,6 +12,7 @@ Description:
 I) Summary of Work:
 	- Fixed HeaderIcons
 	- Changed Navbar color
+	- Fixed Fonts
 
 II) Need to Implement:
 
@@ -23,6 +24,7 @@ II) Need to Implement:
 		- New Design by Nathan Falls:
 			- Confirm Page Reactive Team Member col-width
 			- Need Core Values design
+			- Fonts not working on iPad
 
 III) Ideas:
 	- Integrate with ZOHO
@@ -77,6 +79,24 @@ V) Activity & Source Log
 	.toolbar-background {
 	    background-color: $mine-shaft-gray;
 	}
+
+- Fixed Fonts
+	- Font Color in Cards
+		- all card classes inherit from cardFont
+			.cardFont {
+				color: $mine-shaft-gray;
+				font-family: Exo;
+				text-align:center;
+				text-transform: uppercase;
+			}
+			.cardHeader {
+				@extend .cardFont;
+			... }
+		- Had to @extend .cardFont in confirm.scss, userInfo.scss
+		- set class="cardFont" in home.html
+	- Google Fonts on the iPad
+		- Specified Weights and styles
+
 
 ==================================================================================
 ==================================================================================
