@@ -15,6 +15,7 @@ page-confirm {
 
 	.userInfoText {
 		@extends .cardFont;
+		color: $thunder-black;
 		font-size: 200%;
 		font-weight: 600;
 		text-align: left;

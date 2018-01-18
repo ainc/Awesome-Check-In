@@ -94,6 +94,10 @@ V) Activity & Source Log
 			... }
 		- Had to @extend .cardFont in confirm.scss, userInfo.scss
 		- set class="cardFont" in home.html
+		- Had to manually set the fonts for each page
+			p {
+				color: $thunder-black;
+			}
 	- Google Fonts on the iPad
 		- Fixed Fonts by link the stylesheet in the head of index.html
 		- <link href="https://fonts.googleapis.com/css?family=Exo:400,600,900" rel="stylesheet">
