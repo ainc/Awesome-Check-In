@@ -84,7 +84,7 @@ V) Activity & Source Log
 	- Font Color in Cards
 		- all card classes inherit from cardFont
 			.cardFont {
-				color: $mine-shaft-gray;
+				color: $thunder-black;
 				font-family: Exo;
 				text-align:center;
 				text-transform: uppercase;
@@ -95,8 +95,9 @@ V) Activity & Source Log
 		- Had to @extend .cardFont in confirm.scss, userInfo.scss
 		- set class="cardFont" in home.html
 	- Google Fonts on the iPad
-		- Specified Weights and styles
-	- Attempted to link the stylesheet in the head of index.html
+		- Fixed Fonts by link the stylesheet in the head of index.html
+		- <link href="https://fonts.googleapis.com/css?family=Exo:400,600,900" rel="stylesheet">
+
 
 
 ==================================================================================
