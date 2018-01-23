@@ -60,7 +60,7 @@
 			<ion-card (click)="cardClicked(member.tag)" class="card-style" [ngClass]="getSelectStatus(member.tag) ? 'card-red' : 'card-grey'">
 				<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">
 				<h1 class="cardHeader">{{ member.name }}</h1>
-				<p class="cardContent">{{ member.description }}</p>
+				<p class="cardContent thunderFont">{{ member.description }}</p>
 			</ion-card>
 			</ion-col>
 		</ion-row>
@@ -73,7 +73,7 @@
 				<ion-card class="card-style" style="height:115px;" (click)="cardClicked('Nobody')" class="card-style" [ngClass]="getSelectStatus('Nobody') ? 'card-red' : 'card-grey'">
 					<div class="nobodyCard">
 						<h1 class="cardHeader">NOBODY YET</h1>
-						<p class="cardContent">Set up a meeting</p>
+						<p class="cardContent thunderFont">Set up a meeting</p>
 					</div>
 				</ion-card>
 			</ion-col>

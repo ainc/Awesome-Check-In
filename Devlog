@@ -7,6 +7,35 @@ Description:
 ==================================================================================
 ==================================================================================
 
+01/23/18 - Brendan Thompson
+
+I) Summary of Work:
+	-
+
+II) Need to Implement:
+
+	A) Functionality
+		- *** I Have An Idea form not working on iPad
+		- Timer Back Button Bug
+
+	B) Design
+		- New Design by Nathan Falls:
+			- Confirm Page Reactive Team Member col-width
+			- Need Core Values design
+		- Font Color not working on the ipad
+
+III) Ideas:
+	- Integrate with ZOHO
+	- Ask to take picture to also send in the notification attachment
+
+IV) Status:
+	- Attempting to fix font color:
+		- works right when served, but some cardContent is gray on the iPad
+		- Created a special thunderFont class
+
+==================================================================================
+==================================================================================
+
 01/17/18 - Brendan Thompson
 
 I) Summary of Work:
@@ -24,7 +53,7 @@ II) Need to Implement:
 		- New Design by Nathan Falls:
 			- Confirm Page Reactive Team Member col-width
 			- Need Core Values design
-			- Fonts not working on iPad
+		- Font Color not working on the ipad
 
 III) Ideas:
 	- Integrate with ZOHO
@@ -98,6 +127,7 @@ V) Activity & Source Log
 			p {
 				color: $thunder-black;
 			}
+		- STILL NOT WORKING
 	- Google Fonts on the iPad
 		- Fixed Fonts by link the stylesheet in the head of index.html
 		- <link href="https://fonts.googleapis.com/css?family=Exo:400,600,900" rel="stylesheet">
