@@ -31,7 +31,8 @@ III) Ideas:
 IV) Status:
 	- Attempting to fix font color:
 		- works right when served, but some cardContent is gray on the iPad
-		- Created a special thunderFont class
+		- Created a special thunderFont class within the page
+			- If it isn't within the page it gets overwritten somehow
 
 ==================================================================================
 ==================================================================================
