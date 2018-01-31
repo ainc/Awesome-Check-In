@@ -2,7 +2,7 @@
 
 // TypeScript for TeamMemberPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 01/10/17 by Brendan Thompson
+// Updated: 01/30/17 by Brendan Thompson
 
 // Description:
 // 		Asks the user to fill out a FormGroup regarding which TEAMMEMBERS they are expecting to meet with
@@ -32,10 +32,13 @@ import { AlertController } from 'ionic-angular';
 })
 
 export class TeamMembersPage {
-	public currentProgram;
-	public currentMemberFormGroup : FormGroup;
 
-    private alertMessage = this.alertCtrl.create({
+    // ==============================================================================
+	// 		Idle Timer
+	// ==============================================================================
+	private currentIdleTimer;
+	private leftPage: boolean; // To stop checking timer after navigating away
+	private currentIdleMessage = this.alertCtrl.create({
         title: 'Idle Timer Expired',
         message: 'Are You Still There?',
         buttons: [
@@ -48,12 +51,22 @@ export class TeamMembersPage {
             {
                 text: 'Continue',
                 handler: () => {
-                	this.idleTimer.restartTimer();
+                	this.currentIdleTimer.stopTimer();
+                	this.currentIdleTimer.restartTimer();
                 }
             }
         ]
     });
 
+    // ==============================================================================
+	// 		Forms
+	// ==============================================================================
+	public currentProgram;
+	public currentMemberFormGroup : FormGroup;
+
+    // ==============================================================================
+	// 		Team Members Array
+	// ==============================================================================
 	public TEAMMEMBERS = [
 		// {id: 1, name:'Nobody Yet',
 		// 	tag: 'Nobody',
@@ -155,11 +168,9 @@ export class TeamMembersPage {
 				private navParameters : NavParams,
 				private memberFormBuilder : FormBuilder,
 				private memberValidator : BoxCheckedValidator,
-				private idleTimer: TimerComponent,
-				private secondaryTimer: TimerComponent,
 				public alertCtrl: AlertController) {
 
-		this.startIdleTimer();
+		this.currentIdleTimer = this.navParameters.get('timerProvider');
 
 		this.currentProgram = this.navParameters.get('currentProgram');
 
@@ -195,9 +206,9 @@ export class TeamMembersPage {
 	// 		Passes the currentProgram and currentFormGroup to the UserInfoPage
 	// ==============================================================================
 	submitTeamMembers(currentFormGroup) {
-		this.stopTimers();
 		this.navCtrl.push(UserInfoPage, { currentProgram: this.currentProgram,
-										memberFormGroup: currentFormGroup });
+										memberFormGroup: currentFormGroup,
+										timerProvider: this.currentIdleTimer });
 	}
 
 	// ==============================================================================
@@ -205,31 +216,32 @@ export class TeamMembersPage {
 	// ==============================================================================
 
 	goToScreenSaver() {
-		this.stopTimers();
-		this.navCtrl.push(ScreenSaver);
+		this.navCtrl.popToRoot();
 	}
 
-	startIdleTimer(){
-		this.idleTimer.initTimer();
-		this.idleTimer.startTimer();
+	// Starts Timer and starts Checking if finished
+	ionViewDidEnter(){
+		this.leftPage = false;
+		this.currentIdleTimer.restartTimer();
 		this.checkIfTimerFinished();
 	}
 
-	startSecondaryTimer(){
-		this.secondaryTimer.initTimer();
-		this.secondaryTimer.startSecondaryTimer();
-		this.checkIfSecondaryTimerFinished();
-    }
+	// Stops Timer and stops Checking if finished
+	ionViewWillLeave(){
+		this.leftPage = true;
+		this.currentIdleTimer.stopTimer();
+	}
 
-    stopTimers(){
-    	this.idleTimer.pauseTimer();
-    	this.secondaryTimer.pauseTimer();
+	startSecondaryTimer(){
+		this.currentIdleTimer.restartSecondaryTimer();
+		this.checkIfSecondaryTimerFinished();
     }
 
 	checkIfTimerFinished(){
         setTimeout(() => {
-            if (this.idleTimer.isFinished()) {
-            	this.alertMessage.present();
+        	if (this.leftPage){ return; } // Stops checking if left page
+            if (this.currentIdleTimer.isFinished()) {
+            	this.currentIdleMessage.present();
             	this.startSecondaryTimer();
          	}
             else {
@@ -240,18 +252,13 @@ export class TeamMembersPage {
 
 	checkIfSecondaryTimerFinished(){
         setTimeout(() => {
-            if (this.secondaryTimer.isFinished()) {
-            	this.alertMessage.dismiss();
+            if (this.currentIdleTimer.isFinished()) {
+            	this.currentIdleMessage.dismiss();
             	this.goToScreenSaver();
          	}
             else {
                 this.checkIfSecondaryTimerFinished();
             }
         }, 1000);
-	}
-
-	backButtonAction(){
-		console.log('Back Button Pressed: Stopping Timer...');
-		this.stopTimers();
 	}
 }

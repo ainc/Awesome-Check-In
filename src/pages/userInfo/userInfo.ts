@@ -1,6 +1,6 @@
 // TypeScript for UserInfoPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 11/14/17 by Brendan Thompson
+// Updated: 01/30/17 by Brendan Thompson
 
 // Description:
 // 		Asks the User for name, email, and reason
@@ -28,28 +28,41 @@ import { AlertController } from 'ionic-angular';
 
 export class UserInfoPage {
 
-    private alertMessage = this.alertCtrl.create({
+    // ==============================================================================
+	// 		Idle Timer
+	// ==============================================================================
+	private currentIdleTimer;
+	private leftPage: boolean; // To stop checking timer after navigating away
+    private currentIdleMessage = this.alertCtrl.create({
         title: 'Idle Timer Expired',
         message: 'Are You Still There?',
         buttons: [
             {
                 text: 'Home',
                 handler: () => {
-                	this.goToScreenSaver();
+                    this.goToScreenSaver();
                 }
             },
             {
                 text: 'Continue',
                 handler: () => {
-                	this.idleTimer.restartTimer();
+                    this.currentIdleTimer.stopTimer();
+                    this.currentIdleTimer.restartTimer();
                 }
             }
         ]
     });
 
+    // ==============================================================================
+	// 		Forms
+	// ==============================================================================
 	public currentProgram;
 	public currentMemberFormGroup: FormGroup;
 	public currentUserInfoFormGroup : FormGroup;
+
+    // ==============================================================================
+	// 		Team Members Array
+	// ==============================================================================
 	public TEAMMEMBERS = [
 		{id: 1, name:'Emily Wehrle',
 			description: 'Director of Operations',
@@ -105,18 +118,16 @@ export class UserInfoPage {
 	constructor(private navCtrl : NavController,
 				private navParameters : NavParams,
 				private userInfoFormBuilder : FormBuilder,
-				private idleTimer: TimerComponent,
-				private secondaryTimer: TimerComponent,
 				public alertCtrl: AlertController) {
 
-		this.startIdleTimer();
+		this.currentIdleTimer = this.navParameters.get('timerProvider');
 
 		this.currentProgram = this.navParameters.get('currentProgram');
 		this.currentMemberFormGroup = this.navParameters.get('memberFormGroup');
 
 		this.currentUserInfoFormGroup = this.userInfoFormBuilder.group ({
 			name : ['', <any>Validators.required],
-			email : ['', <any>Validators.minLength(8)],
+			email : ['', <any>Validators.email],
 			reason : ['', <any>Validators.minLength(10)]
 		});
 	}
@@ -126,13 +137,13 @@ export class UserInfoPage {
 	// 		Passes All of the information so far provided by the user to the ConfirmPage
 	// ==============================================================================
 	submitUserInfo() {
-		this.stopTimers();
 		this.navCtrl.push(ConfirmPage, { currentProgram: this.currentProgram,
 										memberFormGroup: this.currentMemberFormGroup,
 										userInfoFormGroup: this.currentUserInfoFormGroup,
 										name: this.currentUserInfoFormGroup.get('name').value,
 										email: this.currentUserInfoFormGroup.get('email').value,
-										reason: this.currentUserInfoFormGroup.get('reason').value });
+										reason: this.currentUserInfoFormGroup.get('reason').value,
+										timerProvider: this.currentIdleTimer });
 	}
 
 	// ==============================================================================
@@ -140,31 +151,32 @@ export class UserInfoPage {
 	// ==============================================================================
 
 	goToScreenSaver() {
-		this.stopTimers();
-		this.navCtrl.push(ScreenSaver);
+		this.navCtrl.popToRoot();
 	}
 
-	startIdleTimer(){
-		this.idleTimer.initTimer();
-		this.idleTimer.startTimer();
+	// Starts Timer and starts Checking if finished
+	ionViewDidEnter(){
+		this.leftPage = false;
+		this.currentIdleTimer.restartTimer();
 		this.checkIfTimerFinished();
 	}
 
-	startSecondaryTimer(){
-		this.secondaryTimer.initTimer();
-		this.secondaryTimer.startSecondaryTimer();
-		this.checkIfSecondaryTimerFinished();
-    }
+	// Stops Timer and stops Checking if finished
+	ionViewWillLeave(){
+		this.leftPage = true;
+		this.currentIdleTimer.stopTimer();
+	}
 
-    stopTimers(){
-    	this.idleTimer.pauseTimer();
-    	this.secondaryTimer.pauseTimer();
+	startSecondaryTimer(){
+		this.currentIdleTimer.restartSecondaryTimer();
+		this.checkIfSecondaryTimerFinished();
     }
 
 	checkIfTimerFinished(){
         setTimeout(() => {
-            if (this.idleTimer.isFinished()) {
-            	this.alertMessage.present();
+        	if (this.leftPage){ return; } // Stops checking if left page
+            if (this.currentIdleTimer.isFinished()) {
+            	this.currentIdleMessage.present();
             	this.startSecondaryTimer();
          	}
             else {
@@ -175,8 +187,8 @@ export class UserInfoPage {
 
 	checkIfSecondaryTimerFinished(){
         setTimeout(() => {
-            if (this.secondaryTimer.isFinished()) {
-            	this.alertMessage.dismiss();
+            if (this.currentIdleTimer.isFinished()) {
+            	this.currentIdleMessage.dismiss();
             	this.goToScreenSaver();
          	}
             else {

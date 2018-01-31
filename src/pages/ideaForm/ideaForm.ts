@@ -1,6 +1,6 @@
 // TypeScript for IdeaForm
 // Created: 01/03/18 by Brendan Thompson
-// Updated: 01/03/18 by Brendan Thompson
+// Updated: 01/30/17 by Brendan Thompson
 
 // Description:
 // 		Embedded Google Form for "I Have an Idea"
@@ -10,7 +10,7 @@
 // ==============================================================================
 
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { FinalAfterFormPage } from '../finalAfterForm/finalAfterForm';
 import { ScreenSaver } from '../screensaver/screensaver';
@@ -27,35 +27,38 @@ import { AlertController } from 'ionic-angular';
 export class IdeaForm {
 
     // ==============================================================================
-	// 		Form For Idle Timer
+	// 		Idle Timer
 	// ==============================================================================
-	private alertMessage = this.alertCtrl.create({
+	private currentIdleTimer;
+	private leftPage: boolean; // To stop checking timer after navigating away
+    private currentIdleMessage = this.alertCtrl.create({
         title: 'Idle Timer Expired',
         message: 'Are You Still There?',
         buttons: [
             {
                 text: 'Home',
                 handler: () => {
-                	this.goToScreenSaver();
+                    this.goToScreenSaver();
                 }
             },
             {
                 text: 'Continue',
                 handler: () => {
-                	this.idleTimer.restartTimer();
+                    this.currentIdleTimer.stopTimer();
+                    this.currentIdleTimer.restartTimer();
                 }
             }
         ]
     });
+
 	// ==============================================================================
 	// 		Constructor
 	// ==============================================================================
 	constructor(public navCtrl: NavController,
-				private idleTimer: TimerComponent,
-				private secondaryTimer: TimerComponent,
+				private navParameters : NavParams,
 				public alertCtrl: AlertController) {
 
-		this.startIdleTimer();
+		this.currentIdleTimer = this.navParameters.get('timerProvider');
 	}
 
 	// ==============================================================================
@@ -72,8 +75,8 @@ export class IdeaForm {
 			include: true
 		};
 
-		this.stopTimers();
-		this.navCtrl.push(FinalAfterFormPage, { currentProgram: program });
+		this.navCtrl.push(FinalAfterFormPage, { currentProgram: program,
+												timerProvider: this.currentIdleTimer });
 	}
 
 	// ==============================================================================
@@ -81,31 +84,32 @@ export class IdeaForm {
 	// ==============================================================================
 
 	goToScreenSaver() {
-		this.stopTimers();
-		this.navCtrl.push(ScreenSaver);
+		this.navCtrl.popToRoot();
 	}
 
-	startIdleTimer(){
-		this.idleTimer.initTimer();
-		this.idleTimer.startTimer();
+	// Starts Timer and starts Checking if finished
+	ionViewDidEnter(){
+		this.leftPage = false;
+		this.currentIdleTimer.restartTimer();
 		this.checkIfTimerFinished();
 	}
 
-	startSecondaryTimer(){
-		this.secondaryTimer.initTimer();
-		this.secondaryTimer.startSecondaryTimer();
-		this.checkIfSecondaryTimerFinished();
-    }
+	// Stops Timer and stops Checking if finished
+	ionViewWillLeave(){
+		this.leftPage = true;
+		this.currentIdleTimer.stopTimer();
+	}
 
-    stopTimers(){
-    	this.idleTimer.pauseTimer();
-    	this.secondaryTimer.pauseTimer();
+	startSecondaryTimer(){
+		this.currentIdleTimer.restartSecondaryTimer();
+		this.checkIfSecondaryTimerFinished();
     }
 
 	checkIfTimerFinished(){
         setTimeout(() => {
-            if (this.idleTimer.isFinished()) {
-            	this.alertMessage.present();
+        	if (this.leftPage){ return; } // Stops checking if left page
+            if (this.currentIdleTimer.isFinished()) {
+            	this.currentIdleMessage.present();
             	this.startSecondaryTimer();
          	}
             else {
@@ -116,18 +120,13 @@ export class IdeaForm {
 
 	checkIfSecondaryTimerFinished(){
         setTimeout(() => {
-            if (this.secondaryTimer.isFinished()) {
-            	this.alertMessage.dismiss();
+            if (this.currentIdleTimer.isFinished()) {
+            	this.currentIdleMessage.dismiss();
             	this.goToScreenSaver();
          	}
             else {
                 this.checkIfSecondaryTimerFinished();
             }
         }, 1000);
-	}
-
-	backButtonAction(){
-		console.log('Back Button Pressed: Stopping Timer...');
-		this.stopTimers();
 	}
 }

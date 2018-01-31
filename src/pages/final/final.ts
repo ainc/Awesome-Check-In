@@ -1,6 +1,6 @@
 // TypeScript for FinalPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 11/14/17 by Brendan Thompson
+// Updated: 01/30/17 by Brendan Thompson
 
 // Description:
 // 		Thanks the user for checking in, Instructs them to have a seat, and provides a button to return home
@@ -25,22 +25,32 @@ import { AlertController } from 'ionic-angular';
     providers: [TimerComponent]
 })
 export class FinalPage {
+
+    // ==============================================================================
+    //         Forms
+    // ==============================================================================
 	public currentProgram;
 
-    private alertMessage = this.alertCtrl.create({
+    // ==============================================================================
+    //         Idle Timer
+    // ==============================================================================
+    private currentIdleTimer;
+    private leftPage: boolean; // To stop checking timer after navigating away
+    private currentIdleMessage = this.alertCtrl.create({
         title: 'Idle Timer Expired',
         message: 'Are You Still There?',
         buttons: [
             {
                 text: 'Home',
                 handler: () => {
-                	this.goToScreenSaver();
+                    this.goToScreenSaver();
                 }
             },
             {
                 text: 'Continue',
                 handler: () => {
-                	this.idleTimer.restartTimer();
+                    this.currentIdleTimer.stopTimer();
+                    this.currentIdleTimer.restartTimer();
                 }
             }
         ]
@@ -51,11 +61,9 @@ export class FinalPage {
 	// ==============================================================================
 	constructor(public navCtrl: NavController,
 				private navParameters : NavParams,
-				private idleTimer: TimerComponent,
-				private secondaryTimer: TimerComponent,
 				public alertCtrl: AlertController) {
 
-		this.startIdleTimer();
+        this.currentIdleTimer = this.navParameters.get('timerProvider');
 
 		this.currentProgram = this.navParameters.get('currentProgram');
 	}
@@ -65,57 +73,57 @@ export class FinalPage {
 	// ==============================================================================
 
 	returnHome() {
-        this.stopTimers();
 		this.goToScreenSaver();
 	}
 
-	// ==============================================================================
-	// 		ScreenSaver & Idle Timer
-	// ==============================================================================
+    // ==============================================================================
+    //         ScreenSaver & Idle Timer
+    // ==============================================================================
 
-	goToScreenSaver() {
-		this.stopTimers();
-		this.navCtrl.push(ScreenSaver);
-	}
-
-	startIdleTimer(){
-		this.idleTimer.initTimer();
-		this.idleTimer.startTimer();
-		this.checkIfTimerFinished();
-	}
-
-	startSecondaryTimer(){
-		this.secondaryTimer.initTimer();
-		this.secondaryTimer.startSecondaryTimer();
-		this.checkIfSecondaryTimerFinished();
+    goToScreenSaver() {
+        this.navCtrl.popToRoot();
     }
 
-    stopTimers(){
-    	this.idleTimer.pauseTimer();
-    	this.secondaryTimer.pauseTimer();
+    // Starts Timer and starts Checking if finished
+    ionViewDidEnter(){
+        this.leftPage = false;
+        this.currentIdleTimer.restartTimer();
+        this.checkIfTimerFinished();
     }
 
-	checkIfTimerFinished(){
+    // Stops Timer and stops Checking if finished
+    ionViewWillLeave(){
+        this.leftPage = true;
+        this.currentIdleTimer.stopTimer();
+    }
+
+    startSecondaryTimer(){
+        this.currentIdleTimer.restartSecondaryTimer();
+        this.checkIfSecondaryTimerFinished();
+    }
+
+    checkIfTimerFinished(){
         setTimeout(() => {
-            if (this.idleTimer.isFinished()) {
-            	this.alertMessage.present();
-            	this.startSecondaryTimer();
-         	}
+            if (this.leftPage){ return; } // Stops checking if left page
+            if (this.currentIdleTimer.isFinished()) {
+                this.currentIdleMessage.present();
+                this.startSecondaryTimer();
+             }
             else {
                 this.checkIfTimerFinished();
             }
         }, 1000);
-	}
+    }
 
-	checkIfSecondaryTimerFinished(){
+    checkIfSecondaryTimerFinished(){
         setTimeout(() => {
-            if (this.secondaryTimer.isFinished()) {
-            	this.alertMessage.dismiss();
-            	this.goToScreenSaver();
-         	}
+            if (this.currentIdleTimer.isFinished()) {
+                this.currentIdleMessage.dismiss();
+                this.goToScreenSaver();
+             }
             else {
                 this.checkIfSecondaryTimerFinished();
             }
         }, 1000);
-	}
+    }
 }

@@ -7,10 +7,120 @@ Description:
 ==================================================================================
 ==================================================================================
 
+01/30/18 - Brendan Thompson
+
+I) Summary of Work:
+	- Fixed Timer Back Button Bug
+
+II) Need to Implement:
+
+	A) Functionality
+		- *** I Have An Idea form not working on iPad
+		- userInfo page passing the fields, not the form
+		- import teamMembers array as provider (https://www.youtube.com/watch?v=0JtS8fHR1Co)
+
+	B) Design
+		- New Design by Nathan Falls:
+			- Confirm Page Reactive Team Member col-width
+			- Need Core Values design
+
+III) Ideas:
+	- Integrate with ZOHO
+	- Ask to take picture to also send in the notification attachment
+
+IV) Status:
+
+New Timer:
+	1) Declare IdleTimer, leftPage, & IdleMessage
+		private currentIdleTimer;
+		private leftPage: boolean; // To stop checking timer after navigating away
+		private currentIdleMessage = this.alertCtrl.create({
+	        title: 'Idle Timer Expired',
+	        message: 'Are You Still There?',
+	        buttons: [
+	            {
+	                text: 'Home',
+	                handler: () => {
+	                	this.goToScreenSaver();
+	                }
+	            },
+	            {
+	                text: 'Continue',
+	                handler: () => {
+	                	this.currentIdleTimer.stopTimer();
+	                	this.currentIdleTimer.restartTimer();
+	                }
+	            }
+	        ]
+	    });
+
+   	2) Get IdleTimer from nav params
+	   	this.currentIdleTimer = this.navParameters.get('timerProvider');
+
+	3) Copy the Functions
+
+		// ==============================================================================
+		// 		ScreenSaver & Idle Timer
+		// ==============================================================================
+
+		goToScreenSaver() {
+			this.navCtrl.popToRoot();
+		}
+
+		// Starts Timer and starts Checking if finished
+		ionViewDidEnter(){
+			this.leftPage = false;
+			this.currentIdleTimer.restartTimer();
+			this.checkIfTimerFinished();
+		}
+
+		// Stops Timer and stops Checking if finished
+		ionViewWillLeave(){
+			this.leftPage = true;
+			this.currentIdleTimer.stopTimer();
+		}
+
+		startSecondaryTimer(){
+			this.currentIdleTimer.restartSecondaryTimer();
+			this.checkIfSecondaryTimerFinished();
+	    }
+
+		checkIfTimerFinished(){
+	        setTimeout(() => {
+	        	if (this.leftPage){ return; } // Stops checking if left page
+	            if (this.currentIdleTimer.isFinished()) {
+	            	this.currentIdleMessage.present();
+	            	this.startSecondaryTimer();
+	         	}
+	            else {
+	                this.checkIfTimerFinished();
+	            }
+	        }, 1000);
+		}
+
+		checkIfSecondaryTimerFinished(){
+	        setTimeout(() => {
+	            if (this.currentIdleTimer.isFinished()) {
+	            	this.currentIdleMessage.dismiss();
+	            	this.goToScreenSaver();
+	         	}
+	            else {
+	                this.checkIfSecondaryTimerFinished();
+	            }
+	        }, 1000);
+		}
+
+	4) Pass the IdleTimer to the next page
+		this.navCtrl.push(ProgramPage, { timerProvider: this.currentIdleTimer });
+
+==================================================================================
+==================================================================================
+
 01/23/18 - Brendan Thompson
 
 I) Summary of Work:
-	-
+	- Fixed black font color in cardContent
+	- Researched turning the Timer into a single instance
 
 II) Need to Implement:
 
@@ -28,10 +138,16 @@ III) Ideas:
 	- Ask to take picture to also send in the notification attachment
 
 IV) Status:
-	- Attempting to fix font color:
+	- Fixed font color:
 		- works right when served, but some cardContent is gray on the iPad
 		- Created a special thunderFont class within the page
 			- If it isn't within the page it gets overwritten somehow
+
+	- Researched fix for Back Button Timer Bug
+		- Should pass one version of the Injectable provider between the pages
+			- https://www.youtube.com/watch?v=0JtS8fHR1Co
+		- Use ionViewDidEnter() to call the reset function
+			- https://ionicframework.com/docs/api/navigation/NavController/#lifecycle-events
 
 ==================================================================================
 ==================================================================================
