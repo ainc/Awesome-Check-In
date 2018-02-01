@@ -70,7 +70,7 @@ IV) Status:
 		- get the email from the form using ngModel
 			<ion-input class="userInfoText" type="email" [(ngModel)]="emailAddress"></ion-input>
 	6) Call sendEmail() from a button
-		<button ion-button block type="submit" (click)="sendEmail()">Send Email</button>
+		<button ion-button block class="submitButton" type="submit" (click)="sendEmail()">Send Email</button>
 
 ==================================================================================
 ==================================================================================
