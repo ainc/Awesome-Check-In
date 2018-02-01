@@ -20,7 +20,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { BoxCheckedValidator } from '../../providers/checkBoxValidators/boxCheckedValidator';
 
 import { UserInfoPage } from '../userInfo/userInfo';
-import { ScreenSaver } from '../screensaver/screensaver';
 
 import { TimerComponent } from '../../providers/timerConfirmation/timer';
 import { AlertController } from 'ionic-angular';

@@ -14,7 +14,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ConfirmPage } from '../confirm/confirm';
-import { ScreenSaver } from '../screensaver/screensaver';
 
 import { TimerComponent } from '../../providers/timerConfirmation/timer';
 import { AlertController } from 'ionic-angular';

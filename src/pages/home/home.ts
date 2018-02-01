@@ -16,11 +16,10 @@
 // ==============================================================================
 
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { ProgramPage } from '../programs/program';
 import { TeamMembersPage } from '../teamMembers/teamMembers';
-import { ScreenSaver } from '../screensaver/screensaver';
 
 import { TimerComponent } from '../../providers/timerConfirmation/timer';
 import { AlertController } from 'ionic-angular';
@@ -63,7 +62,6 @@ export class HomePage {
 	// ==============================================================================
 
 	constructor(public navCtrl: NavController,
-				private navParameters : NavParams,
 				public alertCtrl: AlertController,
 				public idleTimer: TimerComponent) {
 

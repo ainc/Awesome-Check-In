@@ -16,7 +16,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 
 import { FinalPage } from '../final/final';
-import { ScreenSaver } from '../screensaver/screensaver';
 
 import { TimerComponent } from '../../providers/timerConfirmation/timer';
 import { AlertController } from 'ionic-angular';
@@ -132,7 +131,6 @@ export class ConfirmPage {
 	// ==============================================================================
 	constructor(private navCtrl : NavController,
 				private navParameters : NavParams,
-				private userInfoFormBuilder : FormBuilder,
 				private http: Http,
 				public alertCtrl: AlertController) {
 

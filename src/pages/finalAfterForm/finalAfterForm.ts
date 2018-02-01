@@ -13,9 +13,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { ScreenSaver } from '../screensaver/screensaver';
-import { HomePage } from '../home/home';
-
 import { TimerComponent } from '../../providers/timerConfirmation/timer';
 import { AlertController } from 'ionic-angular';
 

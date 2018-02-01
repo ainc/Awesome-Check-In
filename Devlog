@@ -11,6 +11,7 @@ Description:
 
 I) Summary of Work:
 	- Implemented Emailing idea form link
+	- Removed unused imports
 
 II) Need to Implement:
 
@@ -71,6 +72,12 @@ IV) Status:
 			<ion-input class="userInfoText" type="email" [(ngModel)]="emailAddress"></ion-input>
 	6) Call sendEmail() from a button
 		<button ion-button block class="submitButton" type="submit" (click)="sendEmail()">Send Email</button>
+
+- Removed Unused Imports
+	- no longer need ScreenSaver since
+		goToScreenSaver() {
+			this.navCtrl.popToRoot();
+		}
 
 ==================================================================================
 ==================================================================================

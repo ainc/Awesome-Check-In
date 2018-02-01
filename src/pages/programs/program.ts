@@ -16,7 +16,6 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { TeamMembersPage } from '../teamMembers/teamMembers';
 import { IdeaForm } from '../ideaForm/ideaForm';
-import { ScreenSaver } from '../screensaver/screensaver';
 
 import { TimerComponent } from '../../providers/timerConfirmation/timer';
 import { AlertController } from 'ionic-angular';
