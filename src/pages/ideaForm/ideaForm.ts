@@ -17,6 +17,7 @@ import { ScreenSaver } from '../screensaver/screensaver';
 
 import { TimerComponent } from '../../providers/timerConfirmation/timer';
 import { AlertController } from 'ionic-angular';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 @Component({
   selector: 'page-ideaForm',
@@ -25,6 +26,8 @@ import { AlertController } from 'ionic-angular';
 })
 
 export class IdeaForm {
+
+	private emailAddress;
 
     // ==============================================================================
 	// 		Idle Timer
@@ -56,14 +59,27 @@ export class IdeaForm {
 	// ==============================================================================
 	constructor(public navCtrl: NavController,
 				private navParameters : NavParams,
-				public alertCtrl: AlertController) {
+				public alertCtrl: AlertController,
+				private emailer: EmailComposer) {
 
 		this.currentIdleTimer = this.navParameters.get('timerProvider');
 	}
 
 	// ==============================================================================
-	// 		Form Submitted
+	// 		Send Email and Submit
 	// ==============================================================================
+
+	sendEmail(){
+	  	let email = {
+	  		to: this.emailAddress,
+	  		subject: 'I Have an Idea Form',
+	  		body: 'We appreciate you being interested in sharing your idea with us. Please fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnYCzHXOHpjCUzqtjj1Oy41ccsyX-e8WTAFKG7xcUKNV0bjg/viewform?embedded=true&formkey=dHdwNnE1SXpRZXFCNDJIejcwLTBfblE6MQ">I Have an Idea Form</a>. We will review the idea and get back to you as soon as possible. Thanks, Awesome Inc',
+	  		isHtml: true
+	  	}
+
+	  	this.emailer.open(email);
+	  	this.formSubmitted();
+	}
 
 	formSubmitted() {
 		var program = {

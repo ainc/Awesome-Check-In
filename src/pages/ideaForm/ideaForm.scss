@@ -1,3 +1,27 @@
-page-screensaver {
+page-ideaForm {
+
+	.submitButton {
+		font-size: 250%;
+		font-weight: 600;
+		font-family: Exo;
+
+		height: 100px;
+		border-radius: 20px;
+	}
+
+	// =====================================
+	// User Info Display
+	// =====================================
+
+	.userInfoText {
+		@extends .cardFont;
+		color: $thunder-black;
+		font-size: 200%;
+		font-weight: 600;
+		text-align: left;
+
+		padding-left: 10%;
+		border-radius: 20px;
+	}
 
 }

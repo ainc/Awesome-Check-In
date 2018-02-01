@@ -30,9 +30,30 @@
 	</ion-row>
 
 	<!-- Header Description -->
- 	<h1 class="pageTitle">Please fill out the following form</h1>
+ 	<h1 class="pageTitle">Do you have an idea? Tell us about it. Awesome Inc's goal is to promote entrepreneurship. We think the best way to spread entrepreneurship is to go out and do it so tell us about your idea and we can help you pursue this idea.</h1>
 
-	<ion-grid>
+	<!-- Page Title -->
+	<!-- <h1 class="pageTitle">We will send you a link to a form</h1> -->
+
+	<p class="pageHeaderDescription">Please provide us with your email and we will send you a link to the "I Have an Idea!" form.</p>
+
+	<ion-card class="card-style card-grey">
+		<ion-grid>
+			<ion-row>
+				<ion-col col-2>
+					<p class="userInfoText">EMAIL:</p>
+				</ion-col>
+				<ion-col col-10>
+					<ion-input class="userInfoText" type="email" [(ngModel)]="emailAddress"></ion-input>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-card>
+
+	<button ion-button block type="submit" (click)="sendEmail()">Send Email</button>
+
+	<!-- Google Form -->
+	<!-- <ion-grid>
 		<ion-row>
 			<ion-col col-4 offset-4>
 				<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScA98d02mkhzTcZ5ZgkaGyHPwxif-KYzVbb_V2WXzPOB5EGIA/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
@@ -40,7 +61,7 @@
 				<button ion-button block type="submit" (click)="formSubmitted()">Continue</button>
 			</ion-col>
 		</ion-row>
-	</ion-grid>
+	</ion-grid> -->
 </ion-content>
 
 

@@ -7,6 +7,74 @@ Description:
 ==================================================================================
 ==================================================================================
 
+01/31/18 - Brendan Thompson
+
+I) Summary of Work:
+	- Implemented Emailing idea form link
+
+II) Need to Implement:
+
+	A) Functionality
+		- userInfo page passing the fields, not the form
+		- import teamMembers array as provider (https://www.youtube.com/watch?v=0JtS8fHR1Co)
+
+	B) Design
+		- New Design by Nathan Falls:
+			- Confirm Page Reactive Team Member col-width
+			- Need Core Values design
+
+III) Ideas:
+	- Integrate with ZOHO
+	- Ask to take picture to also send in the notification attachment
+
+IV) Status:
+
+- Struggled to implement Google Form
+	- CORS error
+
+- Decided not to have the user fill out the google form on the spot on the iPad
+	- Takes too long
+	- Difficult to implement
+
+- Set up emailing a link to the form to the user
+	https://www.youtube.com/watch?v=N27NBB9TgLI
+	1) Install Dependencies
+		ionic cordova plugin add --save cordova-plugin-email
+		npm install --save @ionic-native/email-composer
+	2) Import into app.module.ts
+		import { EmailComposer } from '@ionic-native/email-composer';
+		"providers: [
+			...,
+			EmailComposer
+		"
+	3) Import the EmailComposer into ideaForm.ts
+		import { EmailComposer } from '@ionic-native/email-composer';
+		...
+		constructor(..., emailer : EmailComposer )
+	4) Create the function to Send the email
+
+		sendEmail(){
+		  	let email = {
+		  		to: this.emailAddress,
+		  		subject: 'I Have an Idea Form',
+		  		body: 'We appreciate you being interested in sharing your idea with us. Please fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnYCzHXOHpjCUzqtjj1Oy41ccsyX-e8WTAFKG7xcUKNV0bjg/viewform?embedded=true&formkey=dHdwNnE1SXpRZXFCNDJIejcwLTBfblE6MQ">I Have an Idea Form</a>. We will review the idea and get back to you as soon as possible. Thanks, Awesome Inc',
+		  		isHtml: true
+		  	}
+
+		  	this.emailer.open(email);
+		  	this.formSubmitted();
+		}
+	5) Get the email address from the user
+		- new var in ideaForm.ts:
+			private emailAddress
+		- get the email from the form using ngModel
+			<ion-input class="userInfoText" type="email" [(ngModel)]="emailAddress"></ion-input>
+	6) Call sendEmail() from a button
+		<button ion-button block type="submit" (click)="sendEmail()">Send Email</button>
+
+==================================================================================
+==================================================================================
+
 01/30/18 - Brendan Thompson
 
 I) Summary of Work:

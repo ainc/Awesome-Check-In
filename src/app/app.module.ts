@@ -38,6 +38,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { BoxCheckedValidator } from '../providers/checkBoxValidators/boxCheckedValidator';
 import { TimerComponent } from '../providers/timerConfirmation/timer';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 @NgModule({
 
@@ -88,7 +89,8 @@ import { TimerComponent } from '../providers/timerConfirmation/timer';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BoxCheckedValidator,
-    TimerComponent
+    TimerComponent,
+    EmailComposer
   ]
 })
 export class AppModule {}
