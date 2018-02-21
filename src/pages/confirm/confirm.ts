@@ -144,7 +144,7 @@ export class ConfirmPage {
 		{
 			"username": "CheckIn_Bot",
 			"channel": this.destinationChannel,
-			"text": "<@channel> A guest has arrived for ",
+			"text": "A guest has arrived for ",
 			"attachments": [
 				{
 					"title": this.userName + " just checked in!",
@@ -158,7 +158,7 @@ export class ConfirmPage {
 		})
 
 		// Tag the Selected Users
-		var newText: string = "<@channel> A guest has arrived for ";
+		var newText: string = "A guest has arrived for ";
 		for (var i = 0; i < usersSelected.length; i++) {
 			newText += "<" + usersSelected[i] + "> ";
 			console.log(usersSelected[i]);
