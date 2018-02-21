@@ -60,7 +60,7 @@
 		<!-- <ion-item-group>
 			<ion-item><b>Selected Team Members:</b></ion-item>
 
-			<ng-container *ngFor="let member of TEAMMEMBERS">
+			<ng-container *ngFor="let member of teamMembers">
 				<ion-item *ngIf="currentMemberFormGroup.get('teamMembers').get(member.tag).value">
 					<ion-label><b>{{ member.name }}</b> : {{ member.description }}</ion-label>
 					<ion-thumbnail item-end>
@@ -127,7 +127,7 @@
 
 				<ion-grid class="noMarginOrPadding">
 				<ion-row>
-					<ng-container *ngFor="let member of TEAMMEMBERS">
+					<ng-container *ngFor="let member of teamMembers">
 					<ion-col col-6 *ngIf="currentMemberFormGroup.get('teamMembers').get(member.tag).value" class="noMarginOrPadding">
 						<ion-card class="card-style card-grey noMarginOrPadding">
 							<img class="teamMemberIcon" src="{{ member.imageURL }}" alt="{{ member.imageAlt }}">

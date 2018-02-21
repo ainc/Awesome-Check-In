@@ -1,6 +1,6 @@
 // TypeScript for ConfirmPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 01/30/17 by Brendan Thompson
+// Updated: 02/14/17 by Brendan Thompson
 
 // Description:
 // 		Asks the User to confirm their user info and selected team members
@@ -19,6 +19,7 @@ import { FinalPage } from '../final/final';
 
 import { TimerComponent } from '../../providers/timerConfirmation/timer';
 import { AlertController } from 'ionic-angular';
+import { TeamMembersProvider } from '../../providers/team-members/team-members';
 
 @Component({
 	selector: 'page-confirm',
@@ -27,6 +28,16 @@ import { AlertController } from 'ionic-angular';
 })
 
 export class ConfirmPage {
+
+    // ==============================================================================
+	// 		Constants
+	// ==============================================================================
+
+	private destinationChannel: any = "#checkin-app";
+
+    // ==============================================================================
+	// 		Objects
+	// ==============================================================================
 
 	private ourHttp: Http;
 
@@ -58,73 +69,12 @@ export class ConfirmPage {
     // ==============================================================================
 	// 		Forms
 	// ==============================================================================
+	public teamMembers;
 	public currentProgram;
 	public currentMemberFormGroup: FormGroup;
 		private userName;
 		private userEmail;
 		private userReason;
-
-    // ==============================================================================
-	// 		Team Members Array
-	// ==============================================================================
-	public TEAMMEMBERS = [
-		{id: 1, name:'Nobody Yet',
-			tag: 'Nobody',
-			description: 'Set up a meeting',
-			team: 'Team Alpha',
-			slackUsername: '#checkin-app',
-			imageURL: 'assets/img/TeamMembers/teamMember.png',
-			imageAlt: 'Team Member',
-		},
-		{id: 2, name:'Emily Wehrle',
-			tag: 'Emily',
-			description: 'Director of Operations',
-			team: 'main',
-			slackUsername: '@emilywehrle',
-			imageURL: 'assets/img/TeamMembers/emilywehrle_wall.png',
-			imageAlt: 'Emily Wehrle'
-		},
-		{id: 3, name:'Brian Raney',
-			tag: 'Brian',
-			description: 'Co-Founder',
-			team: 'main',
-			slackUsername: '@nicksuch',
-			imageURL: 'assets/img/TeamMembers/brianraney_wall.png',
-			imageAlt: 'Brian Raney'
-		},
-		{id: 4, name:'Amanda Murray',
-			tag: 'Amanda',
-			description: 'Director of Marketing',
-			team: 'Marketing',
-			slackUsername: '@amandasmurray',
-			imageURL: 'assets/img/TeamMembers/amandamurray_wall.png',
-			imageAlt: 'Amanda Murray'
-		},
-		{id: 5, name:'Keith McMunn',
-			tag: 'Keith',
-			description: 'Director of Fellowship',
-			team: 'Fellowship',
-			slackUsername: '@keithmcmunn',
-			imageURL: 'assets/img/TeamMembers/keithmcmunn_wall.png',
-			imageAlt: 'Keith McMunn'
-		},
-		{id: 6, name:'Nick Such',
-			tag: 'Nick',
-			description: 'Co-Founder',
-			team: 'main',
-			slackUsername: '@nicksuch',
-			imageURL: 'assets/img/TeamMembers/nicksuch_wall.png',
-			imageAlt: 'Nick Such'
-		},
-		{id: 7, name:'Kyle Raney',
-			tag: 'Kyle',
-			description: 'Development Team',
-			team: 'Team Alpha',
-			slackUsername: '@raney24',
-			imageURL: 'assets/img/TeamMembers/kyleraney_wall.png',
-			imageAlt: 'Kyle Raney'
-		}
-	];
 
 	// ==============================================================================
 	// 		Constructor gets currentProgram, user info, and currentMemberFormGroup from NavParam and instantiates the http object
@@ -132,7 +82,8 @@ export class ConfirmPage {
 	constructor(private navCtrl : NavController,
 				private navParameters : NavParams,
 				private http: Http,
-				public alertCtrl: AlertController) {
+				public alertCtrl: AlertController,
+				private teamMembersArray: TeamMembersProvider) {
 
 		this.currentIdleTimer = this.navParameters.get('timerProvider');
 
@@ -143,6 +94,11 @@ export class ConfirmPage {
 			this.userReason = this.navParameters.get('reason');
 
 		this.ourHttp = http;
+
+		// Load Team Members
+  		teamMembersArray.loadAll().then(result =>{
+  			this.teamMembers = result;
+  		});
 	}
 
 	// ==============================================================================
@@ -156,29 +112,39 @@ export class ConfirmPage {
 
 
 	// ==============================================================================
-	// 		iterates through TEAMMEMBERS and conditionally calls sendSlackMessage()
+	// 		iterates through teamMembers,
+	//		conditionally adds them to usersSelected
+	//		then calls sendSlackMessage()
 	// ==============================================================================
 	sendOutAllSlackMessages() {
-		for (let member of this.TEAMMEMBERS){
+		var usersSelected = [];
+
+		for (let member of this.teamMembers){
 			var currentMemberTag = member.tag;
 			var currentTeamMember = this.currentMemberFormGroup.get('teamMembers').get(currentMemberTag);
-			if (currentTeamMember.value){
-				this.sendSlackMessage(member.slackUsername);
+			if ((currentTeamMember.value) && (currentMemberTag != "Nobody")){
+				usersSelected.push(member.slackUsername);
 			}
 		}
+
+		console.log("Users Selected: " + usersSelected);
+
+		this.sendSlackMessage(usersSelected);
 	}
 
 	// ==============================================================================
 	// 		Sends One Slack Message to slackUsername
 	// ==============================================================================
-	sendSlackMessage(slackUsername) {
+	sendSlackMessage(usersSelected) {
 		var currentTime = (new Date).getTime() / 1000;
 		var url = "https://hooks.slack.com/services/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";
-		var messageText = JSON.stringify(
+
+		// Create the message
+		var messageText = (
 		{
 			"username": "CheckIn_Bot",
-			"channel": slackUsername,
-			"text": "A guest has arrived for you!",
+			"channel": this.destinationChannel,
+			"text": "<@channel> A guest has arrived for ",
 			"attachments": [
 				{
 					"title": this.userName + " just checked in!",
@@ -191,7 +157,17 @@ export class ConfirmPage {
 			]
 		})
 
-		this.ourHttp.post(url, messageText)
+		// Tag the Selected Users
+		var newText: string = "<@channel> A guest has arrived for ";
+		for (var i = 0; i < usersSelected.length; i++) {
+			newText += "<" + usersSelected[i] + "> ";
+			console.log(usersSelected[i]);
+			console.log(newText);
+		}
+		messageText.text = newText;
+		console.log(JSON.stringify(messageText.text));
+
+		this.ourHttp.post(url, JSON.stringify(messageText))
 			.subscribe();
 	}
 
