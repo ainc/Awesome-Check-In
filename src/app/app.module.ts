@@ -39,6 +39,7 @@ import { FormsModule } from '@angular/forms';
 import { BoxCheckedValidator } from '../providers/checkBoxValidators/boxCheckedValidator';
 import { TimerComponent } from '../providers/timerConfirmation/timer';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { TeamMembersProvider } from '../providers/team-members/team-members';
 
 @NgModule({
 
@@ -90,7 +91,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BoxCheckedValidator,
     TimerComponent,
-    EmailComposer
+    EmailComposer,
+    TeamMembersProvider
   ]
 })
 export class AppModule {}
