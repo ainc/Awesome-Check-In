@@ -31,7 +31,7 @@ export class TeamMembersProvider {
 				tag: 'Brian',
 				description: 'Co-Founder',
 				team: 'main',
-				slackUsername: '@nicksuch',
+				slackUsername: '@brianraney',
 				imageURL: 'assets/img/TeamMembers/brianraney_wall.png',
 				imageAlt: 'Brian Raney'
 			},
