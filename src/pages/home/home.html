@@ -2,7 +2,7 @@
 
 	HomePage In Check In App
 	Created: 09/01/17 by Brendan Thompson
-	Updated: 01/11/18 by Brendan Thompson
+	Updated: 03/21/17 by Brendan Thompson
 
 	Description:
 		Asks the User to select what brought them in: Entrepreneurship, Technology, or Workspace
@@ -39,7 +39,7 @@
 	<ion-grid>
 		<ion-row>
 			<ion-col col-6 col-sm>
-				<ion-card class="card-style card-red" (click)="clickedEnt()">
+				<ion-card class="card-style" [ngClass]="!entClicked ? 'card-red' : 'card-grey'" (click)="clickedEnt()">
 					<ion-card-header class="cardHeader">
 						Entrepreneurship
 					</ion-card-header>
@@ -51,7 +51,7 @@
 			</ion-col>
 
 			<ion-col col-12 col-sm>
-				<ion-card class="card-style card-red" (click)="clickedCode()">
+				<ion-card class="card-style" [ngClass]="!codeClicked ? 'card-red' : 'card-grey'" (click)="clickedCode()">
 					<ion-card-header class="cardHeader">
 						Technology
 					</ion-card-header>
@@ -63,7 +63,7 @@
 			</ion-col>
 
 			<ion-col col-12 col-sm>
-				<ion-card class="card-style card-red" (click)="clickedSpace()">
+				<ion-card class="card-style" [ngClass]="!spaceClicked ? 'card-red' : 'card-grey'" (click)="clickedSpace()">
 					<ion-card-header class="cardHeader">
 						Workspace
 					</ion-card-header>
@@ -75,7 +75,7 @@
 			</ion-col>
 
 			<ion-col col-12>
-				<ion-card class="card-style card-red" (click)="clickedMeeting()">
+				<ion-card class="card-style" [ngClass]="!meetingClicked ? 'card-red' : 'card-grey'" (click)="clickedMeeting()">
 					<ion-card-header class="cardHeader">
 						I Have a Meeting
 					</ion-card-header>

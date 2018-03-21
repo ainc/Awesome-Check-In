@@ -1,6 +1,6 @@
 // TypeScript for ConfirmPage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 02/14/17 by Brendan Thompson
+// Updated: 03/21/17 by Brendan Thompson
 
 // Description:
 // 		Asks the User to confirm their user info and selected team members

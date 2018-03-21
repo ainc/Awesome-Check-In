@@ -2,7 +2,7 @@
 
 // TypeScript for HomePage
 // Created: 09/01/17 by Brendan Thompson
-// Updated: 01/30/17 by Brendan Thompson
+// Updated: 03/21/17 by Brendan Thompson
 
 // Description:
 //		Asks the User to select what brought them in: Entrepreneurship, Learning To Code, or The Workspace
@@ -31,6 +31,12 @@ import { AlertController } from 'ionic-angular';
 })
 
 export class HomePage {
+
+    // Variables for setting background color
+    private entClicked: boolean;
+    private codeClicked: boolean;
+    private spaceClicked: boolean;
+    private meetingClicked: boolean;
 
     // ==============================================================================
 	// 		Form For Idle Timer
@@ -68,17 +74,26 @@ export class HomePage {
 		this.currentIdleTimer = this.idleTimer;
 	}
 
+	ionViewWillEnter(){
+		this.entClicked = false;
+		this.codeClicked = false;
+		this.spaceClicked = false;
+		this.meetingClicked = false;
+	}
+
 	// ==============================================================================
 	// 		Navigation
 	// ==============================================================================
 
 	// Entrepreneurship
 	clickedEnt() {
+    	this.entClicked = true;
 		this.navCtrl.push(ProgramPage, { timerProvider: this.currentIdleTimer });
 	}
 
 	// Learning to Code
 	clickedCode() {
+    	this.codeClicked = true;
 		var program = {
 			id: 7,
 			name:'Awesome Inc U',
@@ -93,6 +108,7 @@ export class HomePage {
 
 	// The Workspace
 	clickedSpace() {
+    	this.spaceClicked = true;
 		var program = {
 			id: 8,
 			name:'The Workspace',
@@ -106,6 +122,7 @@ export class HomePage {
 
 	// Meeting
 	clickedMeeting() {
+    	this.meetingClicked = true;
 		var program = {
 			id: 9,
 			name:'Planned Meeting',
