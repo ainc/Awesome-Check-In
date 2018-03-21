@@ -7,6 +7,39 @@ Description:
 ==================================================================================
 ==================================================================================
 
+03/21/18 - Brendan Thompson
+
+I) Summary of Work:
+	- Started tagging the Channel
+	- Made selections obvious
+
+II) Need to Implement:
+
+	A) Functionality
+		- userInfo page passing the fields, not the form
+		- import teamMembers array as provider (https://www.youtube.com/watch?v=0JtS8fHR1Co)
+
+	B) Design
+		- New Design by Nathan Falls:
+			- Confirm Page Reactive Team Member col-width
+			- Need Core Values design
+
+III) Ideas:
+	- Integrate with ZOHO
+	- Ask to take picture to also send in the notification attachment
+
+IV) Status:
+
+	- Started tagging the Channel
+		- `<!channel>`
+
+	- Made selections obvious
+		- change from card-red to card-grey
+		- had to create & reset booleans for wasClicked
+
+==================================================================================
+==================================================================================
+
 01/31/18 - Brendan Thompson
 
 I) Summary of Work:
