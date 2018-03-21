@@ -4,8 +4,12 @@ page-screensaver {
 		width: auto;
 	}
 
-	.clickedToStart{
+	.clickedToStartTrue{
 		opacity: 0.5;
+	}
+
+	.clickedToStartFalse{
+		opacity: 1.0;
 	}
 
 }

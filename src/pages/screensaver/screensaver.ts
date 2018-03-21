@@ -30,7 +30,7 @@ export class ScreenSaver {
 	constructor(public navCtrl: NavController) {
 	}
 
-	ionViewWillLoad(){
+	ionViewWillEnter(){
 		this.clickedToStart = false;
 	}
 
