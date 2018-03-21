@@ -1,6 +1,6 @@
 // TypeScript for Screen Saver
 // Created: 10/17/17 by Brendan Thompson
-// Updated: 10/17/17 by Brendan Thompson
+// Updated: 03/21/17 by Brendan Thompson
 
 // Description:
 // 		Attracts the User's Attention to Checking In
@@ -21,16 +21,24 @@ import { HomePage } from '../home/home';
   templateUrl: 'screensaver.html'
 })
 export class ScreenSaver {
+
+	private clickedToStart: boolean;
+
 	// ==============================================================================
 	// 		Constructor
 	// ==============================================================================
 	constructor(public navCtrl: NavController) {
 	}
 
+	ionViewWillLoad(){
+		this.clickedToStart = false;
+	}
+
 	// ==============================================================================
 	// 		Return to Home Page
 	// ==============================================================================
 	beginCheckIn() {
+		this.clickedToStart = true;
 		this.navCtrl.push(HomePage);
 	}
 }

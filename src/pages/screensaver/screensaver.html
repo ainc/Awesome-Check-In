@@ -1,7 +1,7 @@
 <!--
 	Screensaver In Check In App
 	Created: 10/17/17 by Brendan Thompson
-	Updated: 12/13/17 by Brendan Thompson
+	Updated: 03/21/17 by Brendan Thompson
 
 	Description:
 		Screen Saver that draws the user's attention toward the Check In App
@@ -11,5 +11,5 @@
 </ion-header>
 
 <ion-content class="background">
-	<img src="assets/img/screensaver-new.png" alt="Click Here to Check In!" (click)="beginCheckIn()">
+	<img src="assets/img/screensaver-new.png" alt="Click Here to Check In!" [ngClass]="clickedToStart ? 'clickedToStart' : ''" (click)="beginCheckIn()">
 </ion-content>
