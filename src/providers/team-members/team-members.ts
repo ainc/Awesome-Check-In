@@ -11,15 +11,7 @@ export class TeamMembersProvider {
   	constructor() {
 
 	    this.teamMembersArray = [
-			{id: 1, name:'Nobody Yet',
-				tag: 'Nobody',
-				description: 'Set up a meeting',
-				team: 'Team Alpha',
-				slackUsername: '#checkin-app',
-				imageURL: 'assets/img/TeamMembers/teamMember.png',
-				imageAlt: 'Team Member',
-			},
-			{id: 2, name:'Emily Wehrle',
+			{id: 1, name:'Emily Wehrle',
 				tag: 'Emily',
 				description: 'Director of Operations',
 				team: 'main',
@@ -27,7 +19,7 @@ export class TeamMembersProvider {
 				imageURL: 'assets/img/TeamMembers/emilywehrle_wall.png',
 				imageAlt: 'Emily Wehrle'
 			},
-			{id: 3, name:'Brian Raney',
+			{id: 2, name:'Brian Raney',
 				tag: 'Brian',
 				description: 'Co-Founder',
 				team: 'main',
@@ -35,7 +27,7 @@ export class TeamMembersProvider {
 				imageURL: 'assets/img/TeamMembers/brianraney_wall.png',
 				imageAlt: 'Brian Raney'
 			},
-			{id: 4, name:'Amanda Murray',
+			{id: 3, name:'Amanda Murray',
 				tag: 'Amanda',
 				description: 'Director of Marketing',
 				team: 'Marketing',
@@ -43,7 +35,7 @@ export class TeamMembersProvider {
 				imageURL: 'assets/img/TeamMembers/amandamurray_wall.png',
 				imageAlt: 'Amanda Murray'
 			},
-			{id: 5, name:'Keith McMunn',
+			{id: 4, name:'Keith McMunn',
 				tag: 'Keith',
 				description: 'Director of Fellowship',
 				team: 'Fellowship',
@@ -51,7 +43,7 @@ export class TeamMembersProvider {
 				imageURL: 'assets/img/TeamMembers/keithmcmunn_wall.png',
 				imageAlt: 'Keith McMunn'
 			},
-			{id: 6, name:'Nick Such',
+			{id: 5, name:'Nick Such',
 				tag: 'Nick',
 				description: 'Co-Founder',
 				team: 'main',
@@ -59,13 +51,29 @@ export class TeamMembersProvider {
 				imageURL: 'assets/img/TeamMembers/nicksuch_wall.png',
 				imageAlt: 'Nick Such'
 			},
-			{id: 7, name:'Kyle Raney',
+			{id: 6, name:'Kyle Raney',
 				tag: 'Kyle',
 				description: 'Development Team',
 				team: 'Team Alpha',
 				slackUsername: '@raney24',
 				imageURL: 'assets/img/TeamMembers/kyleraney_wall.png',
 				imageAlt: 'Kyle Raney'
+			},
+			{id: 7, name:'Keith Kurzendoerfer',
+				tag: 'KeithK',
+				description: 'APAX Software',
+				team: 'Team Alpha',
+				slackUsername: '@keith',
+				imageURL: 'assets/img/TeamMembers/keith-min.jpg',
+				imageAlt: 'Team Member',
+			},
+			{id: 8, name:'Nobody Yet',
+				tag: 'Nobody',
+				description: 'Setup a meeting',
+				team: 'Team Alpha',
+				slackUsername: '#checkin-app',
+				imageURL: 'assets/img/TeamMembers/teamMember.png',
+				imageAlt: 'Team Member',
 			}
 		];
   	}

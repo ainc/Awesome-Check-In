@@ -12,10 +12,12 @@ page-teamMembers {
 	}
 
 	.submitButton {
-		border-radius: 20px;
-		height:120px;
+		@extend .card-style;
+		@extend .card-red;
+		// height:135px;
+		height: 90%;
+		margin-top:10px;
 		font-size: 300%;
-		font-family: Exo;
 		font-weight: 600;
 	}
 
