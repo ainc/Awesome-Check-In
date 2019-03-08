@@ -191,6 +191,7 @@ export class TeamMembersPage {
 				Nick	: [false],
 				Kyle	: [false],
 				KeithK	: [false],
+				Maggie	: [false],
 				Nobody	: [false]
 			}, { validator: this.memberValidator.validateABoxChecked })
 		});

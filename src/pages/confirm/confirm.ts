@@ -123,7 +123,12 @@ export class ConfirmPage {
 			var currentMemberTag = member.tag;
 			var currentTeamMember = this.currentMemberFormGroup.get('teamMembers').get(currentMemberTag);
 			if ((currentTeamMember.value) && (currentMemberTag != "Nobody")){
-				usersSelected.push(member.slackUsername);
+				if (member.userId) {
+					usersSelected.push(member.userId);
+				} else {
+					usersSelected.push(member.slackUsername);
+				}
+				
 			}
 		}
 

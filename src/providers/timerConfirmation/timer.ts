@@ -84,7 +84,6 @@ export class TimerComponent {
                 return;
             }
             this.secondsRemaining--;
-            console.log('Time Remaining: ' + this.secondsRemaining);
             if (this.secondsRemaining > 0) {
                 this.timerTick();
             }
